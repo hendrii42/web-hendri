@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hendri | Digital Presence</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container { width: 100%; max-width: 450px; }
+
+        /* Profil Section */
+        .profile { text-align: center; margin-bottom: 40px; }
+        .avatar {
+            width: 110px; height: 110px;
+            border-radius: 30px; /* Bentuk Squircle, lebih modern dari lingkaran */
+            background: url('https://via.placeholder.com/150') center/cover;
+            margin: 0 auto 15px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transform: rotate(-3deg); /* Kesan santai/tidak kaku */
+        }
+        h1 { font-size: 1.8rem; letter-spacing: -1px; margin-bottom: 8px; }
+        .bio { font-size: 0.9rem; color: #94a3b8; line-height: 1.6; }
+
+        /* Bento Grid Style */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full { grid-column: span 2; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon { margin-bottom: 15px; color: #38bdf8; }
+        .title { font-weight: 700; font-size: 1rem; display: block; margin-bottom: 5px; }
+        .desc { font-size: 0.75rem; color: #64748b; line-height: 1.4; }
+
+        /* Accent Colors */
+        .va { border-left: 4px solid #38bdf8; }
+        .edu { border-left: 4px solid #fbbf24; }
+        .hana { background: linear-gradient(145deg, rgba(225, 29, 72, 0.1), rgba(255,255,255,0.03)); border: 1px solid rgba(225, 29, 72, 0.2); }
+
+        .footer { text-align: center; margin-top: 50px; font-size: 0.7rem; color: #475569; letter-spacing: 1px; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="profile">
+        <div class="avatar"></div>
+        <h1>Hendri.</h1>
+        <p class="bio">Digital Assistant. Math Educator.<br>Storyteller in the making.</p>
+    </div>
+
+    <div class="grid">
+        <a href="#" class="card full va">
+            <div>
+                <i data-lucide="layers" class="icon"></i>
+                <span class="title">Virtual Assistant</span>
+                <span class="desc">Merapikan sistem & administrasi bisnis Anda secara remote.</span>
+            </div>
+        </a>
+
+        <a href="#" class="card edu">
+            <i data-lucide="book-open" class="icon"></i>
+            <div>
+                <span class="title">Math Edu</span>
+                <span class="desc">Trik cepat Matematika & Fisika.</span>
+            </div>
+        </a>
+
+        <a href="#" class="card">
+            <i data-lucide="camera" class="icon"></i>
+            <div>
+                <span class="title">Journals</span>
+                <span class="desc">Food & Travel stories.</span>
+            </div>
+        </a>
+
+        <a href="#" class="card">
+            <i data-lucide="shopping-bag" class="icon"></i>
+            <div>
+                <span class="title">Gear</span>
+                <span class="desc">Recommended items.</span>
+            </div>
+        </a>
+
+        <a href="#" class="card hana">
+            <i data-lucide="lock" class="icon" style="color: #e11d48;"></i>
+            <div>
+                <span class="title">Tentang Hana</span>
+                <span class="desc">A private collection of thoughts.</span>
+            </div>
+        </a>
+
+        <a href="#" class="card full" style="text-align: center; align-items: center;">
+            <span class="title">☕ Support the Mission</span>
+            <span class="desc">Membantu misi berbagi kebahagiaan untuk anak-anak.</span>
+        </a>
+    </div>
+
+    <div class="footer">STAY STEADY • 2024</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
