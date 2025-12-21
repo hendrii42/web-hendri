@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ... CSS kamu yang sudah ada ... */
         body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .bento-card {
             background: rgba(255, 255, 255, 0.03);
@@ -20,7 +19,7 @@
         }
         .bento-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
             background: rgba(255, 255, 255, 0.07);
         }
         .status-dot {
@@ -28,8 +27,11 @@
             box-shadow: 0 0 10px currentColor;
         }
         #menuOverlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.95); z-index: 100;
+            display: none; 
+            position: fixed; 
+            inset: 0;
+            background: rgba(0,0,0,0.98); 
+            z-index: 200; /* Pastikan paling depan */
             backdrop-filter: blur(20px);
         }
         .gradient-text {
@@ -41,44 +43,40 @@
 </head>
 <body class="p-4 md:p-8 lg:p-12">
 
-    <nav class="max-w-7xl mx-auto flex justify-between items-center mb-12 px-4">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-12 px-4">
         <a href="index.html" class="flex items-center gap-3 group">
             <div class="flex flex-col leading-none">
                 <span class="text-xl font-black tracking-tighter text-white uppercase italic">Hendri<span class="text-blue-500">Hub</span></span>
                 <span class="text-[8px] tracking-[0.3em] text-gray-500 font-bold uppercase">Logic & Creative</span>
             </div>
         </a>
-        <button onclick="toggleMenu()" class="...">
-            <i class="fa-solid fa-bars-staggered"></i>
-        </button>
     </nav>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
-        </main>
-
-    <div id="menuOverlay"> ... </div>
-    <script> ... </script>
-    
-    <nav class="fixed top-6 right-6 z-[110]">
-        <button onclick="toggleMenu()" class="bento-card p-4 w-14 h-14 flex items-center justify-center bg-black/50">
+    <div class="fixed top-6 right-6 z-[150]">
+        <button onclick="toggleMenu()" class="bento-card p-4 w-14 h-14 flex items-center justify-center bg-black/50 border border-white/20 shadow-2xl">
             <i class="fa-solid fa-bars-staggered text-xl text-white"></i>
         </button>
-    </nav>
+    </div>
 
-    <div id="menuOverlay" class="flex flex-col items-center justify-center">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl">&times;</button>
-        <div class="text-center space-y-8">
-            <a href="biodata.html" target="_blank" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-yellow-400 transition italic">Biodata</a>
-            <a href="#projects" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-blue-400 transition">Portfolio</a>
-            <a href="#affiliate" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-orange-400 transition">Affiliate</a>
-            <a href="https://www.instagram.com/vhen_virtual/" class="block text-4xl font-bold hover:text-pink-400 transition">VA Services</a>
-            <a href="#contact" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-green-400 transition">Contact</a
-            <a href="https://trakteer.id/hendri_irawan10/tip" onclick="toggleMenu()" class="block text-xl font-medium text-yellow-600 hover:text-yellow-400 transition mt-10">
-                <i class="fa-solid fa-coffee mr-2"></i>Buy me a coffee                                                                                                                     
+    <div id="menuOverlay" class="flex flex-col items-center justify-center p-6 text-center">
+        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gray-400 hover:text-white">&times;</button>
+        
+        <div class="space-y-8">
+            <a href="biodata.html" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-blue-400 transition italic tracking-tighter">About Hendri</a>
+            <a href="#projects" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-purple-400 transition tracking-tighter">Portfolio</a>
+            <a href="#affiliate" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-orange-400 transition tracking-tighter">Affiliate</a>
+            <a href="https://www.instagram.com/vhen_virtual/" target="_blank" class="block text-4xl font-bold hover:text-green-400 transition tracking-tighter">VA Services</a>
+            <a href="#contact" onclick="toggleMenu()" class="block text-4xl font-bold hover:text-white transition tracking-tighter">Contact</a>
+            
+            <div class="pt-10">
+                <a href="https://trakteer.id/hendri_irawan10/tip" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 hover:bg-yellow-500 hover:text-black transition font-bold">
+                    <i class="fa-solid fa-coffee"></i> Buy me a coffee
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
         
         <div class="md:col-span-2 md:row-span-2 bento-card p-8 flex flex-col justify-end min-h-[350px] relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
@@ -102,8 +100,8 @@
         </div>
 
         <div class="bento-card p-6 grid grid-cols-2 gap-4">
-            <a href="https://www.instagram.com/hendrii_42" class="bento-card p-4 flex items-center justify-center hover:text-pink-500 transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
-            <a href="https://www.tiktok.com/@hendrii_42" class="bento-card p-4 flex items-center justify-center hover:text-blue-400 transition"><i class="fa-brands fa-tiktok text-2xl"></i></a>
+            <a href="https://www.instagram.com/hendrii_42" target="_blank" class="bento-card p-4 flex items-center justify-center hover:text-pink-500 transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
+            <a href="https://www.tiktok.com/@hendrii_42" target="_blank" class="bento-card p-4 flex items-center justify-center hover:text-blue-400 transition"><i class="fa-brands fa-tiktok text-2xl"></i></a>
         </div>
 
         <div id="affiliate" class="md:col-span-2 bento-card p-6 bg-gradient-to-br from-orange-500/5 to-transparent border-l-4 border-l-orange-500">
@@ -121,7 +119,7 @@
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000')] bg-cover bg-center transition duration-700 group-hover:scale-105"></div>
             <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition"></div>
             <div class="relative h-full flex flex-col justify-end">
-                <h3 class="text-3xl font-bold font-mono">Visual Portfolio</h3>
+                <h3 class="text-3xl font-bold font-mono text-white">Visual Portfolio</h3>
                 <p class="text-gray-300">Design projects and street photography.</p>
             </div>
         </div>
@@ -129,15 +127,15 @@
         <div class="bento-card p-6 flex flex-col justify-center border-r-4 border-r-blue-500/50">
             <h4 class="text-xs text-blue-400 font-bold uppercase mb-2 text-center">Math Mentorship</h4>
             <p class="text-[11px] text-center text-gray-400 mb-4">Transforming logic into understanding.</p>
-            <a href="https://www.instagram.com/tutor_hira/" class="text-[10px] text-center py-2 bento-card bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 font-bold uppercase tracking-widest transition">
-        Follow Profile &rarr;
+            <a href="https://www.instagram.com/tutor_hira/" target="_blank" class="text-[10px] text-center py-2 bento-card bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 font-bold uppercase tracking-widest transition">
+                Follow Profile &rarr;
             </a>
         </div>
 
         <div class="md:col-span-1 bento-card p-6 flex flex-col justify-between border-t-4 border-t-yellow-500/50">
             <span class="text-[10px] text-yellow-500 font-bold uppercase tracking-widest">Support</span>
-            <p class="text-xs text-gray-500 mt-2 italic">Suka dengan karyaku? Beliin kopi yuk.</p>
-            <a href="https://trakteer.id/hendri_irawan10/tip" class="mt-4 py-2 px-4 bento-card text-center text-xs font-bold hover:bg-yellow-500/10 text-yellow-500 transition">
+            <p class="text-xs text-gray-500 mt-2 italic text-center">Suka dengan karyaku? Beliin kopi yuk.</p>
+            <a href="https://trakteer.id/hendri_irawan10/tip" target="_blank" class="mt-4 py-2 px-4 bento-card text-center text-xs font-bold hover:bg-yellow-500/10 text-yellow-500 transition">
                 <i class="fa-solid fa-coffee mr-1"></i> Traktir Kopi
             </a>
         </div>
@@ -147,31 +145,37 @@
                 <h3 class="text-xl font-bold text-gray-400 group-hover:text-white transition">The Silent Journey</h3>
                 <p class="text-sm text-gray-500">A personal narrative of resilience and pathfinding.</p>
             </div>
-            <a href="https://heyzine.com/flip-book/1929b0e168.html" class="mt-4 md:mt-0 px-8 py-3 bento-card hover:bg-white/10 text-xs font-extrabold transition tracking-widest">
-                OPEN NARRATIVE
+            <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="mt-4 md:mt-0 px-8 py-3 bento-card hover:bg-white/10 text-xs font-extrabold transition tracking-widest uppercase">
+                Open Narrative
             </a>
         </div>
 
-    </div>
+    </main>
 
-    <footer id="contact" class="max-w-6xl mx-auto mt-12 mb-20 text-center">
-        <div class="bento-card p-12 bg-gradient-to-t from-green-500/5 to-transparent">
-            <h2 class="text-3xl font-bold mb-6">Let's connect.</h2>
-            <a href="https://wa.me/6283853202544" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black px-10 py-4 rounded-full font-extrabold transition transform hover:scale-105">
+    <footer id="contact" class="max-w-6xl mx-auto mt-12 mb-20 text-center px-4">
+        <div class="bento-card p-12 bg-gradient-to-t from-blue-500/5 to-transparent">
+            <h2 class="text-3xl font-bold mb-6 italic tracking-tighter">Let's connect.</h2>
+            <a href="https://wa.me/6283853202544" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-extrabold transition transform hover:scale-105 shadow-xl">
                 <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Direct
             </a>
         </div>
+        <p class="mt-8 text-[10px] text-gray-600 uppercase tracking-[0.5em]">Logic • Art • Exploration</p>
     </footer>
 
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menuOverlay');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-            document.body.style.overflow = (menu.style.display === 'flex') ? 'hidden' : 'auto';
+            // Cek display secara akurat
+            const isMenuOpen = menu.style.display === 'flex';
+            
+            if (isMenuOpen) {
+                menu.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else {
+                menu.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
         }
     </script>
 </body>
 </html>
-
-
-
