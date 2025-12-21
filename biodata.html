@@ -3,59 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata | Hendri Hub</title>
+    <title>About | Hendri Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; }
-        .profile-border {
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .bento-card {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
+        .bento-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); }
+        .photo-side { height: 650px; }
+        @media (max-width: 1024px) { .photo-side { height: 500px; } }
+        .gradient-overlay { background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 40%, transparent 100%); }
     </style>
 </head>
-<body class="p-6 md:p-12 lg:p-24">
-    <div class="max-w-2xl mx-auto">
-        <a href="index.html" class="text-gray-500 hover:text-white transition text-sm flex items-center mb-10">
-            <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
-        </a>
+<body class="p-4 md:p-12 lg:p-20">
 
-        <header class="mb-12">
-            <h1 class="text-4xl font-bold mb-2">About Hendri.</h1>
-            <p class="text-blue-400 font-mono tracking-widest text-sm uppercase">Math Educator • Virtual Assistant • Designer</p>
-        </header>
+    <div class="max-w-6xl mx-auto">
+        <nav class="mb-10">
+            <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-sm group">
+                <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> Kembali
+            </a>
+        </nav>
 
-        <section class="space-y-12">
-            <div class="profile-border p-8 rounded-3xl">
-                <h2 class="text-xl font-bold mb-4 text-white">Philosophy</h2>
-                <p class="text-gray-400 leading-relaxed">
-                    Saya percaya bahwa segala sesuatu di dunia ini adalah gabungan antara **logika** dan **estetika**. Sebagai pengajar matematika, saya melatih ketajaman berpikir. Sebagai Virtual Assistant, saya memastikan sistem berjalan efisien. Dan sebagai desainer, saya memberikan jiwa pada setiap visual.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="profile-border p-6 rounded-3xl">
-                    <h3 class="text-blue-400 text-xs font-bold uppercase mb-4 tracking-widest">Education</h3>
-                    <ul class="text-sm space-y-2 text-gray-300">
-                        <li>Mathematics Education</li>
-                        <li class="text-gray-500 text-xs">Fokus pada penyederhanaan logika kompleks.</li>
-                    </ul>
-                </div>
-                <div class="profile-border p-6 rounded-3xl">
-                    <h3 class="text-purple-400 text-xs font-bold uppercase mb-4 tracking-widest">Expertise</h3>
-                    <ul class="text-sm space-y-2 text-gray-300">
-                        <li>Administrative Excellence</li>
-                        <li>Brand Identity Design</li>
-                        <li>Street Photography</li>
-                    </ul>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <div class="lg:col-span-5 bento-card photo-side relative group">
+                <img src="profil.jpg" 
+                     alt="Hendri Profile" 
+                     class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
+                
+                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-10">
+                    <span class="text-blue-400 font-mono text-[10px] tracking-[0.4em] uppercase mb-2">Tech Enthusiast</span>
+                    <h1 class="text-5xl font-extrabold tracking-tighter italic">Hendri.</h1>
                 </div>
             </div>
 
-            <div class="text-center py-10">
-                <p class="text-gray-500 italic text-sm">"Moving in silence, letting the results make the noise."</p>
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                
+                <div class="bento-card p-8 md:p-12 flex-1 flex flex-col justify-center">
+                    <h2 class="text-blue-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">The Identity</h2>
+                    <p class="text-xl md:text-2xl leading-relaxed text-gray-300 font-light italic">
+                        "Multitalenta mungkin istilah yang terlalu serius, saya lebih suka menyebut diri saya sebagai orang yang punya rasa <span class="text-white font-semibold">penasaran tinggi</span>."
+                    </p>
+                    <p class="text-base md:text-lg leading-relaxed text-gray-400 mt-6 font-light">
+                        Saya percaya <span class="text-blue-300">'gabut'</span> adalah kesempatan untuk bereksperimen. Kedekatan saya dengan dunia <span class="text-white">Teknologi Informasi</span>, membuat saya terbiasa melihat segala hal secara sistematis. Bagi saya, setiap tantangan adalah pola yang bisa diselesaikan dengan logika yang tepat.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bento-card p-8">
+                        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Foundation</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Punya <span class="text-white">background IT</span> bikin saya nggak asing sama cara kerja sistem. Ini yang bikin saya selalu haus akan efisiensi saat jadi VA atau saat menjelaskan logika matematika.
+                        </p>
+                    </div>
+                    
+                    <div class="bento-card p-8">
+                        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Daily Life</h3>
+                        <ul class="text-[11px] text-gray-400 space-y-3 font-bold uppercase tracking-wider">
+                            <li class="flex items-center text-blue-400"><i class="fa-solid fa-laptop-code mr-3"></i> Virtual Assistant</li>
+                            <li class="flex items-center text-purple-400"><i class="fa-solid fa-calculator mr-3"></i> Math Educator</li>
+                            <li class="flex items-center text-orange-400"><i class="fa-solid fa-camera mr-3"></i> Visual Creator</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bento-card p-6 flex items-center justify-between px-10">
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-bold italic underline decoration-blue-500">Let's Connect!</span>
+                    <div class="flex gap-8 items-center">
+                        <a href="" class="text-gray-400 hover:text-white transition-all transform hover:scale-110"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="mailto:email@mashendry450@gmail.com" class="text-gray-400 hover:text-white transition-all transform hover:scale-110"><i class="fa-solid fa-envelope text-xl"></i></a>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+
+        <footer class="mt-16 text-center opacity-20 text-[9px] tracking-[0.5em] uppercase">
+            Logic • Art • Exploration
+        </footer>
     </div>
+
 </body>
 </html>
