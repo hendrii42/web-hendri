@@ -24,7 +24,7 @@
 </head>
 <body class="p-4 md:p-10">
 
-    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-8 px-2">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-6 md:mb-10 px-2">
         <a href="index.html" class="flex items-center gap-3">
             <div class="flex flex-col leading-none">
                 <span class="text-xl font-black tracking-tighter text-white uppercase italic">Hendri<span class="text-blue-500">Hub</span></span>
@@ -35,7 +35,7 @@
 
     <main class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-4">
         
-        <div class="col-span-2 md:col-span-4 md:row-span-2 bento-card p-8 md:p-12 flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+        <div class="col-span-2 md:col-span-4 md:row-span-2 bento-card p-8 md:p-12 flex flex-col justify-end min-h-[300px] relative overflow-hidden text-left">
             <div class="absolute top-0 left-0 w-full h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
             <h1 class="text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-none relative z-10">
                 Hendri<span class="gradient-text">Hub.</span>
@@ -86,8 +86,8 @@
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000')] bg-cover bg-center transition duration-700 group-hover:scale-110"></div>
             <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition"></div>
             <div class="relative h-full p-10 flex flex-col justify-end">
-                <h3 class="text-4xl font-black text-white italic uppercase tracking-tighter text-center md:text-left">Visual Portfolio</h3>
-                <p class="text-gray-300 font-medium text-center md:text-left">Photography & Design</p>
+                <h3 class="text-4xl font-black text-white italic uppercase tracking-tighter text-left">Visual Portfolio</h3>
+                <p class="text-gray-300 font-medium text-left">Photography & Design</p>
             </div>
         </a>
 
@@ -102,15 +102,32 @@
             <span class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Support Me</span>
         </a>
 
-        <div class="col-span-1 md:col-span-5 bento-card p-8 flex flex-col md:flex-row items-center md:items-center justify-between bg-blue-500/5 border-r-4 border-blue-600/30 gap-4">
+        <div class="col-span-1 md:col-span-5 bento-card p-8 flex flex-col md:flex-row items-center justify-between bg-blue-500/5 border-r-4 border-blue-600/30 gap-4 text-center md:text-left">
             <div>
-                <h3 class="text-xl md:text-2xl font-black text-white uppercase italic tracking-tighter text-center md:text-left leading-none">Math Mentorship</h3>
-                <p class="text-gray-500 text-[10px] text-center md:text-left mt-1 italic uppercase">Mastering logic with @tutor_hira</p>
+                <h3 class="text-xl md:text-2xl font-black text-white uppercase italic tracking-tighter leading-none">Math Mentorship</h3>
+                <p class="text-gray-500 text-[10px] mt-1 italic uppercase tracking-widest">Mastering numbers through logical thinking</p>
             </div>
-            <a href="https://www.instagram.com/tutor_hira/" target="_blank" class="text-blue-500 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] border border-blue-500/30 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition whitespace-nowrap">Visit Profile</a>
+            <a href="#" class="text-blue-500 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] border border-blue-500/30 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition whitespace-nowrap">Learn More</a>
         </div>
 
         <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="col-span-2 md:col-span-6 bento-card p-8 flex items-center justify-between group bg-white/[0.02]">
             <div class="flex items-center gap-4 md:gap-6">
                 <i class="fa-solid fa-feather-pointed text-2xl text-gray-700 group-hover:text-white transition"></i>
-                <h3 class="text-sm md:text-xl font-bold text-white uppercase
+                <h3 class="text-sm md:text-xl font-bold text-white uppercase tracking-[0.4em] italic leading-none text-left">The Silent Journey</h3>
+            </div>
+            <span class="hidden md:block text-[10px] font-black text-gray-700 group-hover:text-white transition uppercase tracking-[0.5em]">READ STORY &rarr;</span>
+        </a>
+
+    </main>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' });
+            document.getElementById('clock').textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
