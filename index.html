@@ -35,7 +35,7 @@
     <nav class="max-w-6xl mx-auto flex justify-between items-center mb-10 px-2">
         <a href="index.html" class="flex items-center gap-3">
             <div class="flex flex-col leading-none">
-                <span class="text-xl font-brand text-white uppercase italic">Hendri<span class="text-blue-500">Hub</span></span>
+                <span class="text-xl font-black text-white uppercase italic tracking-tighter">Hendri<span class="text-blue-500">Hub</span></span>
                 <span class="text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </div>
         </a>
@@ -46,20 +46,43 @@
 
     <div id="menuOverlay" class="flex flex-col items-center justify-center text-center">
         <button onclick="toggleMenu()" class="absolute top-10 right-10 text-4xl text-gray-500 hover:text-white">&times;</button>
-        <div class="space-y-6 text-white font-brand italic uppercase text-5xl">
-            <a href="#" class="block hover:text-blue-500 transition">About</a>
-            <a href="#" class="block hover:text-blue-500 transition">Work</a>
-            <a href="#" class="block hover:text-blue-500 transition">Contact</a>
+        <div class="space-y-6 text-white font-black italic uppercase text-5xl">
+            <a href="biodata.html" class="block hover:text-blue-500 transition">About</a>
+            <a href="https:wa.me/83853202544" class="block hover:text-blue-500 transition">Contact</a>
         </div>
     </div>
 
     <main class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-4">
         
-        <div class="col-span-2 md:col-span-4 md:row-span-2 bento-card p-10 md:p-14 flex flex-col justify-end min-h-[350px] relative overflow-hidden">
-            <h1 class="text-4xl md:text-6xl font-brand uppercase italic leading-[0.85] relative z-10">
-                Hendri<span class="gradient-text">Hub.</span>
-            </h1>
-            <p class="text-gray-400 mt-6 text-sm md:text-lg relative z-10 font-medium italic">Logic in Math, Creative in Service.</p>
+        <div class="col-span-2 md:col-span-4 md:row-span-2 bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px] relative overflow-hidden group">
+            
+            <div class="relative z-10 flex justify-between items-start">
+                <div class="flex flex-col gap-2 opacity-20 group-hover:opacity-50 transition-opacity duration-500">
+                    <div class="h-[1px] w-16 md:w-24 bg-gradient-to-r from-blue-500 to-transparent"></div>
+                    <div class="h-[1px] w-28 md:w-40 bg-gradient-to-r from-purple-500 to-transparent"></div>
+                    <div class="h-[1px] w-12 md:w-16 bg-gradient-to-r from-blue-400 to-transparent"></div>
+                </div>
+
+                <div class="flex items-center gap-3 md:gap-5">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                        <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-gray-400">Available</span>
+                    </div>
+                    <div class="h-3 w-[1px] bg-white/10"></div> 
+                    <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-gray-500">Service 01</span>
+                    <div class="h-3 w-[1px] bg-white/10"></div>
+                    <span class="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-blue-500 italic">v.2.5</span>
+                </div>
+            </div>
+
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-6xl font-black uppercase italic leading-none tracking-tighter whitespace-nowrap">
+                    Hendri<span class="gradient-text">Hub.</span>
+                </h1>
+                <p class="text-gray-400 mt-6 text-sm md:text-lg font-medium italic">Logic in Math, Creative in Service.</p>
+            </div>
+
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
         </div>
 
         <div class="col-span-2 md:col-span-2 bento-card p-6 flex items-center justify-around">
@@ -89,7 +112,7 @@
                     <img src="https://via.placeholder.com/800x600/111/eee?text=Work+Sample+VA" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-700">
                 </div>
                 <div class="p-8 md:p-12 flex flex-col justify-center border-l border-white/5">
-                    <h3 class="text-3xl font-brand text-white uppercase italic leading-tight">Virtual Assistant Service</h3>
+                    <h3 class="text-3xl font-black text-white uppercase italic leading-tight tracking-tighter">Virtual Assistant Service</h3>
                     <p class="text-gray-500 mt-4 text-sm leading-relaxed italic text-left">Solving complexity, managing systems, delivering results.</p>
                     <div class="mt-8">
                         <a href="https://www.instagram.com/vhen_virtual/" target="_blank" class="inline-block bg-white text-black font-black py-4 px-10 rounded-2xl uppercase text-[10px] tracking-widest hover:bg-blue-600 hover:text-white transition">Hire Now</a>
@@ -102,7 +125,7 @@
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000')] bg-cover bg-center transition duration-1000 group-hover:scale-105"></div>
             <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition duration-500"></div>
             <div class="relative h-full p-10 flex flex-col justify-end">
-                <h3 class="text-4xl font-brand text-white italic uppercase">Visual Portfolio</h3>
+                <h3 class="text-4xl font-black text-white italic uppercase tracking-tighter">Visual Portfolio</h3>
                 <p class="text-gray-300 font-medium">Photography & Graphic Design</p>
             </div>
         </a>
@@ -115,21 +138,21 @@
 
         <a href="https://trakteer.id/hendri_irawan10/tip" target="_blank" class="col-span-1 md:col-span-1 bento-card p-4 flex flex-col items-center justify-center hover:bg-yellow-500/10 border-b-4 border-yellow-500/20 group">
             <i class="fa-solid fa-coffee text-yellow-500 text-xl group-hover:scale-125 transition mb-2"></i>
-            <span class="text-[8px] md:text-[9px] text-gray-500 font-bold uppercase tracking-widest">Support Me</span>
+            <span class="text-[8px] md:text-[9px] text-gray-500 font-bold uppercase tracking-widest text-center">Support Me</span>
         </a>
 
-        <div class="col-span-1 md:col-span-5 bento-card p-8 flex flex-col md:flex-row items-center justify-between bg-blue-500/5 border-r-4 border-blue-600/30 gap-6">
-            <div class="text-center md:text-left">
-                <h3 class="text-2xl font-brand text-white uppercase italic">Math Mentorship</h3>
+        <div class="col-span-1 md:col-span-5 bento-card p-8 flex flex-col md:flex-row items-center justify-between bg-blue-500/5 border-r-4 border-blue-600/30 gap-6 text-left">
+            <div>
+                <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter">Math Mentorship</h3>
                 <p class="text-gray-500 text-[10px] mt-1 italic uppercase tracking-widest">Building Logic, Solving Complexity.</p>
             </div>
-            <a href="#" class="bg-blue-600/20 text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em] border border-blue-500/30 px-6 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition whitespace-nowrap">Explore</a>
+            <a href="https://www.instagram.com/tutor_hira" class="bg-blue-600/20 text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em] border border-blue-500/30 px-6 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition whitespace-nowrap">Explore</a>
         </div>
 
         <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="col-span-2 md:col-span-6 bento-card p-10 flex items-center justify-between group bg-white/[0.01]">
             <div class="flex items-center gap-6">
                 <i class="fa-solid fa-feather-pointed text-2xl text-gray-700 group-hover:text-white transition"></i>
-                <h3 class="text-xl font-brand text-white italic tracking-[0.2em] uppercase">The Silent Journey</h3>
+                <h3 class="text-xl font-black text-white italic tracking-[0.2em] uppercase">The Silent Journey</h3>
             </div>
             <span class="hidden md:block text-[10px] font-bold text-gray-600 group-hover:text-white transition tracking-[0.5em]">&rarr; READ STORY</span>
         </a>
@@ -147,7 +170,11 @@
         }
         function updateClock() {
             const now = new Date();
-            const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' });
+            const timeStr = now.toLocaleTimeString('en-GB', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                timeZone: 'Asia/Jakarta' 
+            });
             document.getElementById('clock').textContent = timeStr;
         }
         setInterval(updateClock, 1000);
@@ -155,4 +182,3 @@
     </script>
 </body>
 </html>
-
