@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hendri Hub | Portfolio & VA Services</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ... CSS kamu yang sudah ada ... */
         body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .bento-card {
             background: rgba(255, 255, 255, 0.03);
@@ -38,6 +41,24 @@
 </head>
 <body class="p-4 md:p-8 lg:p-12">
 
+    <nav class="max-w-7xl mx-auto flex justify-between items-center mb-12 px-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div class="flex flex-col leading-none">
+                <span class="text-xl font-black tracking-tighter text-white uppercase italic">Hendri<span class="text-blue-500">Hub</span></span>
+                <span class="text-[8px] tracking-[0.3em] text-gray-500 font-bold uppercase">Logic & Creative</span>
+            </div>
+        </a>
+        <button onclick="toggleMenu()" class="...">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+    </nav>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+        </main>
+
+    <div id="menuOverlay"> ... </div>
+    <script> ... </script>
+    
     <nav class="fixed top-6 right-6 z-[110]">
         <button onclick="toggleMenu()" class="bento-card p-4 w-14 h-14 flex items-center justify-center bg-black/50">
             <i class="fa-solid fa-bars-staggered text-xl text-white"></i>
@@ -151,5 +172,6 @@
     </script>
 </body>
 </html>
+
 
 
