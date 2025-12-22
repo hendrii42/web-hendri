@@ -4,31 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Hendri Hub</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; }
         .bento-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .bento-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); }
+        .bento-card:hover { border-color: rgba(59, 130, 246, 0.3); background: rgba(255, 255, 255, 0.04); }
         .photo-side { height: 650px; }
         @media (max-width: 1024px) { .photo-side { height: 500px; } }
-        .gradient-overlay { background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 40%, transparent 100%); }
+        .gradient-overlay { background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.2) 50%, transparent 100%); }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="p-4 md:p-12 lg:p-20">
 
     <div class="max-w-6xl mx-auto">
-        <nav class="mb-10">
-            <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-sm group">
+        <nav class="flex justify-between items-center mb-10 px-2">
+            <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-[10px] font-bold uppercase tracking-widest group">
                 <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> Kembali
             </a>
+            
+            <div class="flex flex-col leading-none text-right">
+                <span class="text-lg font-black text-white uppercase italic tracking-tighter">Hendri<span class="text-blue-500">Hub</span></span>
+                <span class="text-[6px] tracking-[0.4em] text-gray-500 font-black uppercase text-right">Logic & Creative</span>
+            </div>
         </nav>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -36,57 +51,64 @@
             <div class="lg:col-span-5 bento-card photo-side relative group">
                 <img src="profil.jpg" 
                      alt="Hendri Profile" 
-                     class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
+                     class="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition duration-700">
                 
                 <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-10">
-                    <span class="text-blue-400 font-mono text-[10px] tracking-[0.4em] uppercase mb-2">Tech Enthusiast</span>
-                    <h1 class="text-5xl font-extrabold tracking-tighter italic">Hendri.</h1>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="h-[1px] w-8 bg-blue-500"></span>
+                        <span class="text-blue-400 font-bold text-[9px] tracking-[0.4em] uppercase">Tech Enthusiast</span>
+                    </div>
+                    <h1 class="text-4xl font-black tracking-tighter italic uppercase leading-none">Hendri Irawan<span class="text-blue-500">.</span></h1>
                 </div>
             </div>
 
             <div class="lg:col-span-7 flex flex-col gap-6">
                 
-                <div class="bento-card p-8 md:p-12 flex-1 flex flex-col justify-center">
-                    <h2 class="text-blue-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">The Identity</h2>
-                    <p class="text-xl md:text-2xl leading-relaxed text-gray-300 font-light italic">
-                        "Multitalenta mungkin istilah yang terlalu serius, saya lebih suka menyebut diri saya sebagai orang yang punya rasa <span class="text-white font-semibold">penasaran tinggi</span>."
+                <div class="bento-card p-8 md:p-14 flex-1 flex flex-col justify-center relative overflow-hidden">
+                    <span class="absolute -right-4 -top-10 text-[150px] font-black opacity-[0.03] select-none italic pointer-events-none">01</span>
+                    
+                    <h2 class="text-blue-500 text-[9px] font-black uppercase tracking-[0.4em] mb-8 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span> The Identity
+                    </h2>
+                    <p class="text-xl md:text-2xl leading-relaxed text-gray-200 font-light italic">
+                        "Multitalenta mungkin istilah yang terlalu serius, saya lebih suka menyebut diri saya sebagai orang yang punya rasa <span class="text-white font-bold border-b-2 border-blue-500/30">penasaran tinggi</span>."
                     </p>
                     <p class="text-base md:text-lg leading-relaxed text-gray-400 mt-6 font-light">
-                        Saya percaya <span class="text-blue-300">'gabut'</span> adalah kesempatan untuk bereksperimen. Kedekatan saya dengan dunia <span class="text-white">Teknologi Informasi</span>, membuat saya terbiasa melihat segala hal secara sistematis. Bagi saya, setiap tantangan adalah pola yang bisa diselesaikan dengan logika yang tepat.
+                        Saya percaya <span class="text-blue-300 italic">'gabut'</span> adalah kesempatan untuk bereksperimen. Dengan latar belakang <span class="text-white font-medium">Teknologi Informasi</span>, saya terbiasa melihat dunia secara sistematis. Bagi saya, setiap tantangan adalah pola yang bisa diselesaikan dengan logika yang tepat.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bento-card p-8">
-                        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Foundation</h3>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            Punya <span class="text-white">background IT</span> bikin saya nggak asing sama cara kerja sistem. Ini yang bikin saya selalu haus akan efisiensi saat jadi VA atau saat menjelaskan logika matematika.
+                    <div class="bento-card p-8 group">
+                        <h3 class="text-[9px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 group-hover:text-blue-400 transition">Foundation</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed italic">
+                            Background IT membuat saya tidak asing dengan sistem. Ini yang mendorong <span class="text-white">efisiensi</span> saya saat menjadi VA maupun pengajar logika matematika.
                         </p>
                     </div>
                     
-                    <div class="bento-card p-8">
-                        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Daily Life</h3>
-                        <ul class="text-[11px] text-gray-400 space-y-3 font-bold uppercase tracking-wider">
-                            <li class="flex items-center text-blue-400"><i class="fa-solid fa-laptop-code mr-3"></i> Virtual Assistant</li>
-                            <li class="flex items-center text-purple-400"><i class="fa-solid fa-calculator mr-3"></i> Math Educator</li>
-                            <li class="flex items-center text-orange-400"><i class="fa-solid fa-camera mr-3"></i> Visual Creator</li>
+                    <div class="bento-card p-8 group">
+                        <h3 class="text-[9px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 group-hover:text-purple-400 transition">Current Flow</h3>
+                        <ul class="text-[10px] text-gray-400 space-y-4 font-bold uppercase tracking-[0.2em]">
+                            <li class="flex items-center hover:text-white transition cursor-default"><i class="fa-solid fa-laptop-code mr-3 text-blue-500"></i> Virtual Assistant</li>
+                            <li class="flex items-center hover:text-white transition cursor-default"><i class="fa-solid fa-calculator mr-3 text-purple-500"></i> Math Educator</li>
+                            <li class="flex items-center hover:text-white transition cursor-default"><i class="fa-solid fa-camera mr-3 text-orange-500"></i> Visual Creator</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="bento-card p-6 flex items-center justify-between px-10">
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-bold italic underline decoration-blue-500">Let's Connect!</span>
+                <div class="bento-card p-6 flex flex-col md:flex-row items-center justify-between px-10 gap-4">
+                    <span class="text-[9px] text-gray-500 uppercase tracking-[0.4em] font-black italic">Let's Connect</span>
                     <div class="flex gap-8 items-center">
-                        <a href="" class="text-gray-400 hover:text-white transition-all transform hover:scale-110"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a href="mailto:email@mashendry450@gmail.com" class="text-gray-400 hover:text-white transition-all transform hover:scale-110"><i class="fa-solid fa-envelope text-xl"></i></a>
+                        <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="text-gray-400 hover:text-green-500 transition-all transform hover:scale-125"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
+                        <a href="mailto:mashendry450@gmail.com" class="text-gray-400 hover:text-blue-400 transition-all transform hover:scale-125"><i class="fa-solid fa-envelope text-2xl"></i></a>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <footer class="mt-16 text-center opacity-20 text-[9px] tracking-[0.5em] uppercase">
-            Logic • Art • Exploration
+        <footer class="mt-20 text-center opacity-30">
+            <p class="text-[8px] font-black uppercase tracking-[1em]">HendriHub &copy; 2025 | Blitar</p>
         </footer>
     </div>
 
