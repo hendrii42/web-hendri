@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VA Services | Hendri Hub</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .bento-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+        }
+        
+        /* Modal Style */
+        #detailsModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            animation: modalScale 0.3s ease-out;
+        }
+        @keyframes modalScale {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12 lg:p-20">
+
+    <div class="max-w-6xl mx-auto">
+        <nav class="flex justify-between items-center mb-16 px-2">
+            <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-[10px] font-bold uppercase tracking-widest group">
+                <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> Kembali
+            </a>
+            <div class="flex flex-col leading-none text-right">
+                <span class="text-lg font-black text-white uppercase italic tracking-tighter">Hendri<span class="text-blue-500">Hub</span></span>
+                <span class="text-[6px] tracking-[0.4em] text-gray-500 font-black uppercase tracking-widest leading-loose">Digital Efficiency Expert</span>
+            </div>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <div class="bento-card p-10 h-full flex flex-col justify-end relative overflow-hidden bg-gradient-to-br from-blue-900/10 to-transparent">
+                    <h1 class="text-4xl font-black tracking-tighter italic uppercase leading-tight mb-4 text-white">
+                        Your Virtual <br><span class="text-blue-500 text-5xl">Assistant.</span>
+                    </h1>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light mb-6">
+                        Mengubah tugas yang repetitif menjadi efisiensi digital yang terukur.
+                    </p>
+                    <a href="https://instagram.com/USERNAME_IG_KAMU" target="_blank" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-pink-500 hover:text-white transition">
+                        <i class="fa-brands fa-instagram text-lg"></i> Follow Live Portfolio
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <div class="bento-card p-6 flex flex-wrap justify-center gap-8 opacity-60 hover:opacity-100 transition duration-500">
+                    <i class="fa-solid fa-file-word hover:text-blue-400 transition" title="Word & Docs"></i>
+                    <i class="fa-solid fa-file-excel hover:text-green-400 transition" title="Excel & Sheets"></i>
+                    <i class="fa-solid fa-file-powerpoint hover:text-orange-400 transition" title="Powerpoint & Slides"></i>
+                    <i class="fa-solid fa-palette hover:text-pink-400 transition" title="Canva"></i>
+                    <i class="fa-solid fa-video hover:text-red-400 transition" title="CapCut"></i>
+                    <i class="fa-solid fa-cloud hover:text-blue-300 transition" title="Google Drive"></i>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bento-card p-8 group" onclick="showDetail('graphic')">
+                        <div class="w-10 h-10 bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-400 mb-6 group-hover:bg-pink-500 group-hover:text-white transition duration-500">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Visual & Design</h3>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest font-bold">Social Media • CV • Document</p>
+                    </div>
+
+                    <div class="bento-card p-8 group" onclick="showDetail('video')">
+                        <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 mb-6 group-hover:bg-red-500 group-hover:text-white transition duration-500">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Video Editing</h3>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest font-bold">Short Form • CapCut Expert</p>
+                    </div>
+
+                    <div class="bento-card p-8 group" onclick="showDetail('admin')">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-white transition duration-500">
+                            <i class="fa-solid fa-file-invoice"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Data & Reporting</h3>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest font-bold">Excel • Sheets • Reports</p>
+                    </div>
+
+                    <div class="bento-card p-8 group" onclick="showDetail('game')">
+                        <div class="w-10 h-10 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-400 mb-6 group-hover:bg-yellow-500 group-hover:text-white transition duration-500">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Event Tasking</h3>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest font-bold">Fulfillment • Grinding • Misi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center">
+            <h2 class="text-sm font-black text-gray-600 uppercase tracking-[0.5em] mb-8 italic">Ready to Collaborate?</h2>
+            <a href="https://wa.me/628xxxxxxxxxx" class="inline-flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Send Message
+            </a>
+        </div>
+    </div>
+
+    <div id="detailsModal">
+        <div class="modal-content">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalData">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        const details = {
+            graphic: {
+                title: "Visual & Design Support",
+                desc: "Membantu pembuatan visual yang komunikatif dan profesional untuk kebutuhan personal maupun bisnis.",
+                list: ["Desain Konten Instagram/Sosmed", "Pembuatan CV ATS & Kreatif", "Desain Flyer & Poster Tugas", "Presentasi (PPT/Slides) yang Rapi"],
+                tools: "Canva, Google Slides, MS PowerPoint"
+            },
+            video: {
+                title: "Short-Form Video Editing",
+                desc: "Transformasi footage mentah menjadi video pendek yang menarik untuk Reels, TikTok, atau kebutuhan dokumentasi.",
+                list: ["Cutting & Transition", "Subtitling (Caption)", "Color Grading Sederhana", "Penyesuaian Audio & Musik"],
+                tools: "CapCut, Mobile Editor"
+            },
+            admin: {
+                title: "Data & Reporting",
+                desc: "Pengolahan data mentah menjadi laporan yang mudah dibaca menggunakan sistem spreadsheet.",
+                list: ["Input Data (Entry)", "Pembuatan Laporan Keuangan/Kegiatan", "Manajemen File (Google Drive)", "Formulas Excel & Google Sheets"],
+                tools: "Excel, Google Sheets, MS Word"
+            },
+            game: {
+                title: "Event & Task Fulfillment",
+                desc: "Jasa penyelesaian misi atau event digital tertentu yang membutuhkan ketekunan dan waktu.",
+                list: ["Penyelesaian Event Game Berbatas Waktu", "Grinding Item/Mission Tertentu", "Task Completion Berbasis Target", "Digital Maintenance"],
+                tools: "PC, Mobile, High Dedication"
+            }
+        };
+
+        function showDetail(key) {
+            const data = details[key];
+            const html = `
+                <h2 class="text-3xl font-black italic uppercase tracking-tighter text-blue-500 mb-4">${data.title}</h2>
+                <p class="text-gray-400 mb-8 text-sm leading-relaxed italic">"${data.desc}"</p>
+                <div class="space-y-3 mb-8">
+                    ${data.list.map(item => `<div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-gray-200">
+                        <i class="fa-solid fa-check text-blue-500"></i> ${item}
+                    </div>`).join('')}
+                </div>
+                <div class="pt-6 border-t border-white/10">
+                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Alat Utama: ${data.tools}</span>
+                </div>
+            `;
+            document.getElementById('modalData').innerHTML = html;
+            document.getElementById('detailsModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('detailsModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('detailsModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
