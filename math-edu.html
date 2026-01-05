@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Edu | Hendri Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        @media (min-width: 1024px) { * { cursor: none !important; } #cursor-dot, #cursor-ring { display: block; } }
+        #cursor-dot { width: 6px; height: 6px; background: #3b82f6; position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; left: 0; top: 0; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 30px; height: 30px; border: 1.5px solid rgba(59, 130, 246, 0.6); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; left: 0; top: 0; transition: 0.3s; transform: translate(-50%, -50%); }
+        
+        body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .bento-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; position: relative; overflow: hidden; transition: 0.4s; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* MODAL ANIMATION */
+        #modalOverlay { 
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); 
+            z-index: 2000; backdrop-filter: blur(20px); align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        #modalContent { transform: translateY(30px); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        #modalOverlay.active { display: flex; opacity: 1; }
+        #modalOverlay.active #modalContent { transform: translateY(0); }
+        
+        /* VARIASI WARNA JENJANG */
+        .color-sd { color: #fbbf24; border-color: rgba(251, 191, 36, 0.2); }
+        .color-smp { color: #3b82f6; border-color: rgba(59, 130, 246, 0.2); }
+        .color-sma { color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2); }
+        .color-utbk { color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
+
+        .bg-sd { background: #fbbf24; }
+        .bg-smp { background: #3b82f6; }
+        .bg-sma { background: #8b5cf6; }
+        .bg-utbk { background: #ef4444; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <nav class="max-w-6xl mx-auto mb-8 px-2">
+        <a href="index.html" class="inline-flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-blue-600 rounded-full border border-white/10 transition-all group">
+            <i class="fa-solid fa-arrow-left text-white group-hover:-translate-x-1 transition"></i>
+        </a>
+    </nav>
+
+    <div id="modalOverlay" onclick="closeModal(event)">
+        <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-2xl w-[95%] relative shadow-2xl">
+            <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="mb-6 text-center">
+                <span id="m-tag" class="text-[10px] font-black uppercase tracking-[0.4em] block mb-2">LEVEL</span>
+                <h2 id="m-title" class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">TITLE</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div id="card-full" class="p-6 rounded-3xl border flex flex-col justify-between">
+                    <div>
+                        <span class="text-[9px] font-black uppercase tracking-widest opacity-60">Pilihan Utama</span>
+                        <h4 class="text-xl font-black text-white italic mt-1">SYNCHRONOUS</h4>
+                        <p class="text-[10px] text-gray-400 mt-2 mb-4 leading-relaxed italic">Live tatap muka + Laporan Bulanan + Materi Lengkap.</p>
+                    </div>
+                    <div>
+                        <p id="p-full" class="text-xl md:text-2xl font-black text-white italic">Rp --</p>
+                        <a id="btn-full" href="#" class="block w-full text-center text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 transition shadow-xl">Amankan Slot</a>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Akses Mandiri</span>
+                        <h4 class="text-xl font-black text-white italic mt-1">ASYNCHRONOUS</h4>
+                        <p class="text-[10px] text-gray-400 mt-2 mb-4 leading-relaxed italic">Hanya akses Video, PDF, & Latihan Soal (Tanpa Live).</p>
+                    </div>
+                    <div>
+                        <p id="p-async" class="text-xl md:text-2xl font-black text-white italic opacity-40">Rp --</p>
+                        <a id="btn-async" href="#" class="block w-full text-center bg-white/10 text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 hover:bg-white hover:text-black transition border border-white/10">Beli Materi</a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-[8px] text-gray-600 uppercase tracking-widest font-black italic">*Membangun logika matematika dari Blitar untuk Indonesia</p>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-8 gap-4">
+        
+        <div class="col-span-2 md:col-span-8 bento-card p-12 md:p-24 flex flex-col items-center text-center">
+            <div class="absolute inset-0 z-0 opacity-10">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" class="w-full h-full object-cover">
+            </div>
+            <div class="relative z-10">
+                <h1 class="text-5xl md:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">Math<span class="gradient-text">Edu.</span></h1>
+                <p class="text-gray-500 mt-4 text-[10px] md:text-sm uppercase tracking-[0.5em] font-black italic">Affordable & Professional</p>
+            </div>
+        </div>
+
+        <div class="col-span-2 md:col-span-8 bento-card p-8 md:p-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button onclick="openModal('SD', 'Sekolah Dasar', '25.000', '15.000', 'sd')" class="p-8 bento-card border-amber-500/20 hover:border-amber-500 text-left group">
+                    <i class="fa-solid fa-child text-2xl text-amber-500 mb-4 block transition"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-amber-500">SD</span>
+                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
+                </button>
+                <button onclick="openModal('SMP', 'Sekolah Menengah', '35.000', '20.000', 'smp')" class="p-8 bento-card border-blue-500/20 hover:border-blue-500 text-left group">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-blue-500 mb-4 block transition"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-blue-500">SMP</span>
+                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
+                </button>
+                <button onclick="openModal('SMA', 'Menengah Atas', '45.000', '25.000', 'sma')" class="p-8 bento-card border-purple-500/20 hover:border-purple-500 text-left group">
+                    <i class="fa-solid fa-book-open-reader text-2xl text-purple-500 mb-4 block transition"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-purple-500">SMA</span>
+                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
+                </button>
+                <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000', 'utbk')" class="p-8 bento-card border-red-500/20 hover:border-red-500 text-left group">
+                    <i class="fa-solid fa-user-graduate text-2xl text-red-500 mb-4 block transition"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-red-500">UTBK</span>
+                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
+                </button>
+            </div>
+        </div>
+
+        <a href="https://www.instagram.com/tutor_hira" target="_blank" class="col-span-2 md:col-span-8 bento-card p-10 flex flex-col md:flex-row items-center justify-between bg-pink-600/5 group no-underline gap-6">
+            <div class="flex items-center gap-6 text-center md:text-left">
+                <i class="fa-brands fa-instagram text-4xl text-pink-500"></i>
+                <div>
+                    <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter">Materi Gratis</h3>
+                    <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Update rumus harian di @tutor_hira</p>
+                </div>
+            </div>
+            <div class="px-10 py-3 bg-pink-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl">Follow</div>
+        </a>
+    </main>
+
+    <script>
+        // CURSOR
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
+            setTimeout(() => { ring.style.left = `${e.clientX}px`; ring.style.top = `${e.clientY}px`; }, 40);
+        });
+
+        function openModal(tag, title, priceFull, priceAsync, type) {
+            const mTag = document.getElementById('m-tag');
+            const mTitle = document.getElementById('m-title');
+            const pFull = document.getElementById('p-full');
+            const pAsync = document.getElementById('p-async');
+            const btnFull = document.getElementById('btn-full');
+            const cardFull = document.getElementById('card-full');
+
+            // Reset classes
+            mTag.className = "text-[10px] font-black uppercase tracking-[0.4em] block mb-2 " + "color-" + type;
+            cardFull.className = "p-6 rounded-3xl border flex flex-col justify-between " + "color-" + type;
+            btnFull.className = "block w-full text-center text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 transition shadow-xl " + "bg-" + type;
+
+            mTag.innerText = "LEVEL " + tag;
+            mTitle.innerText = title;
+            pFull.innerText = `Rp ${priceFull} / Sesi`;
+            pAsync.innerText = `Rp ${priceAsync}`;
+
+            // WA LINK SESUAI REQUEST
+            const waBase = "https://wa.me/6283853202544?text=";
+            const message = `saya berminat untuk mendaftar math edu untuk jenjang ${tag} kelas ....`;
+            const encodedMsg = encodeURIComponent(message);
+            
+            btnFull.href = waBase + encodedMsg;
+            document.getElementById('btn-async').href = waBase + encodeURIComponent(`saya berminat beli materi asynchronous untuk jenjang ${tag}`);
+
+            const modal = document.getElementById('modalOverlay');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e) {
+            if (!e || e.target.id === 'modalOverlay' || e.target.closest('button')) {
+                const modal = document.getElementById('modalOverlay');
+                modal.classList.remove('active');
+                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
