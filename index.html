@@ -12,9 +12,7 @@
 
     <style>
         /* CSS KHUSUS CURSOR & ANIMASI */
-        @media (min-width: 1024px) { * { cursor: none !important; } #cursor-dot, #cursor-ring { display: block; } }
-        #cursor-dot { width: 6px; height: 6px; background: #3b82f6; position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; left: 0; top: 0; transform: translate(-50%, -50%); }
-        #cursor-ring { width: 30px; height: 30px; border: 1.5px solid rgba(59, 130, 246, 0.6); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; left: 0; top: 0; transition: width 0.3s, height 0.3s, background 0.3s, border 0.3s; transform: translate(-50%, -50%); }
+        <link rel="stylesheet" href="cursor.css">
         
         body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; overflow-x: hidden; padding-bottom: 150px; }
 
@@ -191,12 +189,7 @@
         /* 13. JAVASCRIPT: LOGIKA CURSOR, MENU, & JAM */
         
         // Custom Cursor Logic
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
-        window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
-            setTimeout(() => { ring.style.left = `${e.clientX}px`; ring.style.top = `${e.clientY}px`; }, 40);
-        });
+        <script src="cursor.js"></script>
 
         // Menu Toggle Logic (Open/Close)
         let menuOpen = false;
@@ -225,6 +218,7 @@
     </script>
 </body>
 </html>
+
 
 
 
