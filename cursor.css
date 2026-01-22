@@ -1,0 +1,38 @@
+@media (min-width: 1024px) {
+    * { cursor: none !important; }
+    #cursor-dot, #cursor-ring { display: block; }
+}
+
+#cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #3b82f6; /* Tetap biru, tapi kita buat dinamis nanti */
+    position: fixed;
+    border-radius: 50%;
+    z-index: 10000;
+    pointer-events: none;
+    transition: transform 0.1s ease-out; /* Agar dot lebih responsif */
+}
+
+#cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid rgba(59, 130, 246, 0.4);
+    position: fixed;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    /* Transisi transform jauh lebih smooth daripada width/height */
+    transition: transform 0.2s ease-out, background 0.3s, border 0.3s; 
+}
+
+/* Efek saat kursor diarahkan ke Link atau Button */
+.cursor-hover #cursor-ring {
+    transform: translate(-50%, -50%) scale(1.5); /* Ring membesar */
+    background: rgba(59, 130, 246, 0.1); /* Memberi sedikit fill */
+    border-color: rgba(59, 130, 246, 0.8);
+}
+
+.cursor-hover #cursor-dot {
+    transform: translate(-50%, -50%) scale(0.5); /* Dot mengecil agar fokus ke ring */
+}
