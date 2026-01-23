@@ -135,9 +135,9 @@
         </div>
 
         <!--bento tempat dan waktu-->
-        <div class="col-span-1 md:col-span-1.5 bento-card p-6 flex flex-col items-center justify-center">
+        <div class="col-span-1 md:col-span-1.5 bento-card p-4 flex flex-col items-center justify-center text-center">
             <span class="text-[8px] text-gray-500 uppercase tracking-widest mb-1">Blitar</span>
-            <div id="clock" class="text-lg font-mono font-black text-white">--:--</div>
+            <div id="clock" class="text-sm md:text-base font-mono font-black text-white whitespace-nowrap">--:--</div>
         </div>
 
         <!--bento live-->
@@ -247,23 +247,24 @@
         // Live Clock Update (Blitar Time Zone)
         function updateClock() {
             const now = new Date();
-            // Menampilkan Hari dan Jam
-            const options = { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' };
-            const timeStr = now.toLocaleTimeString('id-ID', options); 
+            // Gunakan format 24 jam saja tanpa hari agar hemat tempat
+            const timeStr = now.toLocaleTimeString('en-GB', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                timeZone: 'Asia/Jakarta' 
+           });
     
-            // Hasilnya nanti seperti: Sab, 14:00
             const clockElement = document.getElementById('clock');
-            if (clockElement) {
+                if (clockElement) {
                 clockElement.textContent = timeStr;
             }
         }
-
-        // PERBAIKAN: Tambahkan dua baris ini di bawah fungsi updateClock
-        setInterval(updateClock, 1000); // Jalankan setiap detik
-        updateClock(); // Jalankan sekali saat pertama kali buka halaman
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
+
 
 
 
