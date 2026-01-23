@@ -1,6 +1,8 @@
-/* HendriHub Global Script: Kursor, Menu, Jam, & Fitur Lainnya */
+/* HendriHub Global Logic v1.0
+   Combined: Cursor, Menu, Clock, Scroll, & Utilities
+*/
 
-// 1. LOGIKA KURSOR (Pindahan dari cursor.js)
+// --- 1. INITIAL SETUP & CURSOR ---
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 
@@ -8,13 +10,13 @@ document.addEventListener('mousemove', (e) => {
     const x = e.clientX;
     const y = e.clientY;
     
-    // Gerakan kursor
+    // Gerakan kursor (Hanya jika elemen ada)
     if(dot && ring) {
         dot.style.transform = `translate(${x}px, ${y}px)`;
         ring.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // Update variable untuk efek Glow di kartu Bento
+    // Efek Glow kartu bento (Mouse Tracking)
     const cards = document.querySelectorAll('.bento-card');
     cards.forEach(card => {
         const rect = card.getBoundingClientRect();
@@ -23,13 +25,17 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Efek Hover Kursor pada Link/Tombol
-document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
+// Efek Hover Kursor Global
+function initCursorHover() {
+    const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, .bento-card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+}
+initCursorHover();
 
-// 2. LOGIKA MENU TOGGLE
+// --- 2. MENU TOGGLE ---
 let menuOpen = false;
 function toggleMenu() {
     const menu = document.getElementById('menuOverlay');
@@ -55,7 +61,7 @@ function toggleMenu() {
     }
 }
 
-// 3. LOGIKA JAM & UTILITY LAINNYA
+// --- 3. JAM & SCROLL PROGRESS ---
 function updateClock() {
     const clockElement = document.getElementById('clock');
     if (clockElement) {
@@ -68,6 +74,34 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Fungsi Copy Email & Scroll Top (Seperti yang kita bahas sebelumnya)
-function copyEmail(email) { /* ... isi fungsi ... */ }
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+window.addEventListener('scroll', () => {
+    const scrollBar = document.getElementById("scroll-progress");
+    if (scrollBar) {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        scrollBar.style.width = scrolled + "%";
+    }
+});
+
+// --- 4. UTILITIES (COPY EMAIL & SCROLL TOP) ---
+function copyEmail(email) {
+    navigator.clipboard.writeText(email).then(() => {
+        const toast = document.createElement('div');
+        toast.innerHTML = `<div class="bg-blue-600/90 backdrop-blur-md text-white px-6 py-3 rounded-2xl text-xs font-bold shadow-2xl border border-white/10">
+                             <i class="fa-solid fa-check mr-2"></i> Email Copied!
+                           </div>`;
+        toast.className = "fixed bottom-10 left-1/2 -translate-x-1/2 z-[5000] animate-bounce";
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transition = '0.5s';
+            setTimeout(() => toast.remove(), 500);
+        }, 2000);
+    });
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
