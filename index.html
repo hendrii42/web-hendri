@@ -251,12 +251,20 @@
             const options = { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' };
             const timeStr = now.toLocaleTimeString('id-ID', options); 
     
-            // Hasilnya nanti seperti: Sen, 14:00
-            document.getElementById('clock').textContent = timeStr;
+            // Hasilnya nanti seperti: Sab, 14:00
+            const clockElement = document.getElementById('clock');
+            if (clockElement) {
+                clockElement.textContent = timeStr;
+            }
         }
+
+        // PERBAIKAN: Tambahkan dua baris ini di bawah fungsi updateClock
+        setInterval(updateClock, 1000); // Jalankan setiap detik
+        updateClock(); // Jalankan sekali saat pertama kali buka halaman
     </script>
 </body>
 </html>
+
 
 
 
