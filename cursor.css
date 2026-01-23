@@ -1,19 +1,26 @@
-@media (min-width: 1024px) {
-    * { cursor: none !important; }
-    #cursor-dot, #cursor-ring { display: block; }
+/* 1. Reset Dasar: Hilangkan kursor asli hanya di layar besar */
+@media (min-width: 1025px) {
+    * { 
+        cursor: none !important; 
+    }
 }
 
+/* 2. Styling Dot (Titik Tengah) */
 #cursor-dot {
     width: 6px;
     height: 6px;
-    background: #3b82f6; /* Tetap biru, tapi kita buat dinamis nanti */
+    background: #3b82f6;
     position: fixed;
     border-radius: 50%;
     z-index: 10000;
     pointer-events: none;
-    transition: transform 0.1s ease-out; /* Agar dot lebih responsif */
+    /* Menjaga titik tetap di tengah koordinat mouse */
+    transform: translate(-50%, -50%); 
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+    display: none; /* Sembunyikan default, muncul via JS */
 }
 
+/* 3. Styling Ring (Lingkaran Luar) */
 #cursor-ring {
     width: 34px;
     height: 34px;
@@ -22,30 +29,40 @@
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
-    /* Transisi transform jauh lebih smooth daripada width/height */
-    transition: transform 0.2s ease-out, background 0.3s, border 0.3s; 
+    /* Menjaga ring tetap di tengah koordinat mouse */
+    transform: translate(-50%, -50%);
+    /* Transisi smooth untuk efek membesar */
+    transition: transform 0.2s ease-out, width 0.2s, height 0.2s, background 0.3s, border 0.3s;
+    display: none;
 }
 
-/* Efek saat kursor diarahkan ke Link atau Button */
-.cursor-hover #cursor-ring {
-    transform: translate(-50%, -50%) scale(1.5); /* Ring membesar */
-    background: rgba(59, 130, 246, 0.1); /* Memberi sedikit fill */
+/* 4. Tampilkan kursor hanya di Desktop */
+@media (min-width: 1025px) {
+    #cursor-dot, #cursor-ring { 
+        display: block; 
+    }
+}
+
+/* 5. Efek Interaksi (Hover) */
+/* Saat body memiliki class .cursor-hover (dipicu JS) */
+body.cursor-hover #cursor-ring {
+    width: 60px; /* Ring membesar */
+    height: 60px;
+    background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.8);
 }
 
-.cursor-hover #cursor-dot {
-    transform: translate(-50%, -50%) scale(0.5); /* Dot mengecil agar fokus ke ring */
+body.cursor-hover #cursor-dot {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.5;
 }
 
-/* Sembunyikan cursor kustom di layar di bawah 1024px (HP & Tablet) */
+/* 6. Matikan di HP (Touchscreen) */
 @media (max-width: 1024px) {
-    #cursor-dot, 
-    #cursor-ring {
+    #cursor-dot, #cursor-ring {
         display: none !important;
     }
-    
-    /* Kembalikan cursor bawaan HP (opsional) */
-    body {
-        cursor: auto !important;
+    * {
+        cursor: auto !important; /* Kembalikan kursor standar */
     }
 }
