@@ -20,11 +20,43 @@
         
         /* TEXT GRADIENT */
         .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Animasi Muncul */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
+        /* Terapkan ke semua elemen di dalam main */
+        main > * {
+            opacity: 0; /* Mulai dari tidak terlihat */
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Delay agar munculnya bergantian (efek mengalir) */
+        main > *:nth-child(1) { animation-delay: 0.1s; }
+        main > *:nth-child(2) { animation-delay: 0.2s; }
+        main > *:nth-child(3) { animation-delay: 0.3s; }
+        main > *:nth-child(4) { animation-delay: 0.4s; }
+        main > *:nth-child(5) { animation-delay: 0.5s; }
+        
         /* MENU OVERLAY */
         #menuOverlay { display: none; position: fixed; inset: 0; background: rgba(10, 10, 10, 0.98); z-index: 500; backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; }
         .menu-link { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; text-transform: uppercase; font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); transition: 0.4s; text-decoration: none; }
         .menu-link:hover { color: white; -webkit-text-stroke: 1px white; transform: skewX(-10deg); }
+
+        .bento-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.06), transparent 40%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .bento-card:hover::before {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="p-4 md:p-10">
@@ -123,7 +155,8 @@
         <div class="col-span-2 md:col-span-8 bento-card group">
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="h-64 md:h-80 overflow-hidden bg-gray-900">
-                    <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1000" class="w-full h-full object-cover opacity-30 group-hover:opacity-60 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1000" 
+                          class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-50 transition duration-700">
                 </div>
                 <div class="p-8 md:p-12 flex flex-col justify-center border-l border-white/5">
                     <h3 class="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter">Virtual Assistant Service</h3>
@@ -175,15 +208,16 @@
             <span class="text-[8px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Support Me</span>
         </a>
 
-        <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="col-span-1.5 md:col-span-6 bento-card p-8 md:p-10 flex items-center justify-between group no-underline">
+        <!--bento secret journey-->
+        <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="col-span-1 md:col-span-6 bento-card p-8 md:p-10 flex items-center justify-between group no-underline">
             <div class="flex items-center gap-6">
                 <i class="fa-solid fa-feather-pointed text-2xl text-gray-700 group-hover:text-white transition"></i>
-                <h3 class="text-sm md:text-2xl font-black text-white italic tracking-widest uppercase">The Silent Journey</h3>
+                <h3 class="text-sm md:text-2xl font-medium text-white italic tracking-widest uppercase opacity-90" style="font-family: serif;">
+                    The Silent Journey
+                </h3>
             </div>
             <span class="hidden md:block text-[10px] font-bold text-gray-600 group-hover:text-white transition tracking-[0.5em]">&rarr; READ</span>
         </a>
-
-        
     </main>
     <footer class="max-w-6xl mx-auto py-16 text-center opacity-20">
         <p class="text-[8px] font-black uppercase tracking-[1em]">HendriHub &copy; 2025</p>
@@ -213,13 +247,17 @@
         // Live Clock Update (Blitar Time Zone)
         function updateClock() {
             const now = new Date();
-            const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' });
+            // Menampilkan Hari dan Jam
+            const options = { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' };
+            const timeStr = now.toLocaleTimeString('id-ID', options); 
+    
+            // Hasilnya nanti seperti: Sen, 14:00
             document.getElementById('clock').textContent = timeStr;
         }
-        setInterval(updateClock, 1000); updateClock();
     </script>
 </body>
 </html>
+
 
 
 
