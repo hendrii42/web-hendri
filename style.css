@@ -1,0 +1,145 @@
+/* HendriHub Global Style 
+   Combining: Cursor, Bento System, Index, and About 
+*/
+
+/* --- 1. RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    background-color: #0a0a0a; 
+    color: #f8f8f8; 
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden;
+}
+
+/* Kursor asli hilang hanya di desktop */
+@media (min-width: 1025px) {
+    * { cursor: none !important; }
+}
+
+/* Scrollbar Estetik */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+/* --- 2. BENTO SYSTEM --- */
+.bento-card { 
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 32px; /* Standar About yang lebih smooth */
+    position: relative; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    isolation: isolate; 
+}
+
+.bento-card:hover { 
+    border-color: rgba(59, 130, 246, 0.5); 
+    background: rgba(255, 255, 255, 0.06); 
+    transform: translateY(-4px); 
+}
+
+/* Glow Effect (Logika dari Cursor CSS) */
+.bento-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(59, 130, 246, 0.1), 
+        transparent 40%
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.bento-card:hover::before { opacity: 1; }
+
+/* Pastikan konten di dalam bento tidak tertutup glow */
+.bento-card > * { position: relative; z-index: 2; }
+
+/* --- 3. CUSTOM CURSOR --- */
+#cursor-dot, #cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 10000;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#cursor-dot {
+    width: 6px; height: 6px;
+    background: #3b82f6;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+#cursor-ring {
+    width: 34px; height: 34px;
+    border: 1.5px solid rgba(59, 130, 246, 0.4);
+    transition: transform 0.2s ease-out, width 0.2s, height 0.2s, background 0.3s, border 0.3s;
+}
+
+@media (min-width: 1025px) {
+    #cursor-dot, #cursor-ring { display: block; }
+}
+
+/* Hover State */
+body.cursor-hover #cursor-ring {
+    width: 60px; height: 60px;
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.8);
+}
+body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
+
+/* --- 4. UTILITIES & ANIMATIONS --- */
+.gradient-text { 
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+.gradient-overlay { 
+    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.2) 50%, transparent 100%); 
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-flow > * {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Delay Logic */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Menu Overlay Style */
+#menuOverlay { 
+    display: none; position: fixed; inset: 0; 
+    background: rgba(10, 10, 10, 0.98); z-index: 500; 
+    backdrop-filter: blur(20px); flex-direction: column; 
+    align-items: center; justify-content: center; 
+}
+
+.menu-link { 
+    font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; 
+    text-transform: uppercase; font-style: italic; 
+    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); 
+    transition: 0.4s; text-decoration: none; 
+}
+.menu-link:hover { color: white; -webkit-text-stroke: 1px white; transform: skewX(-10deg); }
+
+/* --- 5. PAGE SPECIFIC (MINIMAL) --- */
+.photo-side { height: 100%; } 
+@media (max-width: 1024px) { .photo-side { height: 500px; } }
