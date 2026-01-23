@@ -23,3 +23,16 @@ document.querySelectorAll('a, button, .bento-card, i').forEach(el => {
         document.body.classList.remove('cursor-hover');
     });
 });
+
+document.addEventListener('mousemove', (e) => {
+    // Kode kursor yang sudah ada...
+    
+    // Tambahan untuk efek glow kartu bento
+    document.querySelectorAll('.bento-card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
