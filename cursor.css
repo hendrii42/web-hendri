@@ -36,3 +36,16 @@
 .cursor-hover #cursor-dot {
     transform: translate(-50%, -50%) scale(0.5); /* Dot mengecil agar fokus ke ring */
 }
+
+/* Sembunyikan cursor kustom di layar di bawah 1024px (HP & Tablet) */
+@media (max-width: 1024px) {
+    #cursor-dot, 
+    #cursor-ring {
+        display: none !important;
+    }
+    
+    /* Kembalikan cursor bawaan HP (opsional) */
+    body {
+        cursor: auto !important;
+    }
+}
