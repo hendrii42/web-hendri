@@ -76,11 +76,8 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    border-radius: 50%;
-    z-index: 10000;
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    display: none;
+    z-index: 10000;
 }
 
 #cursor-dot {
