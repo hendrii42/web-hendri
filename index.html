@@ -74,6 +74,11 @@
             position: sticky;
             top: 10px;
         }
+
+        .bento-card > * {
+            position: relative;
+            z-index: 2; /* Lebih tinggi dari ::before yang z-index-nya 1 */
+        }
     </style>
 </head>
 <body class="p-4 md:p-10">
@@ -291,6 +296,7 @@
     </script>
 </body>
 </html>
+
 
 
 
