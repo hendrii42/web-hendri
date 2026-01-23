@@ -24,15 +24,13 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
 
 nav {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgba(10, 10, 10, 0.7);
-    padding: 1rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 0.5rem; /* Memberi ruang atas bawah yang pas */
     position: sticky;
-    top: 10px;
+    top: 0;
     z-index: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* --- 2. BENTO SYSTEM --- */
