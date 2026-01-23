@@ -24,6 +24,23 @@ document.querySelectorAll('a, button, .bento-card, i').forEach(el => {
     });
 });
 
+// Tambahkan efek tilt sedikit pada gambar saat hover
+document.querySelectorAll('.bento-card img').forEach(img => {
+    const card = img.closest('.bento-card');
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        
+        // Geser gambar sedikit berlawanan arah kursor
+        img.style.transform = `scale(1.1) translate(${(x - 0.5) * 10}px, ${(y - 0.5) * 10}px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        img.style.transform = `scale(1) translate(0, 0)`;
+    });
+});
+
 document.addEventListener('mousemove', (e) => {
     // Kode kursor yang sudah ada...
     
