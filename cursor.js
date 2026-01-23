@@ -53,3 +53,7 @@ document.addEventListener('mousemove', (e) => {
         card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
+
+if (window.matchMedia("(max-width: 1024px)").matches) {
+    return; // Berhenti menjalankan script jika di HP
+}
