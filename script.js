@@ -10,21 +10,20 @@ document.addEventListener('mousemove', (e) => {
     const x = e.clientX;
     const y = e.clientY;
     
-    // Gunakan requestAnimationFrame agar update posisi sinkron dengan layar
-    requestAnimationFrame(() => {
-        if(dot && ring) {
-            // translate(-50%, -50%) memastikan titik tengah kursor pas di ujung mouse
-            dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-            ring.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-        }
+    if(dot && ring) {
+        dot.style.left = `${x}px`;
+        dot.style.top = `${y}px`;
+        
+        ring.style.left = `${x}px`;
+        ring.style.top = `${y}px`;
+    }
 
-        // Efek Glow kartu bento
-        const cards = document.querySelectorAll('.bento-card');
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mouse-x', `${x - rect.left}px`);
-            card.style.setProperty('--mouse-y', `${y - rect.top}px`);
-        });
+    // Efek Glow kartu bento (tetap berfungsi)
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${x - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${y - rect.top}px`);
     });
 });
 
