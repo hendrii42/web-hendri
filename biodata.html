@@ -117,31 +117,6 @@
         </footer>
     </div>
 
-    <script src="cursor.js"></script>
-    <script>
-        // Fungsi Salin Email
-        function copyEmail(email) {
-            navigator.clipboard.writeText(email).then(() => {
-                const toast = document.createElement('div');
-                // Pastikan pakai backtick ( ` ) di awal dan akhir template HTML
-                toast.innerHTML = `<div class="bg-blue-600/90 backdrop-blur-md text-white px-6 py-3 rounded-2xl text-xs font-bold shadow-2xl border border-white/10">
-                                     <i class="fa-solid fa-check mr-2"></i> Email Copied!
-                                   </div>`;
-                toast.className = "fixed bottom-10 left-1/2 -translate-x-1/2 z-[5000] animate-bounce";
-                document.body.appendChild(toast);
-
-                setTimeout(() => {
-                    toast.style.opacity = '0';
-                    toast.style.transition = '0.5s';
-                    setTimeout(() => toast.remove(), 500);
-                }, 2000);
-            });
-        }
-        
-        // Fungsi Back to Top (Opsional untuk Footer)
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
