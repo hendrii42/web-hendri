@@ -78,18 +78,27 @@ nav {
     left: 0;
     pointer-events: none;
     z-index: 10000;
+    /* INI KUNCI UTAMA: Memaksa elemen selalu di tengah koordinat */
+    transform: translate(-50%, -50%); 
+    display: none; /* Default sembunyi, muncul di desktop */
 }
 
 #cursor-dot {
-    width: 6px; height: 6px;
+    width: 6px; 
+    height: 6px;
     background: #3b82f6;
-    transition: width 0.3s, height 0.3s, opacity 0.3s;
+    border-radius: 50%;
+    /* Transisi scale saja agar tidak berat */
+    transition: transform 0.3s ease;
 }
 
 #cursor-ring {
-    width: 34px; height: 34px;
+    width: 34px; 
+    height: 34px;
     border: 1.5px solid rgba(59, 130, 246, 0.4);
-    transition: transform 0.2s ease-out, width 0.2s, height 0.2s, background 0.3s, border 0.3s;
+    border-radius: 50%;
+    /* HAPUS transition transform agar tidak tertinggal/delay */
+    transition: width 0.2s, height 0.2s, background 0.3s, border 0.3s;
 }
 
 @media (min-width: 1025px) {
@@ -102,7 +111,11 @@ body.cursor-hover #cursor-ring {
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.8);
 }
-body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
+/* Saat hover, titik kecil mengecil */
+body.cursor-hover #cursor-dot { 
+    transform: translate(-50%, -50%) scale(0.5); 
+    opacity: 0.5; 
+}
 
 /* --- 4. UTILITIES & ANIMATIONS --- */
 .gradient-text { 
