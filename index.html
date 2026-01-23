@@ -201,54 +201,10 @@
         <p class="text-[8px] font-black uppercase tracking-[1em]">HendriHub &copy; 2025</p>
     </footer>
 
-    <script src="cursor.js"></script>    
-    <script>
-        /* 13. JAVASCRIPT: LOGIKA CURSOR, MENU, & JAM */
-        
-        // Menu Toggle Logic (Open/Close)
-        let menuOpen = false;
-        function toggleMenu() {
-            const menu = document.getElementById('menuOverlay');
-            const l1 = document.getElementById('line1'); const l2 = document.getElementById('line2');
-            menuOpen = !menuOpen;
-            if (menuOpen) {
-                menu.style.display = 'flex';
-                l1.style.transform = 'translateY(5px) rotate(45deg)'; l2.style.transform = 'translateY(-5px) rotate(-45deg)';
-                document.body.style.overflow = 'hidden';
-            } else {
-                menu.style.display = 'none';
-                l1.style.transform = 'none'; l2.style.transform = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Live Clock Update (Blitar Time Zone)
-        function updateClock() {
-            const now = new Date();
-            // Gunakan format 24 jam saja tanpa hari agar hemat tempat
-            const timeStr = now.toLocaleTimeString('en-GB', { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                timeZone: 'Asia/Jakarta' 
-           });
-    
-            const clockElement = document.getElementById('clock');
-                if (clockElement) {
-                clockElement.textContent = timeStr;
-            }
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        window.onscroll = function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
-        };
-    </script>
+    <script src="script.js"></script>    
 </body>
 </html>
+
 
 
 
