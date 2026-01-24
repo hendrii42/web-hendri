@@ -71,15 +71,16 @@
     <div id="menuOverlay" class="fixed inset-0 bg-black/95 backdrop-blur-2xl z-[1500] flex-col items-center justify-center hidden">
             <div class="flex flex-col items-center gap-8 text-center">
             <a href="biodata.html" class="text-4xl font-black text-white no-underline italic uppercase tracking-tighter hover:text-blue-500 transition">About</a>
-            
+
+            <!-- set color accent -->
             <div class="mt-12 flex flex-col items-center gap-4">
                 <span class="text-[8px] font-black uppercase tracking-[0.4em] text-gray-500 italic">Select Accent Color</span>
                 <div class="flex gap-4 p-4 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/5">
-                    <button onclick="setTheme('#3b82f6')" class="w-8 h-8 rounded-full bg-blue-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
-                    <button onclick="setTheme('#10b981')" class="w-8 h-8 rounded-full bg-emerald-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
-                    <button onclick="setTheme('#f59e0b')" class="w-8 h-8 rounded-full bg-amber-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
-                    <button onclick="setTheme('#f43f5e')" class="w-8 h-8 rounded-full bg-rose-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
-                    <button onclick="setTheme('#8b5cf6')" class="w-8 h-8 rounded-full bg-violet-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
+                    <button onclick="setTheme('#3b82f6')" class="w-6 h-6 rounded-full bg-blue-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
+                    <button onclick="setTheme('#10b981')" class="w-6 h-6 rounded-full bg-emerald-500 cursor-pointer border-2 border-transparent hover:border-white transition"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-6 h-6 rounded-full bg-amber-500 border-2 border-transparent hover:border-white transition"></button>
+                    <button onclick="setTheme('#f43f5e')" class="w-6 h-6 rounded-full bg-rose-500 border-2 border-transparent hover:border-white transition"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-6 h-6 rounded-full bg-violet-500 border-2 border-transparent hover:border-white transition"></button>
                 </div>
             </div>
         </div>
@@ -107,19 +108,29 @@
             </div>
         </div>
 
+        <!-- sosial media -->
         <div class="col-span-2 md:col-span-2 bento-card p-6 flex items-center justify-around flex-wrap">
-            <a href="https://instagram.com/hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://tiktok.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://youtube.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-red-600 transition"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.facebook.com/hendrii42/" target="_blank" class="text-2xl text-gray-600 hover:text-blue-600 transition"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://discordapp.com/users/620272778637213706" target="_blank" class="text-2xl text-gray-600 hover:text-white transition"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.instagram.com/hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-pink-500 hover:scale-125 transition-all duration-300" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-white hover:scale-125 transition-all duration-300" title="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.youtube.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-red-600 hover:scale-125 transition-all duration-300" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://discordapp.com/users/620272778637213706" target="_blank" class="text-2xl text-gray-600 hover:text-[#5865F2] hover:scale-125 transition-all duration-300" title="Discord">
+                <i class="fa-brands fa-discord"></i>
+            </a>
         </div>
 
+        <!-- time -->
         <div class="col-span-1 md:col-span-1.5 bento-card p-4 flex flex-col items-center justify-center text-center">
             <span class="text-[8px] text-gray-500 uppercase tracking-widest mb-1">Blitar</span>
             <div id="clock" class="text-sm md:text-base font-mono font-black text-white">--:--</div>
         </div>
 
+        <!-- live online -->
         <div class="col-span-1 md:col-span-1.5 bento-card p-6 flex flex-col items-center justify-center">
             <div class="flex items-center gap-2 mb-1">
                 <span class="relative flex h-2 w-2">
@@ -169,17 +180,20 @@
             </div>
         </a>
 
+        <!-- affiliate -->
         <a href="recommendations.html" class="col-span-2 md:col-span-2 bento-card p-8 flex flex-col justify-center items-center gap-3 bg-orange-500/5 group no-underline text-center">
             <span class="text-[9px] text-orange-500 font-bold uppercase tracking-widest">Gear</span>
             <i class="fa-solid fa-basket-shopping text-3xl text-gray-700 group-hover:text-white transition"></i>
             <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Shop</span>
         </a>
 
+        <!-- donate -->
         <a href="https://trakteer.id/hendri_irawan10/tip" target="_blank" class="col-span-1 md:col-span-2 bento-card p-8 flex flex-col items-center justify-center hover:bg-yellow-500/10 group no-underline">
             <i class="fa-solid fa-coffee text-yellow-500 text-2xl group-hover:scale-110 transition"></i>
             <span class="text-[8px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Support Me</span>
         </a>
 
+        <!-- secret story -->
         <a href="https://heyzine.com/flip-book/1929b0e168.html" target="_blank" class="col-span-1 md:col-span-6 bento-card p-8 md:p-10 flex items-center justify-between group no-underline">
             <div class="flex items-center gap-6">
                 <i class="fa-solid fa-feather-pointed text-2xl text-gray-700 group-hover:text-white transition"></i>
@@ -187,7 +201,6 @@
             </div>
             <span class="hidden md:block text-[10px] font-bold text-gray-600 group-hover:text-white transition tracking-[0.5em]">&rarr; READ</span>
         </a>
-
     </main>
 
     <footer class="max-w-6xl mx-auto py-16 text-center opacity-20">
@@ -197,5 +210,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
