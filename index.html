@@ -49,54 +49,27 @@
     </div>
 
     <!--bento utama-->
-    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-10 px-2 relative z-[600]">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-10 px-2 relative z-[2000]">
         <a href="index.html" class="flex items-center gap-3 no-underline">
             <div class="flex flex-col leading-none">
                 <span class="text-xl font-black text-white uppercase italic tracking-tighter">Hendri<span class="text-blue-500">Hub</span></span>
                 <span class="text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </div>
         </a>
-        <button onclick="toggleMenu()" class="w-12 h-12 flex flex-col items-center justify-center gap-2 rounded-full bg-white/5 hover:bg-blue-600 transition-all duration-500">
+        <button onclick="toggleMenu()" class="w-12 h-12 flex flex-col items-center justify-center gap-2 rounded-full bg-white/5 hover:bg-blue-600 transition-all duration-500 relative z-[2100] cursor-pointer">
             <div id="line1" class="w-6 h-0.5 bg-white transition-all duration-300"></div>
             <div id="line2" class="w-6 h-0.5 bg-white transition-all duration-300"></div>
         </button>
     </nav>
 
-    <!--menu overlay pojok kanan atas-->
-    <div id="menuOverlay">
-        <a href="biodata.html" class="menu-link">About</a>
-        <div class="h-[1px] w-20 bg-white/10 my-8"></div>
-    </div>
-
-    <main class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-8 gap-4">
-        
-        <div class="col-span-2 md:col-span-6 md:row-span-2 bento-card p-8 md:p-14 flex flex-col justify-between min-h-[350px] md:min-h-[450px]">
-            <div class="flex justify-between items-start">
-                <div class="flex flex-col gap-2 opacity-60">
-                    <div class="h-[1.5px] w-16 md:w-24 bg-gradient-to-r from-blue-500 to-transparent"></div>
-                    <div class="h-[1.5px] w-24 md:w-36 bg-gradient-to-r from-purple-500 to-transparent"></div>
-                    <div class="h-[1.5px] w-12 md:w-20 bg-gradient-to-r from-pink-500 to-transparent"></div>
-                </div>
-                <div class="flex items-center gap-3 text-[8px] font-bold uppercase tracking-widest text-gray-400">
-                    <div class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                        <span>Available  |  </span>
-                    </div>
-                    <span class="text-blue-500 italic">v.2.4</span>
-                </div>
-            </div>
-            <div>
-                <h1 class="text-5xl md:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">Hendri<span class="gradient-text">Hub.</span></h1>
-                <p class="text-gray-400 mt-6 text-sm md:text-xl font-medium italic">Logic in Math, Creative in Service.</p>
-            </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-10">
+    <!--menu overlay-->
+    <div id="menuOverlay" class="fixed inset-0 bg-black/95 backdrop-blur-2xl z-[1500] flex-col items-center justify-center hidden">
+        <div class="flex flex-col items-center gap-8">
             <a href="index.html" class="menu-link">Home</a>
             <a href="about.html" class="menu-link">About</a>
             <a href="va-service.html" class="menu-link">Service</a>
 
-            <div class="mt-10 flex flex-col items-center gap-4">
+            <div class="mt-12 flex flex-col items-center gap-4">
                 <span class="text-[8px] font-black uppercase tracking-[0.4em] text-gray-500 italic">Select Accent Color</span>
                 <div class="flex gap-4 p-4 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/5">
                     <button onclick="setTheme('#3b82f6')" class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent hover:border-white transition-all transform hover:scale-110 cursor-pointer"></button>
@@ -107,27 +80,27 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!--bento sosial media-->
+    <div class="col-span-2 md:col-span-2 bento-card p-6 flex items-center justify-around flex-wrap">
+        <a href="https://www.instagram.com/hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-pink-500 transition-all" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-black transition-all" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://www.youtube.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-red-600 transition-all" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/hendrii42/" target="_blank" class="text-2xl text-gray-600 hover:text-blue-600 transition-all" title="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://discordapp.com/users/620272778637213706" target="_blank" class="text-2xl text-gray-600 hover:text-black transition-all" title="Discord">
+            <i class="fa-brands fa-discord"></i>
+        </a>
+    </div>
 
-        <!--bento sosial media-->
-        <div class="col-span-2 md:col-span-2 bento-card p-6 flex items-center justify-around flex-wrap">
-            <a href="https://www.instagram.com/hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-pink-500 transition-all" title="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-black transition-all" title="TikTok">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://www.youtube.com/@hendrii_42" target="_blank" class="text-2xl text-gray-600 hover:text-red-600 transition-all" title="YouTube">
-                <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://www.facebook.com/hendrii42/" target="_blank" class="text-2xl text-gray-600 hover:text-blue-600 transition-all" title="Facebook">
-                <i class="fa-brands fa-facebook"></i>
-            </a>
-            <a href="https://discordapp.com/users/620272778637213706" target="_blank" class="text-2xl text-gray-600 hover:text-black transition-all" title="Discord">
-                <i class="fa-brands fa-discord"></i>
-            </a>
-        </div>
-
-        <!--bento tempat dan waktu-->
+    <!--bento tempat dan waktu-->
         <div class="col-span-1 md:col-span-1.5 bento-card p-4 flex flex-col items-center justify-center text-center">
             <span class="text-[8px] text-gray-500 uppercase tracking-widest mb-1">Blitar</span>
             <div id="clock" class="text-sm md:text-base font-mono font-black text-white whitespace-nowrap">--:--</div>
@@ -221,6 +194,7 @@
     <script src="script.js"></script>    
 </body>
 </html>
+
 
 
 
