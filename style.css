@@ -33,6 +33,18 @@ nav {
     align-items: center;
 }
 
+:root {
+    /* Warna standar jika belum ada yang dipilih */
+    --accent-color: #3b82f6; 
+}
+
+/* Ganti semua kode warna biru yang ingin diubah menjadi variabel ini */
+.text-blue-500 { color: var(--accent-color) !important; }
+.bg-blue-500 { background-color: var(--accent-color) !important; }
+#cursor-dot { background: var(--accent-color); }
+#cursor-ring { border-color: var(--accent-color); }
+.bento-card:hover { border-color: var(--accent-color); }
+
 /* --- 2. BENTO SYSTEM --- */
 .bento-card { 
     background: rgba(255, 255, 255, 0.03); 
