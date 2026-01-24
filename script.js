@@ -2,7 +2,7 @@
    Combined: Cursor, Menu, Clock, Scroll, & Utilities
 */
 
-// --- 1. INITIAL SETUP & CURSOR ---
+// --- INITIAL SETUP & CURSOR ---
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 
@@ -37,7 +37,7 @@ function initCursorHover() {
 }
 initCursorHover();
 
-// --- 2. MENU TOGGLE ---
+// --- MENU TOGGLE ---
 let menuOpen = false;
 function toggleMenu() {
     const menu = document.getElementById('menuOverlay');
@@ -63,7 +63,23 @@ function toggleMenu() {
     }
 }
 
-// --- 3. JAM & SCROLL PROGRESS ---
+// --- GANTI WARNA BACKGROUND ---
+function setTheme(color) {
+    // 1. Terapkan ke halaman saat ini
+    document.documentElement.style.setProperty('--accent-color', color);
+    // 2. Simpan di memori browser
+    localStorage.setItem('selectedTheme', color);
+}
+
+// OTOMATIS: Dijalankan setiap kali halaman apa pun dibuka
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+        document.documentElement.style.setProperty('--accent-color', savedTheme);
+    }
+});
+
+// --- JAM & SCROLL PROGRESS ---
 function updateClock() {
     const clockElement = document.getElementById('clock');
     if (clockElement) {
@@ -86,7 +102,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// --- 4. UTILITIES (COPY EMAIL & SCROLL TOP) ---
+// --- UTILITIES (COPY EMAIL & SCROLL TOP) ---
 function copyEmail(email) {
     navigator.clipboard.writeText(email).then(() => {
         const toast = document.createElement('div');
