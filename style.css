@@ -1,15 +1,30 @@
 /* HendriHub Global Style 
-   Combining: Cursor, Bento System, Index, and About 
+   Combining: Cursor, Bento System, Index, and VA Services
 */
 
-/* --- RESET & GLOBAL --- */
+/* --- 1. RESET & GLOBAL --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --accent-color: #3b82f6; /* Warna utama dinamis */
+}
 
 body { 
     background-color: #0a0a0a; 
     color: #f8f8f8; 
     font-family: 'Inter', sans-serif; 
     overflow-x: hidden;
+}
+
+/* Efek Grain/Noise agar tidak terlalu "Classic/Kosong" */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.02;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 /* Kursor asli hilang hanya di desktop */
@@ -23,8 +38,9 @@ body {
 ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); opacity: 0.8; }
 
+/* --- 2. NAVIGATION --- */
 nav {
-    padding: 1.5rem 0.5rem; /* Memberi ruang atas bawah yang pas */
+    padding: 1.5rem 0.5rem;
     position: sticky;
     top: 0;
     z-index: 2000;
@@ -33,67 +49,33 @@ nav {
     align-items: center;
 }
 
-:root {
-    /* Warna standar jika belum ada yang dipilih */
-    --accent-color: #3b82f6; 
-}
-
-/* Ganti semua kode warna biru yang ingin diubah menjadi variabel ini */
-.text-blue-500 { color: var(--accent-color) !important; }
-.bg-blue-500 { background-color: var(--accent-color) !important; }
-#cursor-dot { background: var(--accent-color); }
-#cursor-ring { border-color: var(--accent-color); }
-.bento-card:hover { border-color: var(--accent-color); }
-
-/* --- BENTO SYSTEM --- */
-/* Pastikan transisi warna halus */
-.bento-card p, 
-.bento-card span, 
-.bento-card i {
-    transition: color 0.4s ease, opacity 0.4s ease;
-}
-
-/* Saat kartu di-hover, paksa semua teks abu-abu jadi putih terang */
-.bento-card:hover p,
-.bento-card:hover span:not(.text-blue-500) { 
-    color: #ffffff !important;
-    opacity: 1 !important;
-    text-shadow: 0 0 10px rgba(255,255,255,0.2); /* Memberi sedikit dimensi */
-}
-
-/* Untuk ikon sosmed atau ikon tools agar tidak kalah silau */
-.bento-card:hover i {
-    opacity: 1 !important;
-}
-   
+/* --- 3. BENTO SYSTEM --- */
 .bento-card { 
     background: rgba(255, 255, 255, 0.03); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 32px; /* Standar About yang lebih smooth */
+    border-radius: 32px; 
     position: relative; 
     overflow: hidden; 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     isolation: isolate; 
 }
 
-/* Glow Effect (Logika dari Cursor CSS) */
+/* Glow Effect - Anti Silau */
 .bento-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    /* Perubahan: Menggunakan var(--accent-color) agar glow mengikuti pilihan */
     background: radial-gradient(
         600px circle at var(--mouse-x) var(--mouse-y), 
         color-mix(in srgb, var(--accent-color), transparent 85%),
         transparent 40%
     ) !important;
     z-index: 1;
-    opacity: 0; /* Tetap sembunyi sebelum di-hover */
+    opacity: 0;
     transition: opacity 0.5s;
     pointer-events: none;
 }
 
-/* Tambahkan efek glow tipis pada border saat hover */
 .bento-card:hover { 
     border-color: var(--accent-color); 
     box-shadow: 0 0 20px -10px var(--accent-color);
@@ -101,68 +83,57 @@ nav {
 
 .bento-card:hover::before { opacity: 1; }
 
-/* Pastikan konten di dalam bento tidak tertutup glow */
+/* Konten di dalam bento tetap di depan */
 .bento-card > * { position: relative; z-index: 2; }
 
-/* --- CUSTOM CURSOR --- */
+/* REAKSI ELEMEN SAAT HOVER BENTO */
+.bento-card p, .bento-card span, .bento-card i, .bento-card h3 {
+    transition: all 0.4s ease;
+}
+
+/* Teks berubah jadi Putih Terang */
+.bento-card:hover p,
+.bento-card:hover span:not(.text-blue-500) { 
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Lingkaran Ikon Menyala Putih */
+.bento-card:hover .w-12.h-12 {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.bento-card:hover .w-12.h-12 i {
+    color: white !important;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
+    transform: scale(1.1);
+}
+
+/* --- 4. CUSTOM CURSOR --- */
 #cursor-dot, #cursor-ring {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     pointer-events: none;
     z-index: 10000;
-    /* INI KUNCI UTAMA: Memaksa elemen selalu di tengah koordinat */
     transform: translate(-50%, -50%); 
-    display: none; /* Default sembunyi, muncul di desktop */
+    display: none;
 }
 
-#cursor-dot {
-    width: 6px; 
-    height: 6px;
-    /* GANTI INI: */
-    background: var(--accent-color); /* Sebelumnya #3b82f6 */
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
+#cursor-dot { width: 6px; height: 6px; background: var(--accent-color); border-radius: 50%; transition: transform 0.3s ease; }
+#cursor-ring { width: 34px; height: 34px; border: 1.5px solid var(--accent-color); border-radius: 50%; transition: all 0.2s ease; }
 
-#cursor-ring {
-    width: 34px; 
-    height: 34px;
-    /* Perubahan: Gunakan variabel warna */
-    border: 1.5px solid var(--accent-color); 
-    border-radius: 50%;
-    transition: width 0.2s, height 0.2s, background 0.3s, border 0.3s;
-}
+@media (min-width: 1025px) { #cursor-dot, #cursor-ring { display: block; } }
 
-@media (min-width: 1025px) {
-    #cursor-dot, #cursor-ring { display: block; }
-}
+body.cursor-hover #cursor-ring { width: 60px; height: 60px; background: var(--accent-color); opacity: 0.1; }
+body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
 
-/* Hover State */
-body.cursor-hover #cursor-ring {
-    width: 60px; height: 60px;
-    /* Perubahan: Background ring saat hover mengikuti warna dinamis */
-    background: var(--accent-color);
-    opacity: 0.1; /* Buat sangat transparan */
-    border-color: var(--accent-color);
-}
-
-/* Saat hover, titik kecil mengecil */
-body.cursor-hover #cursor-dot { 
-    transform: translate(-50%, -50%) scale(0.5); 
-    opacity: 0.5; 
-}
-
-/* --- UTILITIES & ANIMATIONS --- */
+/* --- 5. UTILITIES & ANIMATIONS --- */
 .gradient-text { 
-    /* Perubahan: Dari Biru ke Ungu menjadi Warna Akses ke Ungu */
     background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
-}
-
-.gradient-overlay { 
-    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.2) 50%, transparent 100%); 
 }
 
 @keyframes fadeInUp {
@@ -170,21 +141,16 @@ body.cursor-hover #cursor-dot {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-flow > * {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Delay Logic */
+.animate-flow > * { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
 
-/* Menu Overlay Style */
+/* Menu Overlay */
 #menuOverlay { 
     display: none; position: fixed; inset: 0; 
-    background: rgba(10, 10, 10, 0.98); z-index: 500; 
+    background: rgba(10, 10, 10, 0.98); z-index: 1500; 
     backdrop-filter: blur(20px); flex-direction: column; 
     align-items: center; justify-content: center; 
 }
@@ -197,16 +163,13 @@ body.cursor-hover #cursor-dot {
 }
 .menu-link:hover { color: white; -webkit-text-stroke: 1px white; transform: skewX(-10deg); }
 
-/* --- 5. PAGE SPECIFIC (MINIMAL) --- */
-.photo-side { height: 100%; } 
-@media (max-width: 1024px) { .photo-side { height: 500px; } }
-
-/* PAKSA TAILWIND MENGIKUTI VARIABEL KITA */
+/* --- 6. TAILWIND OVERRIDES --- */
 .text-blue-500, .text-blue-600 { color: var(--accent-color) !important; }
 .bg-blue-500, .bg-blue-600 { background-color: var(--accent-color) !important; }
 .border-blue-500, .border-blue-600 { border-color: var(--accent-color) !important; }
 
-/* Tambahkan efek hover dinamis */
+#cursor-dot { background: var(--accent-color); }
+#cursor-ring { border-color: var(--accent-color); }
+
 .hover\:bg-blue-600:hover { background-color: var(--accent-color) !important; opacity: 0.9; }
 .hover\:text-blue-500:hover { color: var(--accent-color) !important; }
-
