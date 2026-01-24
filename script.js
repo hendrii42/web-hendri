@@ -38,15 +38,18 @@ function initCursorHover() {
 initCursorHover();
 
 // --- MENU TOGGLE ---
-let menuOpen = false;
 function toggleMenu() {
     const menu = document.getElementById('menuOverlay');
     const l1 = document.getElementById('line1');
     const l2 = document.getElementById('line2');
+    
     if (!menu) return;
 
-    menuOpen = !menuOpen;
-    if (menuOpen) {
+    // Cek kondisi asli di layar, bukan berdasarkan variabel
+    const isHidden = window.getComputedStyle(menu).display === 'none';
+
+    if (isHidden) {
+        // PROSES MEMBUKA
         menu.style.display = 'flex';
         if(l1 && l2) {
             l1.style.transform = 'translateY(5px) rotate(45deg)'; 
@@ -54,6 +57,7 @@ function toggleMenu() {
         }
         document.body.style.overflow = 'hidden';
     } else {
+        // PROSES MENUTUP
         menu.style.display = 'none';
         if(l1 && l2) {
             l1.style.transform = 'none'; 
