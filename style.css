@@ -2,7 +2,7 @@
    Combining: Cursor, Bento System, Index, and About 
 */
 
-/* --- 1. RESET & GLOBAL --- */
+/* --- RESET & GLOBAL --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
@@ -21,7 +21,7 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-color); opacity: 0.8; }
 
 nav {
     padding: 1.5rem 0.5rem; /* Memberi ruang atas bawah yang pas */
@@ -45,7 +45,7 @@ nav {
 #cursor-ring { border-color: var(--accent-color); }
 .bento-card:hover { border-color: var(--accent-color); }
 
-/* --- 2. BENTO SYSTEM --- */
+/* --- BENTO SYSTEM --- */
 .bento-card { 
     background: rgba(255, 255, 255, 0.03); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -56,26 +56,27 @@ nav {
     isolation: isolate; 
 }
 
-.bento-card:hover { 
-    border-color: rgba(59, 130, 246, 0.5); 
-    background: rgba(255, 255, 255, 0.06); 
-    transform: translateY(-4px); 
-}
-
 /* Glow Effect (Logika dari Cursor CSS) */
 .bento-card::before {
     content: "";
     position: absolute;
     inset: 0;
+    /* Perubahan: Menggunakan var(--accent-color) agar glow mengikuti pilihan */
     background: radial-gradient(
         600px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(59, 130, 246, 0.1), 
+        var(--accent-color), /* Menggunakan warna dinamis */
         transparent 40%
     );
     z-index: 1;
-    opacity: 0;
+    opacity: 0; /* Tetap sembunyi sebelum di-hover */
     transition: opacity 0.5s;
     pointer-events: none;
+}
+
+/* Tambahkan efek glow tipis pada border saat hover */
+.bento-card:hover { 
+    border-color: var(--accent-color); 
+    box-shadow: 0 0 20px -10px var(--accent-color);
 }
 
 .bento-card:hover::before { opacity: 1; }
@@ -83,7 +84,7 @@ nav {
 /* Pastikan konten di dalam bento tidak tertutup glow */
 .bento-card > * { position: relative; z-index: 2; }
 
-/* --- 3. CUSTOM CURSOR --- */
+/* --- CUSTOM CURSOR --- */
 #cursor-dot, #cursor-ring {
     position: fixed;
     top: 0;
@@ -98,18 +99,18 @@ nav {
 #cursor-dot {
     width: 6px; 
     height: 6px;
-    background: #3b82f6;
+    /* GANTI INI: */
+    background: var(--accent-color); /* Sebelumnya #3b82f6 */
     border-radius: 50%;
-    /* Transisi scale saja agar tidak berat */
     transition: transform 0.3s ease;
 }
 
 #cursor-ring {
     width: 34px; 
     height: 34px;
-    border: 1.5px solid rgba(59, 130, 246, 0.4);
+    /* Perubahan: Gunakan variabel warna */
+    border: 1.5px solid var(--accent-color); 
     border-radius: 50%;
-    /* HAPUS transition transform agar tidak tertinggal/delay */
     transition: width 0.2s, height 0.2s, background 0.3s, border 0.3s;
 }
 
@@ -120,18 +121,22 @@ nav {
 /* Hover State */
 body.cursor-hover #cursor-ring {
     width: 60px; height: 60px;
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.8);
+    /* Perubahan: Background ring saat hover mengikuti warna dinamis */
+    background: var(--accent-color);
+    opacity: 0.1; /* Buat sangat transparan */
+    border-color: var(--accent-color);
 }
+
 /* Saat hover, titik kecil mengecil */
 body.cursor-hover #cursor-dot { 
     transform: translate(-50%, -50%) scale(0.5); 
     opacity: 0.5; 
 }
 
-/* --- 4. UTILITIES & ANIMATIONS --- */
+/* --- UTILITIES & ANIMATIONS --- */
 .gradient-text { 
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+    /* Perubahan: Dari Biru ke Ungu menjadi Warna Akses ke Ungu */
+    background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
 }
