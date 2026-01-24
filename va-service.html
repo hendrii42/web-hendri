@@ -48,13 +48,15 @@
             <div class="lg:col-span-4 flex flex-col gap-6 delay-1">
                 <div class="bento-card p-10 h-full flex flex-col justify-end">
                     <h1 class="text-4xl font-black tracking-tighter italic uppercase leading-[0.9] mb-4 text-white">
-                        Digital <br><span class="text-blue-500 text-5xl">Operation.</span>
+                        Virtual <br><span class="text-blue-500 text-5xl">Assist.</span>
                     </h1>
                     <p class="text-xs text-gray-400 leading-relaxed italic mb-8">
                         Mengintegrasikan logika matematika ke dalam ekosistem digital Anda untuk hasil yang presisi dan terstruktur.
                     </p>
-                    <a href="https://instagram.com/vhen_virtual" target="_blank" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-white transition">
-                        <i class="fa-brands fa-instagram text-lg"></i> Live Portfolio
+                    <a href="https://instagram.com/vhen_virtual" target="_blank" 
+                        class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-white hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition-all duration-300 group">
+                        <i class="fa-brands fa-instagram text-lg transition-transform group-hover:scale-110"></i> 
+                        Follow Live Portfolio
                     </a>
                 </div>
             </div>
@@ -149,14 +151,25 @@
             const html = `
                 <h2 class="text-4xl font-black italic uppercase tracking-tighter text-blue-500 mb-4">${data.title}</h2>
                 <p class="text-gray-400 mb-8 text-sm italic border-l-2 border-blue-500 pl-4">"${data.desc}"</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    ${data.list.map(item => `<div class="text-[10px] font-bold uppercase text-gray-300"><i class="fa-solid fa-check text-blue-500 mr-2"></i> ${item}</div>`).join('')}
+    
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                    ${data.list.map(item => `
+                        <div class="text-[10px] font-bold uppercase text-gray-300 flex items-center gap-2">
+                            <i class="fa-solid fa-check text-blue-500 text-[8px]"></i> ${item}
+                        </div>
+                `    ).join('')}
                 </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="text-[9px] font-bold uppercase text-gray-500 tracking-widest"><i class="fa-solid fa-lightbulb text-blue-500 mr-2"></i> Mengapa layanan ini?</p>
-                    <p class="text-[10px] text-gray-400 mt-2 italic leading-relaxed">${data.note}</p>
+
+                <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-6">
+                    <a href="https://wa.me/6283853202544?text=Halo%20Vhen%20Virtual,%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(data.title)}" 
+                        class="w-full sm:w-auto bg-blue-500 text-white px-10 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] text-center">
+                        Gunakan Jasa Ini
+                    </a>
+                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] italic text-center sm:text-left">
+                        Estimated response: <br class="hidden sm:block"> Under 15 Minutes
+                    </span>
                 </div>
-            `;
+`;
             document.getElementById('modalData').innerHTML = html;
             const modal = document.getElementById('detailsModal');
             modal.style.display = 'flex';
