@@ -99,23 +99,27 @@
                 <!-- pilihan jasa service -->
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bento-card p-8 cursor-pointer group" onclick="showDetail('admin')" style="border-top: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);">
-                        <div class="flex justify-between items-start mb-4">
+                        <div class="h-10 flex justify-between items-start mb-4">
                             <i class="fa-solid fa-calculator text-2xl" style="color: var(--accent-color);"></i>
                             <span class="text-[7px] px-2 py-1 rounded font-black uppercase tracking-widest" style="background-color: color-mix(in srgb, var(--accent-color), transparent 85%); color: var(--accent-color);">Main Priority</span>
-                        </div> 
-                        <h3 class="font-black text-white italic uppercase text-lg">Data Admin</h3>
+                        </div>
+                        <h3 class="font-black text-white italic uppercase text-lg leading-none">Data Admin</h3>
                         <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">Specialize: Excel Architecture & System Data</p>
                     </div>
 
                     <div class="bento-card p-8 cursor-pointer group" onclick="showDetail('graphic')">
-                        <i class="fa-solid fa-pen-nib text-2xl mb-4 block" style="color: var(--accent-color);"></i>
-                        <h3 class="font-black text-white italic uppercase text-lg">Visual Assets</h3>
+                        <div class="h-10 mb-4 flex items-start">
+                            <i class="fa-solid fa-pen-nib text-2xl" style="color: var(--accent-color);"></i>
+                        </div>
+                        <h3 class="font-black text-white italic uppercase text-lg leading-none">Visual Assets</h3>
                         <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">Specialize: Presentation & Branding Kit</p>
                     </div>
-
+    
                     <div class="bento-card p-8 cursor-pointer group" onclick="showDetail('game')">
-                        <i class="fa-solid fa-microchip text-2xl mb-4 block" style="color: var(--accent-color);"></i>
-                        <h3 class="font-black text-white italic uppercase text-lg">Digital Ops</h3>
+                        <div class="h-10 mb-4 flex items-start">
+                            <i class="fa-solid fa-microchip text-2xl" style="color: var(--accent-color);"></i>
+                        </div>
+                        <h3 class="font-black text-white italic uppercase text-lg leading-none">Digital Ops</h3>
                         <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">Specialize: Virtual Assistant Support</p>
                     </div>
                 </div>
