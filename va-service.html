@@ -73,15 +73,25 @@
                 </div>
 
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bento-card p-8 cursor-pointer border-t border-blue-500/30 group" onclick="showDetail('admin')">
+                    <div class="bento-card p-8 cursor-pointer group" 
+                        onclick="showDetail('admin')" 
+                        style="border-top: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);">
+    
                         <div class="flex justify-between items-start mb-4">
                             <i class="fa-solid fa-calculator text-2xl text-blue-500"></i>
-                            <span class="text-[7px] bg-blue-500/20 text-blue-500 px-2 py-1 rounded font-black uppercase tracking-widest">Main Priority</span>
+                            <span class="text-[7px] px-2 py-1 rounded font-black uppercase tracking-widest" 
+                                style="background-color: color-mix(in srgb, var(--accent-color), transparent 85%); 
+                                color: var(--accent-color);
+                                border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);">
+                                Main Priority
+                            </span>
                         </div>
+
                         <h3 class="font-black text-white italic uppercase text-lg">Data Admin</h3>
                         <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest italic">Specialize: Excel Architecture & System Data</p>
+    
                         <div class="mt-4 flex gap-2">
-                            <div class="h-[2px] w-8 bg-blue-500"></div>
+                            <div class="h-[2px] w-8" style="background-color: var(--accent-color);"></div>
                             <div class="h-[2px] w-4 bg-white/20"></div>
                         </div>
                     </div>
