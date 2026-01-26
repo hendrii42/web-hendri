@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VA Services | Hendri Hub</title>
+    <title>VA Services & Store | Hendri Hub</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 
     <style>
-        body { background-color: #0a0a0a; color: white; }
+        body { background-color: #0a0a0a; color: white; font-family: 'Inter', sans-serif; }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover { border-color: rgba(59, 130, 246, 0.5); background: rgba(255, 255, 255, 0.05); }
+        
         #detailsModal {
             display: none; position: fixed; inset: 0; z-index: 9999;
             background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px);
@@ -26,164 +33,147 @@
             opacity: 0; transition: all 0.4s ease;
         }
         #detailsModal.active .modal-content { transform: translateY(0); opacity: 1; }
+
+        .tab-active { color: #3B82F6; border-bottom: 2px solid #3B82F6; }
     </style>
 </head>
 <body class="p-6 md:p-12">
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
-
     <div class="max-w-6xl mx-auto">
-        <nav class="flex justify-between items-center mb-16">
+        <nav class="flex justify-between items-center mb-12">
             <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-[10px] font-black uppercase tracking-widest group">
                 <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> Kembali
             </a>
-            <div class="flex flex-col leading-none">
-                <span class="text-xl font-black text-white uppercase italic tracking-tighter">Hendri<span class="text-blue-500">Hub</span></span>
-                <span class="text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">  Logic & Creative</span>
+            <div class="flex flex-col text-right">
+                <span class="text-xl font-black italic uppercase tracking-tighter text-white">Hendri<span class="text-blue-500">Hub</span></span>
+                <span class="text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">VA & Digital Store</span>
             </div>
         </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-flow">
-            <div class="lg:col-span-4 flex flex-col gap-6 delay-1">
-                <div class="bento-card p-10 h-full flex flex-col justify-end">
-                    <h1 class="text-4xl font-black tracking-tighter italic uppercase leading-[0.9] mb-4 text-white">
-                        Virtual <br><span class="text-blue-500 text-5xl">Assist.</span>
-                    </h1>
-                    <p class="text-xs text-gray-400 leading-relaxed italic mb-8">
-                        Mengintegrasikan logika matematika ke dalam ekosistem digital Anda untuk hasil yang presisi dan terstruktur.
-                    </p>
-                    <a href="https://instagram.com/vhen_virtual" target="_blank" 
-                        class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-white hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition-all duration-300 group">
-                        <i class="fa-brands fa-instagram text-lg transition-transform group-hover:scale-110"></i> 
-                        Follow Live Portfolio
-                    </a>
+        <div class="mb-12">
+            <h1 class="text-5xl font-black italic uppercase leading-none mb-4">VHEN<span class="text-blue-500">_</span>VIRTUAL</h1>
+            <div class="flex gap-8 border-b border-white/10">
+                <button onclick="switchTab('services')" id="btn-services" class="tab-active pb-2 text-xs font-black uppercase tracking-widest transition">Services</button>
+                <button onclick="switchTab('products')" id="btn-products" class="pb-2 text-xs font-black uppercase tracking-widest text-gray-500 hover:text-white transition">Digital Products</button>
+            </div>
+        </div>
+
+        <div id="tab-services" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-4 bento-card p-10 flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.3em]">The Philosophy</span>
+                    <h2 class="text-3xl font-black italic uppercase mt-2 mb-4 leading-tight">Meraki <br>In Every Task</h2>
+                    <p class="text-xs text-gray-400 italic leading-relaxed">Menuangkan jiwa dan logika matematika ke dalam ekosistem digital Anda.</p>
                 </div>
+                <a href="https://instagram.com/vhen_virtual" target="_blank" class="mt-8 text-[10px] font-black uppercase text-blue-500 flex items-center gap-2 hover:text-white transition">
+                    <i class="fa-brands fa-instagram text-lg"></i> Live Portfolio
+                </a>
             </div>
 
-            <div class="lg:col-span-8 flex flex-col gap-6 delay-2">
-                <div class="bento-card p-8 flex flex-wrap justify-center gap-10 opacity-60 hover:opacity-100 transition duration-500">
-                    <i class="fa-solid fa-file-word text-2xl hover:text-blue-400 hover:scale-150 transition-all duration-300 cursor-pointer" title="Word"></i>
-                    <i class="fa-solid fa-file-excel text-2xl hover:text-green-400 hover:scale-150 transition-all duration-300 cursor-pointer" title="Excel"></i>
-                    <i class="fa-solid fa-file-powerpoint text-2xl hover:text-orange-400 hover:scale-150 transition-all duration-300 cursor-pointer" title="Powerpoint"></i>
-                    <i class="fa-solid fa-palette text-2xl hover:text-pink-400 hover:scale-150 transition-all duration-300 cursor-pointer" title="Canva"></i>
-                    <i class="fa-solid fa-video text-2xl hover:text-red-400 hover:scale-150 transition-all duration-300 cursor-pointer" title="CapCut"></i>
-                    <i class="fa-solid fa-cloud text-2xl hover:text-blue-300 hover:scale-150 transition-all duration-300 cursor-pointer" title="Google Drive"></i>
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('admin')">
+                    <i class="fa-solid fa-calculator text-2xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-black text-white italic uppercase">Data Architecture</h3>
+                    <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest">Excel & Analytics</p>
                 </div>
+                <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('graphic')">
+                    <i class="fa-solid fa-pen-nib text-2xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-black text-white italic uppercase">Visual Assets</h3>
+                    <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest">Design & Branding</p>
+                </div>
+                <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('video')">
+                    <i class="fa-solid fa-play text-2xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-black text-white italic uppercase">Video Edit</h3>
+                    <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest">Short-form Reels</p>
+                </div>
+                <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('game')">
+                    <i class="fa-solid fa-microchip text-2xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-black text-white italic uppercase">Digital Ops</h3>
+                    <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-widest">Assistant Support</p>
+                </div>
+            </div>
+        </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                    <div class="bento-card p-8 group cursor-pointer border-l-2 border-blue-500" onclick="showDetail('admin')">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-calculator text-xl"></i>
-                        </div>
-                        <h3 class="font-black text-white text-xl italic uppercase">Data Architecture</h3>
-                        <p class="text-[9px] text-blue-500 uppercase tracking-widest font-black mt-2">Specialized Expertise</p>
-                    </div>
-
-                    <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('graphic')">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-pen-nib text-xl"></i>
-                        </div>
-                        <h3 class="font-black text-white text-xl italic uppercase">Visual & Design</h3>
-                        <p class="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-2">Creative Assets</p>
-                    </div>
-
-                    <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('video')">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-play text-xl"></i>
-                        </div>
-                        <h3 class="font-black text-white text-xl italic uppercase">Video Editing</h3>
-                        <p class="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-2">Short Form Content</p>
-                    </div>
-
-                    <div class="bento-card p-8 group cursor-pointer" onclick="showDetail('game')">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                            <i class="fa-solid fa-microchip text-xl"></i>
-                        </div>
-                        <h3 class="font-black text-white text-xl italic uppercase">Digital Ops</h3>
-                        <p class="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-2">General Assistance</p>
+        <div id="tab-products" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            <div class="bento-card overflow-hidden group">
+                <div class="h-48 bg-blue-500/10 flex items-center justify-center relative overflow-hidden">
+                    <i class="fa-solid fa-file-powerpoint text-6xl text-blue-500/20"></i>
+                    <span class="absolute top-4 left-4 bg-blue-500 text-[8px] font-black uppercase px-3 py-1 rounded-full">New Release</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-black text-white italic uppercase text-lg">Modern Pitch Deck v.1</h3>
+                    <p class="text-xs text-gray-500 italic mt-2">Template presentasi minimalis untuk startup dan laporan profesional.</p>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-blue-500 font-black tracking-tighter italic">Rp 45.000</span>
+                        <a href="#" class="bg-white text-black px-4 py-2 rounded-full text-[9px] font-black uppercase hover:bg-blue-500 hover:text-white transition">Beli Sekarang</a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="bento-card border-dashed border-white/20 flex flex-col items-center justify-center p-12 text-center opacity-50">
+                <i class="fa-solid fa-plus text-2xl mb-4"></i>
+                <p class="text-[10px] font-black uppercase tracking-[0.2em]">Next Product <br> Coming Soon</p>
             </div>
         </div>
     </div>
 
     <div id="detailsModal">
         <div class="modal-content">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-gray-500 hover:text-white transition text-2xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-gray-500 hover:text-white transition text-2xl"><i class="fa-solid fa-xmark"></i></button>
             <div id="modalData"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
-        const details = {
-            admin: {
-                title: "Data Architecture",
-                desc: "Spesialisasi utama saya. Mengolah data mentah menjadi laporan sistematis dengan akurasi tinggi.",
-                list: ["Formulas Excel & Google Sheets", "Audit & Pembersihan Data", "Laporan Keuangan/Kegiatan", "Sistem Database Sederhana"],
-                note: "Sangat cocok untuk pemilik bisnis yang butuh data rapi untuk pengambilan keputusan."
-            },
-            graphic: {
-                title: "Visual & Design Support",
-                desc: "Pembuatan aset visual komunikatif untuk menunjang branding personal maupun bisnis.",
-                list: ["Konten Instagram & Sosmed", "CV ATS / Kreatif", "Flyer & Poster Digital", "Slide Presentasi Professional"],
-                note: "Fokus pada kejelasan pesan dan estetika yang minimalis."
-            },
-            video: {
-                title: "Short-Form Video Editing",
-                desc: "Mengolah video mentah menjadi konten pendek yang dinamis untuk Reels atau TikTok.",
-                list: ["Cutting & Seamless Transition", "Dynamic Subtitles", "Audio Syncing", "Basic Color Correction"],
-                note: "Membantu meningkatkan engagement melalui konten visual yang bercerita."
-            },
-            game: {
-                title: "Digital Ops Assistance",
-                desc: "Dukungan general untuk tugas-tugas digital yang membutuhkan ketelitian dan waktu extra.",
-                list: ["Penyelesaian Event Digital", "Manajemen File (Drive/Cloud)", "Daily Task Completion", "Basic Admin Support"],
-                note: "Beralihlah ke hal prioritas, biarkan saya menangani tugas rutin Anda."
+        function switchTab(tab) {
+            const sTab = document.getElementById('tab-services');
+            const pTab = document.getElementById('tab-products');
+            const sBtn = document.getElementById('btn-services');
+            const pBtn = document.getElementById('btn-products');
+
+            if (tab === 'services') {
+                sTab.classList.remove('hidden');
+                pTab.classList.add('hidden');
+                sBtn.classList.add('tab-active');
+                pBtn.classList.remove('tab-active');
+                pBtn.classList.add('text-gray-500');
+            } else {
+                pTab.classList.remove('hidden');
+                sTab.classList.add('hidden');
+                pBtn.classList.add('tab-active');
+                pBtn.classList.remove('text-gray-500');
+                sBtn.classList.remove('tab-active');
+                sBtn.classList.add('text-gray-500');
             }
+        }
+
+        const details = {
+            admin: { title: "Data Architecture", desc: "Mengolah data mentah menjadi laporan sistematis.", list: ["Excel Formulas", "Data Cleaning", "Financial Reports"] },
+            graphic: { title: "Visual Assets", desc: "Desain minimalis untuk branding personal.", list: ["Instagram Content", "ATS Resume", "Presentation Slide"] },
+            video: { title: "Video Edit", desc: "Short-form content untuk Reels/TikTok.", list: ["Dynamic Cuts", "Subtitles", "Color Grading"] },
+            game: { title: "Digital Ops", desc: "Bantuan tugas digital harian.", list: ["File Management", "Event Completion", "Admin Support"] }
         };
 
         function showDetail(key) {
             const data = details[key];
             const html = `
-                <h2 class="text-4xl font-black italic uppercase tracking-tighter text-blue-500 mb-4">${data.title}</h2>
-                <p class="text-gray-400 mb-8 text-sm italic border-l-2 border-blue-500 pl-4">"${data.desc}"</p>
-    
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                    ${data.list.map(item => `
-                        <div class="text-[10px] font-bold uppercase text-gray-300 flex items-center gap-2">
-                            <i class="fa-solid fa-check text-blue-500 text-[8px]"></i> ${item}
-                        </div>
-                `    ).join('')}
+                <h2 class="text-3xl font-black italic uppercase text-blue-500 mb-4">${data.title}</h2>
+                <p class="text-gray-400 mb-6 text-sm italic">"${data.desc}"</p>
+                <div class="grid grid-cols-1 gap-3 mb-8">
+                    ${data.list.map(item => `<div class="text-[10px] font-bold uppercase text-gray-300 flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> ${item}</div>`).join('')}
                 </div>
-
-                <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-6">
-                    <a href="https://wa.me/6283853202544?text=Halo%20Vhen%20Virtual,%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(data.title)}" 
-                        class="w-full sm:w-auto bg-blue-500 text-white px-10 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] text-center">
-                        Gunakan Jasa Ini
-                    </a>
-                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] italic text-center sm:text-left">
-                        Estimated response: <br class="hidden sm:block"> Under 15 Minutes
-                    </span>
-                </div>
-`;
+                <a href="https://wa.me/6283853202544" class="inline-block bg-blue-500 text-white px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-blue-500 transition">Order Service</a>
+            `;
             document.getElementById('modalData').innerHTML = html;
             const modal = document.getElementById('detailsModal');
             modal.style.display = 'flex';
             setTimeout(() => modal.classList.add('active'), 10);
-            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             const modal = document.getElementById('detailsModal');
             modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 400);
+            setTimeout(() => modal.style.display = 'none', 400);
         }
     </script>
 </body>
