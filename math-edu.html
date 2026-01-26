@@ -5,21 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Edu | Hendri Hub</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        @media (min-width: 1024px) { * { cursor: none !important; } #cursor-dot, #cursor-ring { display: block; } }
-        #cursor-dot { width: 6px; height: 6px; background: #3b82f6; position: fixed; border-radius: 50%; z-index: 10000; pointer-events: none; left: 0; top: 0; transform: translate(-50%, -50%); }
-        #cursor-ring { width: 30px; height: 30px; border: 1.5px solid rgba(59, 130, 246, 0.6); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; left: 0; top: 0; transition: 0.3s; transform: translate(-50%, -50%); }
-        
-        body { background-color: #0a0a0a; color: #f8f8f8; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .bento-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; position: relative; overflow: hidden; transition: 0.4s; }
-        .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* MODAL ANIMATION */
+        /* Menggunakan sistem modal yang lebih smooth */
         #modalOverlay { 
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); 
             z-index: 2000; backdrop-filter: blur(20px); align-items: center; justify-content: center;
@@ -29,154 +22,179 @@
         #modalOverlay.active { display: flex; opacity: 1; }
         #modalOverlay.active #modalContent { transform: translateY(0); }
         
-        /* VARIASI WARNA JENJANG */
-        .color-sd { color: #fbbf24; border-color: rgba(251, 191, 36, 0.2); }
-        .color-smp { color: #3b82f6; border-color: rgba(59, 130, 246, 0.2); }
-        .color-sma { color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2); }
-        .color-utbk { color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
-
-        .bg-sd { background: #fbbf24; }
-        .bg-smp { background: #3b82f6; }
-        .bg-sma { background: #8b5cf6; }
-        .bg-utbk { background: #ef4444; }
+        .math-gradient {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="p-6 md:p-12">
 
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[10000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
 
-    <nav class="max-w-6xl mx-auto mb-8 px-2">
-        <a href="index.html" class="inline-flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-blue-600 rounded-full border border-white/10 transition-all group">
-            <i class="fa-solid fa-arrow-left text-white group-hover:-translate-x-1 transition"></i>
+    <div class="max-w-6xl mx-auto animate-flow">
+        <nav class="delay-1 mb-12 flex justify-between items-center">
+            <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-white transition text-[10px] font-black uppercase tracking-widest group cursor-pointer">
+                <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition"></i> Kembali
+            </a>
+            <div class="flex flex-col text-right leading-none">
+                <span class="text-xl font-black italic uppercase tracking-tighter text-white">Math<span style="color: var(--accent-color);">Edu</span></span>
+                <span class="text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">Professional Tutoring</span>
+            </div>
+        </nav>
+
+        <header class="mb-16 delay-2 text-center md:text-left relative overflow-hidden bento-card p-12 md:p-20">
+            <div class="absolute inset-0 opacity-10 grayscale">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" class="w-full h-full object-cover">
+            </div>
+            <div class="relative z-10">
+                <h1 class="text-6xl md:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">
+                    Mastering <br><span class="math-gradient">Logic.</span>
+                </h1>
+                <p class="text-gray-500 mt-6 text-[10px] md:text-xs uppercase tracking-[0.5em] font-black italic">Bimbingan Matematika Privat & Kelompok dari Blitar untuk Indonesia</p>
+            </div>
+        </header>
+
+        <section class="mb-20 delay-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bento-card p-8 group">
+                <div class="text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">01.</div>
+                <h4 class="text-white font-black uppercase italic text-sm mb-2 tracking-widest">Diagnostic Test</h4>
+                <p class="text-[10px] text-gray-500 leading-relaxed uppercase">Mengukur sejauh mana pemahaman konsep dasar sebelum memulai materi baru.</p>
+            </div>
+            <div class="bento-card p-8 group">
+                <div class="text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">02.</div>
+                <h4 class="text-white font-black uppercase italic text-sm mb-2 tracking-widest">Logic Building</h4>
+                <p class="text-[10px] text-gray-500 leading-relaxed uppercase">Bukan sekadar hafal rumus, tapi memahami alur logika di balik setiap angka.</p>
+            </div>
+            <div class="bento-card p-8 group">
+                <div class="text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">03.</div>
+                <h4 class="text-white font-black uppercase italic text-sm mb-2 tracking-widest">Evaluation</h4>
+                <p class="text-[10px] text-gray-500 leading-relaxed uppercase">Laporan bulanan dan progres belajar yang terukur untuk orang tua & siswa.</p>
+            </div>
+        </section>
+
+        <section class="mb-20 delay-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="openModal('SD', 'Sekolah Dasar', '25.000', '15.000')" class="p-8 bento-card text-left group border-t-2 border-transparent hover:border-amber-500 transition-all">
+                    <i class="fa-solid fa-child text-2xl text-amber-500 mb-4 block"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-amber-500">SD</span>
+                    <p class="text-[8px] text-gray-600 uppercase mt-2 font-black tracking-widest">Logika Dasar &rarr;</p>
+                </button>
+                <button onclick="openModal('SMP', 'Sekolah Menengah', '35.000', '20.000')" class="p-8 bento-card text-left group border-t-2 border-transparent hover:border-blue-500 transition-all">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-blue-500 mb-4 block"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-blue-500">SMP</span>
+                    <p class="text-[8px] text-gray-600 uppercase mt-2 font-black tracking-widest">Aljabar & Geometri &rarr;</p>
+                </button>
+                <button onclick="openModal('SMA', 'Menengah Atas', '45.000', '25.000')" class="p-8 bento-card text-left group border-t-2 border-transparent hover:border-purple-500 transition-all">
+                    <i class="fa-solid fa-book-open-reader text-2xl text-purple-500 mb-4 block"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-purple-500">SMA</span>
+                    <p class="text-[8px] text-gray-600 uppercase mt-2 font-black tracking-widest">Kalkulus & Trigonometri &rarr;</p>
+                </button>
+                <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000')" class="p-8 bento-card text-left group border-t-2 border-transparent hover:border-red-500 transition-all">
+                    <i class="fa-solid fa-user-graduate text-2xl text-red-500 mb-4 block"></i>
+                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-red-500">UTBK</span>
+                    <p class="text-[8px] text-gray-600 uppercase mt-2 font-black tracking-widest">TKA & TPS &rarr;</p>
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="bento-card p-10 flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3">
+                    <h2 class="text-4xl font-black italic uppercase text-white leading-none">STUDENT <br><span style="color: var(--accent-color);">REVIEWS.</span></h2>
+                </div>
+                <div class="md:w-2/3 border-l border-white/10 pl-10 italic text-gray-400 text-sm">
+                    "Cara ngajarnya enak banget, materi sesulit apa pun jadi kerasa masuk akal. Nilai rapor naik drastis!"
+                    <div class="mt-4 text-white font-black uppercase text-[10px] tracking-widest">— Siswa Kelas 12, Blitar.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h3 class="text-xl font-black italic uppercase text-white mb-8 border-b border-white/10 pb-4">Math Edu FAQ<span style="color: var(--accent-color);">?</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Berapa lama durasi per sesi?</p>
+                    <p class="text-[11px] text-gray-500 leading-relaxed uppercase">Satu sesi tatap muka berdurasi 90 menit (Efektif & Interaktif).</p>
+                </div>
+                <div class="p-4 rounded-3xl bg-white/5 border border-white/5">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Apakah ada grup diskusi?</p>
+                    <p class="text-[11px] text-gray-500 leading-relaxed uppercase">Ya, siswa mendapatkan akses grup WhatsApp tanya jawab 24/7.</p>
+                </div>
+            </div>
+        </section>
+
+        <a href="https://www.instagram.com/math_edu.id" target="_blank" class="bento-card p-10 flex flex-col md:flex-row items-center justify-between hover:bg-white/5 transition group mb-20">
+            <div class="flex items-center gap-6">
+                <i class="fa-brands fa-instagram text-4xl text-pink-500"></i>
+                <div>
+                    <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter">Daily Formula</h3>
+                    <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Follow for free logic tips</p>
+                </div>
+            </div>
+            <div class="px-10 py-3 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl" style="background-color: var(--accent-color);">Follow Now</div>
         </a>
-    </nav>
+    </div>
 
     <div id="modalOverlay" onclick="closeModal(event)">
         <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-2xl w-[95%] relative shadow-2xl">
             <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition"><i class="fa-solid fa-xmark"></i></button>
-            
             <div class="mb-6 text-center">
-                <span id="m-tag" class="text-[10px] font-black uppercase tracking-[0.4em] block mb-2">LEVEL</span>
+                <span id="m-tag" class="text-[10px] font-black uppercase tracking-[0.4em] block mb-2" style="color: var(--accent-color);">LEVEL</span>
                 <h2 id="m-title" class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">TITLE</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div id="card-full" class="p-6 rounded-3xl border flex flex-col justify-between">
+                <div class="p-6 rounded-3xl border border-white/10 flex flex-col justify-between bg-white/5">
                     <div>
-                        <span class="text-[9px] font-black uppercase tracking-widest opacity-60">Pilihan Utama</span>
-                        <h4 class="text-xl font-black text-white italic mt-1">SYNCHRONOUS</h4>
-                        <p class="text-[10px] text-gray-400 mt-2 mb-4 leading-relaxed italic">Live tatap muka + Laporan Bulanan + Materi Lengkap.</p>
+                        <span class="text-[9px] font-black uppercase tracking-widest opacity-60" style="color: var(--accent-color);">Synchronous</span>
+                        <h4 class="text-xl font-black text-white italic mt-1">LIVE TUTORING</h4>
+                        <p class="text-[10px] text-gray-400 mt-2 mb-4 italic leading-tight">Live Zoom/Offline + Report + Homework Help.</p>
                     </div>
                     <div>
                         <p id="p-full" class="text-xl md:text-2xl font-black text-white italic">Rp --</p>
-                        <a id="btn-full" href="#" class="block w-full text-center text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 transition shadow-xl">Amankan Slot</a>
+                        <a id="btn-full" href="#" class="block w-full text-center text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 transition shadow-xl" style="background-color: var(--accent-color);">Daftar Sesi</a>
                     </div>
                 </div>
-
                 <div class="p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-between">
                     <div>
-                        <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Akses Mandiri</span>
-                        <h4 class="text-xl font-black text-white italic mt-1">ASYNCHRONOUS</h4>
-                        <p class="text-[10px] text-gray-400 mt-2 mb-4 leading-relaxed italic">Hanya akses Video, PDF, & Latihan Soal (Tanpa Live).</p>
+                        <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Asynchronous</span>
+                        <h4 class="text-xl font-black text-white italic mt-1">Materi Video</h4>
+                        <p class="text-[10px] text-gray-400 mt-2 mb-4 italic leading-tight">Video pembahasan + PDF Latihan Soal mandiri.</p>
                     </div>
                     <div>
                         <p id="p-async" class="text-xl md:text-2xl font-black text-white italic opacity-40">Rp --</p>
-                        <a id="btn-async" href="#" class="block w-full text-center bg-white/10 text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 hover:bg-white hover:text-black transition border border-white/10">Beli Materi</a>
+                        <a id="btn-async" href="#" class="block w-full text-center bg-white/10 text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 hover:bg-white hover:text-black transition">Beli Modul</a>
                     </div>
                 </div>
             </div>
-            <p class="text-center text-[8px] text-gray-600 uppercase tracking-widest font-black italic">*Membangun logika matematika dari Blitar untuk Indonesia</p>
         </div>
     </div>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-8 gap-4">
-        
-        <div class="col-span-2 md:col-span-8 bento-card p-12 md:p-24 flex flex-col items-center text-center">
-            <div class="absolute inset-0 z-0 opacity-10">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" class="w-full h-full object-cover">
-            </div>
-            <div class="relative z-10">
-                <h1 class="text-5xl md:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">Math<span class="gradient-text">Edu.</span></h1>
-                <p class="text-gray-500 mt-4 text-[10px] md:text-sm uppercase tracking-[0.5em] font-black italic">Affordable & Professional</p>
-            </div>
-        </div>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center z-[4000] hover:bg-white/10 transition group cursor-pointer">
+        <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition"></i>
+    </button>
 
-        <div class="col-span-2 md:col-span-8 bento-card p-8 md:p-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <button onclick="openModal('SD', 'Sekolah Dasar', '25.000', '15.000', 'sd')" class="p-8 bento-card border-amber-500/20 hover:border-amber-500 text-left group">
-                    <i class="fa-solid fa-child text-2xl text-amber-500 mb-4 block transition"></i>
-                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-amber-500">SD</span>
-                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
-                </button>
-                <button onclick="openModal('SMP', 'Sekolah Menengah', '35.000', '20.000', 'smp')" class="p-8 bento-card border-blue-500/20 hover:border-blue-500 text-left group">
-                    <i class="fa-solid fa-graduation-cap text-2xl text-blue-500 mb-4 block transition"></i>
-                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-blue-500">SMP</span>
-                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
-                </button>
-                <button onclick="openModal('SMA', 'Menengah Atas', '45.000', '25.000', 'sma')" class="p-8 bento-card border-purple-500/20 hover:border-purple-500 text-left group">
-                    <i class="fa-solid fa-book-open-reader text-2xl text-purple-500 mb-4 block transition"></i>
-                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-purple-500">SMA</span>
-                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
-                </button>
-                <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000', 'utbk')" class="p-8 bento-card border-red-500/20 hover:border-red-500 text-left group">
-                    <i class="fa-solid fa-user-graduate text-2xl text-red-500 mb-4 block transition"></i>
-                    <span class="text-2xl font-black text-white italic uppercase group-hover:text-red-500">UTBK</span>
-                    <p class="text-[8px] text-gray-500 uppercase mt-1 font-black tracking-widest">Detail &rarr;</p>
-                </button>
-            </div>
-        </div>
-
-        <a href="https://www.instagram.com/math_edu.id" target="_blank" class="col-span-2 md:col-span-8 bento-card p-10 flex flex-col md:flex-row items-center justify-between bg-pink-600/5 group no-underline gap-6">
-            <div class="flex items-center gap-6 text-center md:text-left">
-                <i class="fa-brands fa-instagram text-4xl text-pink-500"></i>
-                <div>
-                    <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter">Materi Gratis</h3>
-                    <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Update rumus harian kamu</p>
-                </div>
-            </div>
-            <div class="px-10 py-3 bg-pink-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl">Follow</div>
-        </a>
-    </main>
-
+    <script src="script.js"></script>
     <script>
-        // CURSOR
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
-        window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
-            setTimeout(() => { ring.style.left = `${e.clientX}px`; ring.style.top = `${e.clientY}px`; }, 40);
-        });
+        function openModal(tag, title, priceFull, priceAsync) {
+            document.getElementById('m-tag').innerText = "LEVEL " + tag;
+            document.getElementById('m-title').innerText = title;
+            document.getElementById('p-full').innerText = `Rp ${priceFull} / Sesi`;
+            document.getElementById('p-async').innerText = `Rp ${priceAsync}`;
 
-        function openModal(tag, title, priceFull, priceAsync, type) {
-            const mTag = document.getElementById('m-tag');
-            const mTitle = document.getElementById('m-title');
-            const pFull = document.getElementById('p-full');
-            const pAsync = document.getElementById('p-async');
-            const btnFull = document.getElementById('btn-full');
-            const cardFull = document.getElementById('card-full');
-
-            // Reset classes
-            mTag.className = "text-[10px] font-black uppercase tracking-[0.4em] block mb-2 " + "color-" + type;
-            cardFull.className = "p-6 rounded-3xl border flex flex-col justify-between " + "color-" + type;
-            btnFull.className = "block w-full text-center text-white font-black py-4 rounded-xl uppercase text-[9px] tracking-widest mt-6 transition shadow-xl " + "bg-" + type;
-
-            mTag.innerText = "LEVEL " + tag;
-            mTitle.innerText = title;
-            pFull.innerText = `Rp ${priceFull} / Sesi`;
-            pAsync.innerText = `Rp ${priceAsync}`;
-
-            // WA LINK SESUAI REQUEST
             const waBase = "https://wa.me/6283853202544?text=";
-            const message = `saya berminat untuk mendaftar math edu untuk jenjang ${tag} kelas ....`;
-            const encodedMsg = encodeURIComponent(message);
-            
-            btnFull.href = waBase + encodedMsg;
-            document.getElementById('btn-async').href = waBase + encodeURIComponent(`saya berminat beli materi asynchronous untuk jenjang ${tag}`);
+            document.getElementById('btn-full').href = waBase + encodeURIComponent(`Halo Math Edu, saya ingin daftar bimbingan Live untuk jenjang ${tag}.`);
+            document.getElementById('btn-async').href = waBase + encodeURIComponent(`Halo Math Edu, saya berminat membeli modul ${tag}.`);
 
             const modal = document.getElementById('modalOverlay');
             modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
+            setTimeout(() => {
+                modal.classList.add('active');
+                if(window.initCursorHover) initCursorHover();
+            }, 10);
             document.body.style.overflow = 'hidden';
         }
 
