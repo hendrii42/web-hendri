@@ -1,17 +1,25 @@
-/* HendriHub Global Style 
-   Combining: Cursor, Bento System, Index, and VA Services
+/* HendriHub Global Style v2.0
+   Fixed: Cursor, Color System, Responsive
 */
 
 /* --- 1. RESET & GLOBAL --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 :root {
     --accent-color: #3b82f6; /* Warna utama dinamis */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #f8f8f8;
+    --text-secondary: #a0a0a0;
 }
 
 body { 
-    background-color: #0a0a0a; 
-    color: #f8f8f8; 
+    background-color: var(--bg-primary); 
+    color: var(--text-primary); 
     font-family: 'Inter', sans-serif; 
     overflow-x: hidden;
 }
@@ -27,29 +35,79 @@ body::before {
     pointer-events: none;
 }
 
-/* Kursor asli hilang hanya di desktop */
-@media (min-width: 1025px) {
-    * { cursor: none !important; }
-}
-
 /* Scrollbar Estetik */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-color); opacity: 0.8; }
-
-/* --- 2. NAVIGATION --- */
-nav {
-    padding: 1.5rem 0.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { 
+    background: var(--bg-secondary); 
+    border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--accent-color); 
+    opacity: 0.8; 
 }
 
-/* --- 3. BENTO SYSTEM --- */
+/* --- 2. CURSOR SYSTEM (FIXED) --- */
+
+/* HANYA hide cursor di body untuk desktop, TIDAK di semua elemen */
+@media (min-width: 1025px) {
+    body { 
+        cursor: none !important; 
+    }
+    
+    /* Restore cursor untuk elemen interaktif supaya tetap ada visual feedback */
+    a, button, input, textarea, select, [role="button"], .cursor-pointer {
+        cursor: none !important; /* Tetap none tapi custom cursor akan muncul */
+    }
+}
+
+#cursor-dot, #cursor-ring {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%); 
+    display: none;
+    transition: all 0.15s ease-out;
+}
+
+#cursor-dot { 
+    width: 6px; 
+    height: 6px; 
+    background: var(--accent-color); 
+    border-radius: 50%; 
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#cursor-ring { 
+    width: 34px; 
+    height: 34px; 
+    border: 1.5px solid var(--accent-color); 
+    border-radius: 50%; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 1025px) { 
+    #cursor-dot, #cursor-ring { display: block; } 
+}
+
+/* Hover effect untuk cursor */
+body.cursor-hover #cursor-ring { 
+    width: 60px; 
+    height: 60px; 
+    background: var(--accent-color); 
+    opacity: 0.15;
+    border-color: var(--accent-color);
+}
+
+body.cursor-hover #cursor-dot { 
+    transform: translate(-50%, -50%) scale(0.8); 
+    opacity: 0.8; 
+}
+
+/* --- 3. BENTO SYSTEM (IMPROVED) --- */
+
 .bento-card { 
     background: rgba(255, 255, 255, 0.03); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -60,116 +118,353 @@ nav {
     isolation: isolate; 
 }
 
-/* Glow Effect - Anti Silau */
+/* Glow Effect - Lebih Subtle (Fixed: tidak terlalu silau) */
 .bento-card::before {
     content: "";
     position: absolute;
     inset: 0;
     background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y), 
-        color-mix(in srgb, var(--accent-color), transparent 85%),
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        color-mix(in srgb, var(--accent-color), transparent 92%),
         transparent 40%
-    ) !important;
+    );
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s ease;
     pointer-events: none;
 }
 
 .bento-card:hover { 
-    border-color: var(--accent-color); 
-    box-shadow: 0 0 20px -10px var(--accent-color);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 50%);
+    box-shadow: 0 0 30px -10px color-mix(in srgb, var(--accent-color), transparent 70%);
+    transform: translateY(-2px);
 }
 
-.bento-card:hover::before { opacity: 1; }
+.bento-card:hover::before { 
+    opacity: 1; 
+}
 
 /* Konten di dalam bento tetap di depan */
-.bento-card > * { position: relative; z-index: 2; }
-
-/* REAKSI ELEMEN SAAT HOVER BENTO */
-.bento-card p, .bento-card span, .bento-card i, .bento-card h3 {
-    transition: all 0.4s ease;
+.bento-card > * { 
+    position: relative; 
+    z-index: 2; 
 }
 
-/* Teks berubah jadi Putih Terang */
+/* REAKSI ELEMEN SAAT HOVER BENTO (Improved) */
+.bento-card p, 
+.bento-card span, 
+.bento-card i, 
+.bento-card h3 {
+    transition: all 0.3s ease;
+}
+
+/* Teks berubah jadi Putih Terang saat hover */
 .bento-card:hover p,
-.bento-card:hover span:not(.text-blue-500) { 
+.bento-card:hover span:not([style*="color: var(--accent-color)"]) { 
     color: #ffffff !important;
     opacity: 1 !important;
-    text-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* Lingkaran Ikon Menyala Putih */
-.bento-card:hover .w-12.h-12 {
+/* Icon circles menyala saat hover */
+.bento-card:hover .w-12.h-12,
+.bento-card:hover .w-10.h-10,
+.bento-card:hover .w-14.h-14 {
     background-color: var(--accent-color) !important;
-    box-shadow: 0 0 15px var(--accent-color);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 50%);
+    transform: scale(1.05);
 }
 
-.bento-card:hover .w-12.h-12 i {
+.bento-card:hover .w-12.h-12 i,
+.bento-card:hover .w-10.h-10 i,
+.bento-card:hover .w-14.h-14 i {
     color: white !important;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
-    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
 }
 
-/* --- 4. CUSTOM CURSOR --- */
-#cursor-dot, #cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%); 
-    display: none;
+/* --- 4. NAVIGATION --- */
+
+nav {
+    padding: 1.5rem 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.8);
 }
 
-#cursor-dot { width: 6px; height: 6px; background: var(--accent-color); border-radius: 50%; transition: transform 0.3s ease; }
-#cursor-ring { width: 34px; height: 34px; border: 1.5px solid var(--accent-color); border-radius: 50%; transition: all 0.2s ease; }
+/* --- 5. MENU OVERLAY --- */
 
-@media (min-width: 1025px) { #cursor-dot, #cursor-ring { display: block; } }
+#menuOverlay { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(10, 10, 10, 0.98); 
+    z-index: 1500; 
+    backdrop-filter: blur(20px); 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-body.cursor-hover #cursor-ring { width: 60px; height: 60px; background: var(--accent-color); opacity: 0.1; }
-body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
+#menuOverlay.active {
+    opacity: 1;
+}
 
-/* --- 5. UTILITIES & ANIMATIONS --- */
+.menu-link { 
+    font-size: clamp(2rem, 8vw, 5rem); 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    font-style: italic; 
+    color: transparent; 
+    -webkit-text-stroke: 1px rgba(255,255,255,0.2); 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.menu-link:hover { 
+    color: white; 
+    -webkit-text-stroke: 1px white; 
+    transform: translateX(10px);
+    letter-spacing: 0.02em;
+}
+
+/* --- 6. UTILITIES & ANIMATIONS --- */
+
 .gradient-text { 
     background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
 }
 
+/* Smooth fade in animation */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
-.animate-flow > * { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+.animate-flow > * { 
+    opacity: 0; 
+    animation: fadeInUp 0.8s ease-out forwards; 
+}
+
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
 
-/* Menu Overlay */
-#menuOverlay { 
-    display: none; position: fixed; inset: 0; 
-    background: rgba(10, 10, 10, 0.98); z-index: 1500; 
-    backdrop-filter: blur(20px); flex-direction: column; 
-    align-items: center; justify-content: center; 
+/* Photo effects untuk biodata.html */
+.photo-side {
+    position: relative;
 }
 
-.menu-link { 
-    font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; 
-    text-transform: uppercase; font-style: italic; 
-    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); 
-    transition: 0.4s; text-decoration: none; 
+.gradient-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.7) 40%,
+        transparent 100%
+    );
 }
-.menu-link:hover { color: white; -webkit-text-stroke: 1px white; transform: skewX(-10deg); }
 
-/* --- 6. TAILWIND OVERRIDES --- */
-.text-blue-500, .text-blue-600 { color: var(--accent-color) !important; }
-.bg-blue-500, .bg-blue-600 { background-color: var(--accent-color) !important; }
-.border-blue-500, .border-blue-600 { border-color: var(--accent-color) !important; }
+/* --- 7. RESPONSIVE TYPOGRAPHY (IMPROVED) --- */
 
-#cursor-dot { background: var(--accent-color); }
-#cursor-ring { border-color: var(--accent-color); }
+/* Base font sizes yang lebih baik untuk mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Base font lebih besar di mobile */
+    }
+    
+    /* Heading sizes untuk mobile */
+    h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem) !important;
+    }
+    
+    h2 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    }
+    
+    h3 {
+        font-size: clamp(1.2rem, 5vw, 2rem) !important;
+    }
+    
+    /* Text sizes minimal 11px di mobile (tidak terlalu kecil) */
+    .text-\[10px\],
+    .text-\[9px\],
+    .text-\[8px\],
+    .text-\[7px\] {
+        font-size: 11px !important;
+    }
+    
+    /* Padding dan spacing di mobile */
+    .bento-card {
+        padding: 1.5rem !important;
+    }
+    
+    /* Navigation mobile */
+    nav {
+        padding: 1rem 0.5rem;
+    }
+}
 
-.hover\:bg-blue-600:hover { background-color: var(--accent-color) !important; opacity: 0.9; }
-.hover\:text-blue-500:hover { color: var(--accent-color) !important; }
+/* Tablet improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .text-\[10px\] { font-size: 11px !important; }
+    .text-\[9px\] { font-size: 10px !important; }
+    .text-\[8px\] { font-size: 9px !important; }
+}
+
+/* --- 8. COLOR SYSTEM OVERRIDES (FIXED) --- */
+
+/* Pastikan semua warna biru menggunakan CSS variable */
+.text-blue-500, 
+.text-blue-600,
+.text-blue-400,
+.text-blue-300 { 
+    color: var(--accent-color) !important; 
+}
+
+.bg-blue-500, 
+.bg-blue-600,
+.bg-blue-400 { 
+    background-color: var(--accent-color) !important; 
+}
+
+.border-blue-500, 
+.border-blue-600,
+.border-blue-400 { 
+    border-color: var(--accent-color) !important; 
+}
+
+/* Hover states */
+.hover\:text-blue-500:hover,
+.hover\:text-blue-600:hover,
+.hover\:text-blue-400:hover { 
+    color: var(--accent-color) !important; 
+}
+
+.hover\:bg-blue-500:hover,
+.hover\:bg-blue-600:hover { 
+    background-color: var(--accent-color) !important; 
+    opacity: 0.9; 
+}
+
+.hover\:border-blue-500:hover,
+.hover\:border-blue-600:hover { 
+    border-color: var(--accent-color) !important; 
+}
+
+/* Group hover states */
+.group:hover .group-hover\:text-blue-500,
+.group:hover .group-hover\:text-blue-400 {
+    color: var(--accent-color) !important;
+}
+
+/* Accent color untuk icon colors di service cards */
+.text-amber-500 { color: #f59e0b !important; } /* Keep amber for SD */
+.text-purple-500 { color: #8b5cf6 !important; } /* Keep purple for SMA */
+.text-red-500 { color: #ef4444 !important; } /* Keep red for UTBK */
+.text-green-500,
+.text-green-400 { color: #10b981 !important; } /* Keep green for selfcare */
+.text-orange-500,
+.text-orange-400 { color: #f59e0b !important; } /* Keep orange for outfit */
+.text-pink-500 { color: #ec4899 !important; } /* Keep pink for instagram */
+
+/* Tapi border hover tetap pakai accent */
+.hover\:border-amber-500:hover,
+.hover\:border-blue-500:hover,
+.hover\:border-purple-500:hover,
+.hover\:border-red-500:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* --- 9. SPECIAL COMPONENTS --- */
+
+/* Scroll progress bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--accent-color);
+    z-index: 9000;
+    transition: width 0.1s ease;
+}
+
+/* Modal styles (untuk va-service.html) */
+.modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab active state */
+.tab-active { 
+    color: var(--accent-color) !important; 
+    border-bottom: 2px solid var(--accent-color); 
+}
+
+/* Workflow step hover */
+.workflow-step:hover .step-number { 
+    opacity: 1; 
+    transform: translateY(-5px); 
+}
+
+/* --- 10. ACCESSIBILITY --- */
+
+/* Focus states untuk keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Reduced motion untuk users yang prefer */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    #cursor-dot,
+    #cursor-ring {
+        display: none !important;
+    }
+}
+
+/* --- 11. PRINT STYLES --- */
+@media print {
+    #cursor-dot,
+    #cursor-ring,
+    #scroll-progress,
+    #menuOverlay,
+    nav button {
+        display: none !important;
+    }
+}
