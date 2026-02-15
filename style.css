@@ -150,7 +150,7 @@ body.cursor-hover #cursor-dot {
     z-index: 2; 
 }
 
-/* REAKSI ELEMEN SAAT HOVER BENTO (Improved) */
+/* REAKSI ELEMEN SAAT HOVER BENTO (UPDATED: Hover individual, bukan barengan) */
 .bento-card p, 
 .bento-card span, 
 .bento-card i, 
@@ -160,25 +160,35 @@ body.cursor-hover #cursor-dot {
 
 /* Teks berubah jadi Putih Terang saat hover */
 .bento-card:hover p,
-.bento-card:hover span:not([style*="color: var(--accent-color)"]) { 
+.bento-card:hover span:not([style*="color: var(--accent-color)"]):not([class*="text-"]) { 
     color: #ffffff !important;
     opacity: 1 !important;
 }
 
-/* Icon circles menyala saat hover */
-.bento-card:hover .w-12.h-12,
-.bento-card:hover .w-10.h-10,
-.bento-card:hover .w-14.h-14 {
+/* Icon circles menyala HANYA jika ada style var(--accent-color) */
+.bento-card:hover .w-12.h-12[style*="var(--accent-color)"],
+.bento-card:hover .w-10.h-10[style*="var(--accent-color)"],
+.bento-card:hover .w-14.h-14[style*="var(--accent-color)"],
+.bento-card:hover .w-16.h-16[style*="var(--accent-color)"] {
     background-color: var(--accent-color) !important;
     box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 50%);
     transform: scale(1.05);
 }
 
-.bento-card:hover .w-12.h-12 i,
-.bento-card:hover .w-10.h-10 i,
-.bento-card:hover .w-14.h-14 i {
-    color: white !important;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+/* Icon dengan warna brand TETAP saat hover parent */
+.bento-card .w-12.h-12[style*="#25D366"],
+.bento-card .w-12.h-12[style*="#E4405F"],
+.bento-card .w-12.h-12[style*="#1877F2"],
+.bento-card .w-12.h-12[style*="#5865F2"],
+.bento-card .w-12.h-12[style*="#1769FF"] {
+    /* Tidak berubah saat parent hover */
+}
+
+/* Tapi scale saat LANGSUNG di-hover */
+.bento-card .w-12.h-12:hover,
+.bento-card .w-14.h-14:hover,
+.bento-card .w-16.h-16:hover {
+    transform: scale(1.1) !important;
 }
 
 /* --- 4. NAVIGATION --- */
