@@ -48,7 +48,7 @@
             </button>
         </nav>
 
-        <!-- Hero Section (Lebih compact) -->
+        <!-- Hero Section -->
         <header class="mb-16 md:mb-20 text-center md:text-left animate-flow delay-1">
             <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
                 <span class="h-[1px] w-12 md:w-16" style="background-color: var(--accent-color);"></span>
@@ -74,9 +74,9 @@
             </div>
         </header>
 
-        <!-- Services Grid (MAIN FOCUS - Paling besar dan menonjol) -->
+        <!-- Services Grid -->
         <section id="services" class="mb-20 md:mb-28 animate-flow delay-2">
-            <div class="flex items-center gap-3 mb-8 md:mb-10">
+            <div class="flex items-center gap-3 mb-10 md:mb-12">
                 <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
                 <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">
                     What I <span style="color: var(--accent-color);">Offer</span>
@@ -85,7 +85,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <!-- VA Service Card (Large - dengan gambar) -->
+                <!-- VA Service Card -->
                 <a href="va-service.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
                     <!-- Background Image -->
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
@@ -119,7 +119,7 @@
                     </div>
                 </a>
 
-                <!-- Math Edu Card (dengan gambar) -->
+                <!-- Math Edu Card -->
                 <a href="math-edu.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
                     <!-- Background Image -->
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
@@ -152,10 +152,61 @@
                     </div>
                 </a>
 
-                <!-- About Card -->
-                <a href="biodata.html" class="bento-card overflow-hidden group block relative h-[300px]">
+                <!-- Recommendations Card (Full width) -->
+                <a href="recommendations.html" class="bento-card overflow-hidden group block relative h-[350px] md:col-span-2">
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-5">
+                        <div class="grid grid-cols-6 gap-3 h-full p-6">
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-center p-8 md:p-12 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-4 bg-orange-500/20 text-orange-400 w-fit">
+                            <i class="fa-solid fa-star"></i> Curated Picks
+                        </div>
+                        
+                        <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-none mb-3 text-white">
+                            Tools & Gear I Use
+                        </h3>
+                        
+                        <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                            Recommendations untuk <span class="text-white font-medium">productivity tools</span>, buku, dan gear yang saya pakai sehari-hari.
+                        </p>
+                        
+                        <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-orange-400 group-hover:text-orange-300 transition">
+                            Browse Collection <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="mb-20 md:mb-28 animate-flow delay-3">
+            <div class="flex items-center gap-3 mb-10 md:mb-12">
+                <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
+                <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">
+                    Know <span style="color: var(--accent-color);">Me</span> Better
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- About Card (Larger) -->
+                <a href="biodata.html" class="bento-card overflow-hidden group block relative h-[400px] md:col-span-2">
                     <!-- Background Image -->
-                    <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition duration-700">
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
                         <img src="profil.webp" 
                              class="w-full h-full object-cover object-top grayscale" alt="Hendri Irawan">
                     </div>
@@ -164,69 +215,69 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
                     
                     <!-- Content -->
-                    <div class="relative h-full flex flex-col justify-end p-8">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-3 bg-white/10 text-gray-300 w-fit">
-                            <i class="fa-solid fa-user"></i> Story
+                    <div class="relative h-full flex flex-col justify-end p-8 md:p-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-4 bg-white/10 text-gray-300 w-fit">
+                            <i class="fa-solid fa-user"></i> My Story
                         </div>
                         
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-2 text-white">
-                            About Me
+                        <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-none mb-4 text-white">
+                            Behind the Work
                         </h3>
                         
-                        <p class="text-xs md:text-sm text-gray-400 mb-3">
-                            Background, journey, dan filosofi kerja saya.
+                        <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed max-w-xl">
+                            Dari background <span class="text-white font-medium">IT</span> hingga menjadi <span class="text-white font-medium">multitalenta</span>. Filosofi kerja saya: <span class="text-white font-medium italic">"Gabut adalah kesempatan untuk bereksperimen"</span>.
                         </p>
                         
-                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition">
-                            Read Story <i class="fa-solid fa-arrow-right text-[7px] group-hover:translate-x-1 transition"></i>
+                        <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition">
+                            Read Full Story <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
                         </div>
                     </div>
                 </a>
 
-                <!-- Recommendations Card -->
-                <a href="recommendations.html" class="bento-card overflow-hidden group block relative h-[300px]">
-                    <!-- Background Pattern -->
-                    <div class="absolute inset-0 opacity-5">
-                        <div class="grid grid-cols-4 gap-4 h-full p-6">
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
-                            <div class="bg-white rounded-lg"></div>
+                <!-- Quick Facts (Smaller, stacked) -->
+                <div class="flex flex-col gap-6">
+                    <div class="bento-card p-6 md:p-8 flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
+                                <i class="fa-solid fa-map-marker-alt" style="color: var(--accent-color);"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-bold">Based in</p>
+                                <p class="text-sm font-black text-white">Blitar, Indonesia</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Gradient Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
-                    
-                    <!-- Content -->
-                    <div class="relative h-full flex flex-col justify-end p-8">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-3 bg-orange-500/20 text-orange-400 w-fit">
-                            <i class="fa-solid fa-star"></i> Curated
-                        </div>
-                        
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-2 text-white">
-                            My Picks
-                        </h3>
-                        
-                        <p class="text-xs md:text-sm text-gray-400 mb-3">
-                            Tools, buku, dan gear yang saya pakai sehari-hari.
-                        </p>
-                        
-                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-orange-400 group-hover:text-orange-300 transition">
-                            Browse Collection <i class="fa-solid fa-arrow-right text-[7px] group-hover:translate-x-1 transition"></i>
+
+                    <div class="bento-card p-6 md:p-8 flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center bg-purple-500/10">
+                                <i class="fa-solid fa-graduation-cap text-purple-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-bold">Education</p>
+                                <p class="text-sm font-black text-white">IT Background</p>
+                            </div>
                         </div>
                     </div>
-                </a>
+
+                    <div class="bento-card p-6 md:p-8 flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center bg-green-500/10">
+                                <i class="fa-solid fa-clock text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-bold">Experience</p>
+                                <p class="text-sm font-black text-white">3+ Years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
 
         <!-- Contact & Social Section -->
-        <section class="mb-20 animate-flow delay-3">
+        <section class="mb-20 animate-flow delay-4">
             <div class="bento-card p-8 md:p-10">
                 <!-- Header -->
                 <div class="text-center mb-8">
@@ -258,8 +309,8 @@
                         <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Instagram</span>
                     </a>
 
-                    <!-- Facebook -->
-                    <a href="https://facebook.com/your-facebook" target="_blank" 
+                    <!-- Facebook - GANTI LINK INI -->
+                    <a href="https://facebook.com/YOUR-FACEBOOK-LINK" target="_blank" 
                        class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
                         <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #1877F2, transparent 90%);">
                             <i class="fa-brands fa-facebook text-2xl text-[#1877F2] group-hover:scale-110 transition"></i>
@@ -267,8 +318,8 @@
                         <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Facebook</span>
                     </a>
 
-                    <!-- Discord -->
-                    <a href="https://discord.com/users/your-discord" target="_blank" 
+                    <!-- Discord - GANTI LINK INI -->
+                    <a href="https://discord.com/users/YOUR-DISCORD-ID" target="_blank" 
                        class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
                         <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #5865F2, transparent 90%);">
                             <i class="fa-brands fa-discord text-2xl text-[#5865F2] group-hover:scale-110 transition"></i>
@@ -276,8 +327,8 @@
                         <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Discord</span>
                     </a>
 
-                    <!-- Behance -->
-                    <a href="https://behance.net/your-behance" target="_blank" 
+                    <!-- Behance - GANTI LINK INI -->
+                    <a href="https://behance.net/YOUR-BEHANCE" target="_blank" 
                        class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
                         <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #1769FF, transparent 90%);">
                             <i class="fa-brands fa-behance text-2xl text-[#1769FF] group-hover:scale-110 transition"></i>
@@ -295,9 +346,9 @@
                     </button>
                 </div>
 
-                <!-- Support Me Button -->
+                <!-- Support Me Button - GANTI LINK INI -->
                 <div class="pt-6 border-t border-white/10">
-                    <a href="https://trakteer.id/your-username" target="_blank" 
+                    <a href="https://trakteer.id/YOUR-USERNAME" target="_blank" 
                        class="block">
                         <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 group hover:bg-white/5 transition-all relative overflow-hidden">
                             <!-- Animated Background -->
@@ -337,7 +388,7 @@
         </footer>
     </div>
 
-    <!-- Menu Overlay (WITH THEME SWITCHER INSIDE) -->
+    <!-- Menu Overlay -->
     <div id="menuOverlay" style="display: none;">
         <div class="text-center px-6 max-w-4xl mx-auto">
             <!-- Navigation Links -->
@@ -349,7 +400,7 @@
                 <a href="recommendations.html" class="menu-link block mb-5">Picks</a>
             </div>
             
-            <!-- Theme Switcher (MOVED HERE - Sebagai pemanis di menu) -->
+            <!-- Theme Switcher (Di menu sebagai pemanis) -->
             <div class="mb-10 pb-10 border-b border-white/10">
                 <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
                 <div class="flex flex-wrap gap-3 justify-center">
@@ -382,8 +433,8 @@
                     <span class="text-[8px] text-gray-600 uppercase tracking-wider">IG</span>
                 </a>
 
-                <!-- Facebook -->
-                <a href="https://facebook.com/your-facebook" target="_blank" 
+                <!-- Facebook - GANTI LINK INI -->
+                <a href="https://facebook.com/YOUR-FACEBOOK-LINK" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
                         <i class="fa-brands fa-facebook text-xl text-gray-600 group-hover:text-[#1877F2] transition"></i>
@@ -391,8 +442,8 @@
                     <span class="text-[8px] text-gray-600 uppercase tracking-wider">FB</span>
                 </a>
 
-                <!-- Discord -->
-                <a href="https://discord.com/users/your-discord" target="_blank" 
+                <!-- Discord - GANTI LINK INI -->
+                <a href="https://discord.com/users/YOUR-DISCORD-ID" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
                         <i class="fa-brands fa-discord text-xl text-gray-600 group-hover:text-[#5865F2] transition"></i>
@@ -400,8 +451,8 @@
                     <span class="text-[8px] text-gray-600 uppercase tracking-wider">DC</span>
                 </a>
 
-                <!-- Behance -->
-                <a href="https://behance.net/your-behance" target="_blank" 
+                <!-- Behance - GANTI LINK INI -->
+                <a href="https://behance.net/YOUR-BEHANCE" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
                         <i class="fa-brands fa-behance text-xl text-gray-600 group-hover:text-[#1769FF] transition"></i>
@@ -419,9 +470,9 @@
                 </button>
             </div>
 
-            <!-- Support Button in Menu -->
+            <!-- Support Button in Menu - GANTI LINK INI -->
             <div class="mb-10">
-                <a href="https://trakteer.id/your-username" target="_blank" 
+                <a href="https://trakteer.id/YOUR-USERNAME" target="_blank" 
                    class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-xs uppercase tracking-wider transition-all hover:scale-105" 
                    style="background-color: var(--accent-color); color: white;">
                     <i class="fa-solid fa-heart"></i>
