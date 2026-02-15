@@ -32,7 +32,7 @@
     <div class="max-w-7xl mx-auto">
         
         <!-- Navigation -->
-        <nav class="flex justify-between items-center mb-12 md:mb-20 px-2">
+        <nav class="flex justify-between items-center mb-12 md:mb-16 px-2">
             <!-- Logo -->
             <div class="flex flex-col leading-none">
                 <span class="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter">
@@ -43,31 +43,30 @@
 
             <!-- Hamburger Menu Button -->
             <button onclick="toggleMenu()" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[2000]">
-                <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-                <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+                <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+                <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
             </button>
         </nav>
 
-        <!-- Hero Section -->
-        <header class="mb-16 md:mb-24 text-center md:text-left animate-flow delay-1">
+        <!-- Hero Section (Lebih compact) -->
+        <header class="mb-16 md:mb-20 text-center md:text-left animate-flow delay-1">
             <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
                 <span class="h-[1px] w-12 md:w-16" style="background-color: var(--accent-color);"></span>
                 <span class="font-bold text-[9px] md:text-[10px] tracking-[0.4em] uppercase" style="color: var(--accent-color);">Welcome to My Ecosystem</span>
             </div>
             
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-none mb-6 md:mb-8">
-                Sistematis.<br>
-                <span style="color: var(--accent-color);">Kreatif.</span><br>
-                Efisien.
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter italic uppercase leading-tight mb-6">
+                Your Partner for<br>
+                <span style="color: var(--accent-color);">Systematic</span> Solutions
             </h1>
             
-            <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto md:mx-0 font-light leading-relaxed italic mb-8">
-                Saya <span class="text-white font-medium">Hendri Irawan</span>, menggabungkan logika IT dengan sentuhan kreatif untuk memberikan solusi digital yang sistematis dan menarik.
+            <p class="text-base md:text-lg text-gray-400 max-w-xl mx-auto md:mx-0 font-light leading-relaxed mb-8">
+                Menggabungkan <span class="text-white font-medium">logika IT</span> dengan sentuhan kreatif. Dari data management hingga visual design, saya bantu efisiensi workflow Anda.
             </p>
 
             <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                 <a href="https://wa.me/6283853202544" target="_blank" class="px-8 py-4 rounded-full font-black text-[10px] tracking-widest uppercase text-white transition-all hover:scale-105 hover:shadow-xl" style="background-color: var(--accent-color);">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> Chat WhatsApp
+                    <i class="fa-brands fa-whatsapp mr-2"></i> Let's Talk
                 </a>
                 <button onclick="scrollToServices()" class="px-8 py-4 rounded-full font-black text-[10px] tracking-widest uppercase border border-white/20 text-white hover:border-white/40 transition-all hover:scale-105">
                     Explore Services
@@ -75,97 +74,150 @@
             </div>
         </header>
 
-        <!-- Services Grid -->
-        <section id="services" class="mb-16 md:mb-24 animate-flow delay-2">
-            <div class="flex items-center gap-3 mb-8 md:mb-12">
+        <!-- Services Grid (MAIN FOCUS - Paling besar dan menonjol) -->
+        <section id="services" class="mb-20 md:mb-28 animate-flow delay-2">
+            <div class="flex items-center gap-3 mb-8 md:mb-10">
                 <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
-                <h2 class="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">
+                <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">
                     What I <span style="color: var(--accent-color);">Offer</span>
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <!-- VA Service Card -->
-                <a href="va-service.html" class="bento-card p-6 md:p-8 group relative overflow-hidden block">
-                    <div class="absolute top-4 right-4">
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
-                            <i class="fa-solid fa-laptop-code text-lg md:text-xl transition-all duration-500" style="color: var(--accent-color);"></i>
-                        </div>
+                <!-- VA Service Card (Large - dengan gambar) -->
+                <a href="va-service.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" 
+                             class="w-full h-full object-cover grayscale" alt="Data Analytics">
                     </div>
                     
-                    <div class="mt-16 md:mt-20">
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-3 text-white">
-                            Virtual<br>Assistant
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-8 md:p-10">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-4" 
+                                 style="background-color: color-mix(in srgb, var(--accent-color), transparent 85%); color: var(--accent-color);">
+                                <i class="fa-solid fa-laptop-code"></i> Main Service
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-none mb-3 text-white">
+                            Virtual Assistant
                         </h3>
-                        <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wide font-bold mb-4">
-                            Data Admin & Visual Assets
+                        
+                        <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                            Spesialisasi <span class="text-white font-medium">Data Admin</span> dan <span class="text-white font-medium">Visual Assets</span>. Excel architecture, presentation design, hingga digital operations.
                         </p>
-                        <div class="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest" style="color: var(--accent-color);">
-                            Explore <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        
+                        <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest" style="color: var(--accent-color);">
+                            Learn More <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
                         </div>
                     </div>
                 </a>
 
-                <!-- Math Edu Card -->
-                <a href="math-edu.html" class="bento-card p-6 md:p-8 group relative overflow-hidden block">
-                    <div class="absolute top-4 right-4">
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
-                            <i class="fa-solid fa-calculator text-lg md:text-xl transition-all duration-500" style="color: var(--accent-color);"></i>
-                        </div>
+                <!-- Math Edu Card (dengan gambar) -->
+                <a href="math-edu.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" 
+                             class="w-full h-full object-cover grayscale" alt="Mathematics">
                     </div>
                     
-                    <div class="mt-16 md:mt-20">
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-3 text-white">
-                            Math<br>Educator
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-8 md:p-10">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-4 bg-purple-500/20 text-purple-400">
+                                <i class="fa-solid fa-calculator"></i> Education
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-none mb-3 text-white">
+                            Math Educator
                         </h3>
-                        <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wide font-bold mb-4">
-                            Private Tutoring SD-UTBK
+                        
+                        <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                            Bimbingan privat matematika <span class="text-white font-medium">SD hingga UTBK</span>. Fokus pada logic building, bukan sekadar hafal rumus.
                         </p>
-                        <div class="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest" style="color: var(--accent-color);">
-                            Explore <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        
+                        <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-purple-400">
+                            Learn More <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- About Card -->
-                <a href="biodata.html" class="bento-card p-6 md:p-8 group relative overflow-hidden block">
-                    <div class="absolute top-4 right-4">
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
-                            <i class="fa-solid fa-user text-lg md:text-xl transition-all duration-500" style="color: var(--accent-color);"></i>
-                        </div>
+                <a href="biodata.html" class="bento-card overflow-hidden group block relative h-[300px]">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition duration-700">
+                        <img src="profil.webp" 
+                             class="w-full h-full object-cover object-top grayscale" alt="Hendri Irawan">
                     </div>
                     
-                    <div class="mt-16 md:mt-20">
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-3 text-white">
-                            About<br>Me
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-3 bg-white/10 text-gray-300 w-fit">
+                            <i class="fa-solid fa-user"></i> Story
+                        </div>
+                        
+                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-2 text-white">
+                            About Me
                         </h3>
-                        <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wide font-bold mb-4">
-                            Background & Journey
+                        
+                        <p class="text-xs md:text-sm text-gray-400 mb-3">
+                            Background, journey, dan filosofi kerja saya.
                         </p>
-                        <div class="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest" style="color: var(--accent-color);">
-                            Explore <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition">
+                            Read Story <i class="fa-solid fa-arrow-right text-[7px] group-hover:translate-x-1 transition"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- Recommendations Card -->
-                <a href="recommendations.html" class="bento-card p-6 md:p-8 group relative overflow-hidden block">
-                    <div class="absolute top-4 right-4">
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
-                            <i class="fa-solid fa-star text-lg md:text-xl transition-all duration-500" style="color: var(--accent-color);"></i>
+                <a href="recommendations.html" class="bento-card overflow-hidden group block relative h-[300px]">
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-5">
+                        <div class="grid grid-cols-4 gap-4 h-full p-6">
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
+                            <div class="bg-white rounded-lg"></div>
                         </div>
                     </div>
                     
-                    <div class="mt-16 md:mt-20">
-                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-3 text-white">
-                            Curated<br>Picks
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider mb-3 bg-orange-500/20 text-orange-400 w-fit">
+                            <i class="fa-solid fa-star"></i> Curated
+                        </div>
+                        
+                        <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-2 text-white">
+                            My Picks
                         </h3>
-                        <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wide font-bold mb-4">
-                            Tools & Recommendations
+                        
+                        <p class="text-xs md:text-sm text-gray-400 mb-3">
+                            Tools, buku, dan gear yang saya pakai sehari-hari.
                         </p>
-                        <div class="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-widest" style="color: var(--accent-color);">
-                            Explore <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-orange-400 group-hover:text-orange-300 transition">
+                            Browse Collection <i class="fa-solid fa-arrow-right text-[7px] group-hover:translate-x-1 transition"></i>
                         </div>
                     </div>
                 </a>
@@ -173,48 +225,102 @@
             </div>
         </section>
 
-        <!-- Theme Switcher Section -->
-        <section class="mb-16 md:mb-24 animate-flow delay-3">
-            <div class="bento-card p-8 md:p-12">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
-                    <h3 class="text-lg md:text-xl font-black uppercase italic tracking-tighter text-white">
-                        Personalize <span style="color: var(--accent-color);">Theme</span>
+        <!-- Contact & Social Section -->
+        <section class="mb-20 animate-flow delay-3">
+            <div class="bento-card p-8 md:p-10">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-none mb-3 text-white">
+                        Let's <span style="color: var(--accent-color);">Connect</span>
                     </h3>
+                    <p class="text-xs md:text-sm text-gray-400 italic">
+                        Diskusikan project Anda atau sekadar say hi!
+                    </p>
                 </div>
-                
-                <p class="text-xs md:text-sm text-gray-400 mb-6 italic">Pilih warna accent favoritmu. Preferensi akan tersimpan otomatis.</p>
-                
-                <div class="flex flex-wrap gap-3 md:gap-4">
-                    <button onclick="setTheme('#3b82f6')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;" title="Blue"></button>
-                    <button onclick="setTheme('#8b5cf6')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;" title="Purple"></button>
-                    <button onclick="setTheme('#ec4899')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;" title="Pink"></button>
-                    <button onclick="setTheme('#10b981')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;" title="Green"></button>
-                    <button onclick="setTheme('#f59e0b')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;" title="Orange"></button>
-                    <button onclick="setTheme('#ef4444')" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;" title="Red"></button>
-                </div>
-            </div>
-        </section>
 
-        <!-- Contact CTA -->
-        <section class="mb-16 md:mb-24 animate-flow delay-4">
-            <div class="bento-card p-8 md:p-12 text-center">
-                <h3 class="text-3xl md:text-5xl font-black italic uppercase leading-none mb-4 text-white">
-                    Let's Work <span style="color: var(--accent-color);">Together</span>
-                </h3>
-                <p class="text-sm md:text-base text-gray-400 mb-8 italic max-w-2xl mx-auto">
-                    Punya project atau butuh bantuan? Hubungi saya dan mari diskusi solusi terbaik untuk kebutuhan Anda.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="https://wa.me/6283853202544" target="_blank" class="px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[10px] tracking-widest uppercase text-white hover:scale-105 transition-all inline-flex items-center gap-2" style="background-color: var(--accent-color);">
-                        <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                <!-- Social Links Grid (6 items) -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/6283853202544" target="_blank" 
+                       class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #25D366, transparent 90%);">
+                            <i class="fa-brands fa-whatsapp text-2xl text-[#25D366] group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">WhatsApp</span>
                     </a>
-                    <button onclick="copyEmail('mashendry450@gmail.com')" class="px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[10px] tracking-widest uppercase border border-white/20 text-white hover:border-white/40 hover:scale-105 transition-all inline-flex items-center gap-2">
-                        <i class="fa-solid fa-envelope text-base"></i> Copy Email
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/vhen_virtual" target="_blank" 
+                       class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #E4405F, transparent 90%);">
+                            <i class="fa-brands fa-instagram text-2xl text-[#E4405F] group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Instagram</span>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/your-facebook" target="_blank" 
+                       class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #1877F2, transparent 90%);">
+                            <i class="fa-brands fa-facebook text-2xl text-[#1877F2] group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Facebook</span>
+                    </a>
+
+                    <!-- Discord -->
+                    <a href="https://discord.com/users/your-discord" target="_blank" 
+                       class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #5865F2, transparent 90%);">
+                            <i class="fa-brands fa-discord text-2xl text-[#5865F2] group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Discord</span>
+                    </a>
+
+                    <!-- Behance -->
+                    <a href="https://behance.net/your-behance" target="_blank" 
+                       class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, #1769FF, transparent 90%);">
+                            <i class="fa-brands fa-behance text-2xl text-[#1769FF] group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Behance</span>
+                    </a>
+
+                    <!-- Email -->
+                    <button onclick="copyEmail('mashendry450@gmail.com')" 
+                            class="bento-card p-5 flex flex-col items-center justify-center gap-3 group hover:bg-white/5 transition-all cursor-pointer">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
+                            <i class="fa-solid fa-envelope text-2xl group-hover:scale-110 transition" style="color: var(--accent-color);"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-white transition">Email</span>
                     </button>
-                    <a href="https://www.instagram.com/vhen_virtual" target="_blank" class="px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[10px] tracking-widest uppercase border border-white/20 text-white hover:border-white/40 hover:scale-105 transition-all inline-flex items-center gap-2">
-                        <i class="fa-brands fa-instagram text-base"></i> Instagram
+                </div>
+
+                <!-- Support Me Button -->
+                <div class="pt-6 border-t border-white/10">
+                    <a href="https://trakteer.id/your-username" target="_blank" 
+                       class="block">
+                        <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 group hover:bg-white/5 transition-all relative overflow-hidden">
+                            <!-- Animated Background -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                                 style="background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 95%) 0%, transparent 100%);">
+                            </div>
+                            
+                            <!-- Content -->
+                            <div class="relative z-10 flex items-center gap-4">
+                                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
+                                    <i class="fa-solid fa-heart text-2xl md:text-3xl group-hover:scale-110 transition" style="color: var(--accent-color);"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-lg md:text-xl font-black italic uppercase text-white mb-1">Support My Work</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-400 italic">Traktir saya kopi untuk tetap produktif! ☕</p>
+                                </div>
+                            </div>
+                            
+                            <div class="relative z-10 px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[9px] md:text-[10px] tracking-widest uppercase text-white transition-all group-hover:scale-105" 
+                                 style="background-color: var(--accent-color);">
+                                <i class="fa-solid fa-coffee mr-2"></i> Traktir Sekarang
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -231,29 +337,101 @@
         </footer>
     </div>
 
-    <!-- Menu Overlay -->
+    <!-- Menu Overlay (WITH THEME SWITCHER INSIDE) -->
     <div id="menuOverlay" style="display: none;">
-        <div class="text-center">
-            <a href="index.html" class="menu-link block mb-4 md:mb-6">Home</a>
-            <a href="va-service.html" class="menu-link block mb-4 md:mb-6">Services</a>
-            <a href="math-edu.html" class="menu-link block mb-4 md:mb-6">Math Edu</a>
-            <a href="biodata.html" class="menu-link block mb-4 md:mb-6">About</a>
-            <a href="recommendations.html" class="menu-link block mb-4 md:mb-6">Picks</a>
+        <div class="text-center px-6 max-w-4xl mx-auto">
+            <!-- Navigation Links -->
+            <div class="mb-10">
+                <a href="index.html" class="menu-link block mb-5">Home</a>
+                <a href="va-service.html" class="menu-link block mb-5">Services</a>
+                <a href="math-edu.html" class="menu-link block mb-5">Math Edu</a>
+                <a href="biodata.html" class="menu-link block mb-5">About</a>
+                <a href="recommendations.html" class="menu-link block mb-5">Picks</a>
+            </div>
             
-            <div class="mt-12 md:mt-16 flex gap-6 md:gap-8 justify-center text-2xl md:text-3xl">
-                <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-600 hover:text-white transition" style="hover:color: var(--accent-color);">
-                    <i class="fa-brands fa-whatsapp"></i>
+            <!-- Theme Switcher (MOVED HERE - Sebagai pemanis di menu) -->
+            <div class="mb-10 pb-10 border-b border-white/10">
+                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button onclick="setTheme('#3b82f6')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;"></button>
+                    <button onclick="setTheme('#ec4899')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;"></button>
+                    <button onclick="setTheme('#10b981')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;"></button>
+                    <button onclick="setTheme('#ef4444')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;"></button>
+                </div>
+            </div>
+
+            <!-- Social Icons Grid -->
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-4 mb-10 max-w-2xl mx-auto">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6283853202544" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-whatsapp text-xl text-gray-600 group-hover:text-[#25D366] transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">WA</span>
                 </a>
-                <a href="https://www.instagram.com/vhen_virtual" target="_blank" class="text-gray-600 hover:text-white transition" style="hover:color: var(--accent-color);">
-                    <i class="fa-brands fa-instagram"></i>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/vhen_virtual" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-instagram text-xl text-gray-600 group-hover:text-[#E4405F] transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">IG</span>
                 </a>
-                <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-600 hover:text-white transition" style="hover:color: var(--accent-color);">
-                    <i class="fa-solid fa-envelope"></i>
+
+                <!-- Facebook -->
+                <a href="https://facebook.com/your-facebook" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-facebook text-xl text-gray-600 group-hover:text-[#1877F2] transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">FB</span>
+                </a>
+
+                <!-- Discord -->
+                <a href="https://discord.com/users/your-discord" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-discord text-xl text-gray-600 group-hover:text-[#5865F2] transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">DC</span>
+                </a>
+
+                <!-- Behance -->
+                <a href="https://behance.net/your-behance" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-behance text-xl text-gray-600 group-hover:text-[#1769FF] transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">BE</span>
+                </a>
+
+                <!-- Email -->
+                <button onclick="copyEmail('mashendry450@gmail.com')" 
+                        class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-solid fa-envelope text-xl text-gray-600 group-hover:text-white transition"></i>
+                    </div>
+                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">Mail</span>
                 </button>
             </div>
 
-            <div class="mt-8 md:mt-12">
-                <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
+            <!-- Support Button in Menu -->
+            <div class="mb-10">
+                <a href="https://trakteer.id/your-username" target="_blank" 
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-xs uppercase tracking-wider transition-all hover:scale-105" 
+                   style="background-color: var(--accent-color); color: white;">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Support Me</span>
+                </a>
+            </div>
+
+            <!-- Tagline -->
+            <div>
+                <p class="text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
             </div>
         </div>
     </div>
