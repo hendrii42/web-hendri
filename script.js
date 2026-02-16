@@ -1,11 +1,12 @@
-/* HendriHub Global Logic v2.0
-   Fixed: Cursor Performance, Menu Animation, Error Handling
+/* HendriHub Global Logic v3.0
+   Fixed: Event Delegation, Menu Logic, Z-index, Performance
 */
 
 // --- GLOBAL STATE ---
 let cursorX = 0;
 let cursorY = 0;
 let isHovering = false;
+let cursorHoverInitialized = false;
 
 // --- DOM ELEMENTS (Cached for performance) ---
 const dot = document.getElementById('cursor-dot');
@@ -60,31 +61,28 @@ function updateBentoGlow(mouseX, mouseY) {
     });
 }
 
-// Initialize cursor hover effects
+// Initialize cursor hover effects (FIXED: Event Delegation)
 function initCursorHover() {
-    // Remove existing listeners first (prevent duplicates)
-    const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, .bento-card, input, textarea, select');
+    // Prevent double initialization
+    if (cursorHoverInitialized) return;
+    cursorHoverInitialized = true;
     
-    interactiveElements.forEach(el => {
-        // Remove old listeners by cloning (clean slate)
-        const newEl = el.cloneNode(true);
-        el.parentNode?.replaceChild(newEl, el);
-    });
-    
-    // Re-query after cloning
-    const elements = document.querySelectorAll('a, button, .cursor-pointer, .bento-card, input, textarea, select');
-    
-    elements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
+    // Use event delegation (better performance + no duplicates + safe)
+    document.addEventListener('mouseenter', (e) => {
+        const target = e.target.closest('a, button, .cursor-pointer, .bento-card, input, textarea, select');
+        if (target) {
             body.classList.add('cursor-hover');
             isHovering = true;
-        });
-        
-        el.addEventListener('mouseleave', () => {
+        }
+    }, true); // Use capture phase
+    
+    document.addEventListener('mouseleave', (e) => {
+        const target = e.target.closest('a, button, .cursor-pointer, .bento-card, input, textarea, select');
+        if (target) {
             body.classList.remove('cursor-hover');
             isHovering = false;
-        });
-    });
+        }
+    }, true); // Use capture phase
 }
 
 // Initialize on page load
@@ -103,12 +101,15 @@ function toggleMenu() {
     const l1 = document.getElementById('line1');
     const l2 = document.getElementById('line2');
     
-    if (!menu) return;
+    if (!menu) {
+        console.warn('Menu overlay not found');
+        return;
+    }
     
     if (menu.style.display === 'none' || !menu.classList.contains('active')) {
         // Open
         menu.style.display = 'flex';
-        void menu.offsetWidth;
+        void menu.offsetWidth; // Force reflow for CSS transition
         menu.classList.add('active');
         document.body.style.overflow = 'hidden'; // Disable scroll
         
@@ -118,6 +119,7 @@ function toggleMenu() {
             l2.style.transform = 'rotate(-45deg) translateY(-4px)';
         }
         
+        // Re-init cursor hover for menu items (safe now with event delegation)
         setTimeout(() => { if (window.initCursorHover) initCursorHover(); }, 100);
     } else {
         // Close
@@ -134,20 +136,59 @@ function toggleMenu() {
     }
 }
 
-// Close menu when clicking menu links
+// Close menu when clicking menu links (IMPROVED: Smart detection)
 document.addEventListener('DOMContentLoaded', () => {
     const menuLinks = document.querySelectorAll('#menuOverlay a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Small delay for better UX
+        link.addEventListener('click', (e) => {
+            // Don't close if external link (opens in new tab)
+            if (link.target === '_blank') {
+                return;
+            }
+            
+            // Don't close if anchor link on same page (smooth scroll instead)
+            if (link.href.includes('#') && link.pathname === window.location.pathname) {
+                e.preventDefault();
+                const targetId = link.href.split('#')[1];
+                const targetEl = document.getElementById(targetId);
+                
+                if (targetEl) {
+                    toggleMenu(); // Close menu first
+                    setTimeout(() => {
+                        targetEl.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 300);
+                }
+                return;
+            }
+            
+            // For normal navigation, close with small delay for better UX
             setTimeout(toggleMenu, 200);
         });
     });
 });
 
-// --- 3. THEME SWITCHER (ENHANCED) ---
+// --- 3. CLOSE MENU WITH ESC KEY ---
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('menuOverlay');
+        if (menu && menu.classList.contains('active')) {
+            toggleMenu();
+        }
+    }
+});
+
+// --- 4. THEME SWITCHER (ENHANCED) ---
 
 function setTheme(color) {
+    // Validate color input
+    if (!color || typeof color !== 'string') {
+        console.error('Invalid color provided');
+        return;
+    }
+    
     // Apply to current page
     document.documentElement.style.setProperty('--accent-color', color);
     
@@ -162,7 +203,7 @@ function setTheme(color) {
     showThemeChangeNotification(color);
 }
 
-// Show notification when theme changes
+// Show notification when theme changes (FIXED: Z-index)
 function showThemeChangeNotification(color) {
     // Remove existing notification if any
     const existing = document.getElementById('theme-notification');
@@ -186,7 +227,7 @@ function showThemeChangeNotification(color) {
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            z-index: 10001;
+            z-index: 9500;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         ">
@@ -227,7 +268,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- 4. CLOCK (IF ELEMENT EXISTS) ---
+// --- 5. CLOCK (IF ELEMENT EXISTS) ---
 
 function updateClock() {
     const clockElement = document.getElementById('clock');
@@ -248,7 +289,7 @@ if (document.getElementById('clock')) {
     updateClock();
 }
 
-// --- 5. SCROLL PROGRESS BAR ---
+// --- 6. SCROLL PROGRESS BAR (THROTTLED) ---
 
 let ticking = false;
 
@@ -272,9 +313,41 @@ function updateScrollProgress() {
     }
 }
 
-// --- 6. UTILITIES ---
+// --- 7. SMOOTH SCROLL UTILITIES ---
 
-// Copy email to clipboard with improved feedback
+// Scroll to services section (called from index.html button)
+function scrollToServices() {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+        servicesSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Scroll to top (called from footer button)
+function scrollToTop() {
+    window.scrollTo({ 
+        top: 0, 
+        behavior: 'smooth' 
+    });
+}
+
+// Generic smooth scroll to any element
+function scrollToElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// --- 8. COPY EMAIL TO CLIPBOARD ---
+
+// Copy email to clipboard with improved feedback (FIXED: Z-index)
 function copyEmail(email) {
     if (!email) {
         console.error('No email provided');
@@ -301,12 +374,18 @@ function fallbackCopyEmail(email) {
     textArea.value = email;
     textArea.style.position = 'fixed';
     textArea.style.left = '-999999px';
+    textArea.style.opacity = '0';
     body.appendChild(textArea);
     textArea.select();
+    textArea.setSelectionRange(0, 99999); // For mobile
     
     try {
-        document.execCommand('copy');
-        showCopyNotification('Email Copied!', true);
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopyNotification('Email Copied!', true);
+        } else {
+            showCopyNotification('Copy Failed', false);
+        }
     } catch (err) {
         console.error('Fallback copy failed:', err);
         showCopyNotification('Copy Failed', false);
@@ -315,7 +394,7 @@ function fallbackCopyEmail(email) {
     body.removeChild(textArea);
 }
 
-// Show copy notification
+// Show copy notification (FIXED: Z-index below cursor)
 function showCopyNotification(message, success) {
     // Remove existing notification
     const existing = document.getElementById('copy-toast');
@@ -339,7 +418,7 @@ function showCopyNotification(message, success) {
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            z-index: 10001;
+            z-index: 9500;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
             backdrop-filter: blur(10px);
@@ -359,7 +438,7 @@ function showCopyNotification(message, success) {
         }
     });
     
-    // Auto remove
+    // Auto remove after 2 seconds
     setTimeout(() => {
         const toastEl = toast.querySelector('div');
         if (toastEl) {
@@ -369,15 +448,7 @@ function showCopyNotification(message, success) {
     }, 2000);
 }
 
-// Smooth scroll to top
-function scrollToTop() {
-    window.scrollTo({ 
-        top: 0, 
-        behavior: 'smooth' 
-    });
-}
-
-// --- 7. PERFORMANCE MONITORING (OPTIONAL DEV TOOL) ---
+// --- 9. PERFORMANCE MONITORING (DEV ONLY) ---
 
 // Log performance metrics in development
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -385,20 +456,64 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
         if (window.performance && window.performance.timing) {
             const perfData = window.performance.timing;
             const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`%c⚡ Page Load Time: ${pageLoadTime}ms`, 'color: #3b82f6; font-weight: bold;');
+            console.log(`%c⚡ Page Load Time: ${pageLoadTime}ms`, 'color: #3b82f6; font-weight: bold; font-size: 14px;');
+            
+            // Additional metrics
+            const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+            console.log(`%c📄 DOM Content Loaded: ${domContentLoaded}ms`, 'color: #10b981; font-weight: bold;');
         }
     });
 }
 
-// --- 8. ERROR HANDLING ---
+// --- 10. ERROR HANDLING ---
 
 // Global error handler (optional, for debugging)
 window.addEventListener('error', (event) => {
     console.error('Global error caught:', event.error);
     // You can send to analytics here if needed
+    // Example: sendToAnalytics('error', event.error);
 });
 
-// --- 9. EXPORT FOR MODULE USAGE (IF NEEDED) ---
+// Unhandled promise rejection handler
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('Unhandled promise rejection:', event.reason);
+    // You can send to analytics here if needed
+});
+
+// --- 11. LAZY LOAD IMAGES (OPTIONAL ENHANCEMENT) ---
+
+// Add 'loaded' class when lazy images finish loading
+if ('IntersectionObserver' in window) {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                });
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+// --- 12. PREVENT ACCIDENTAL DOUBLE-CLICK ZOOM (MOBILE) ---
+
+// Prevent double-tap zoom on mobile (better UX for buttons)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// --- 13. EXPORT FOR MODULE USAGE (IF NEEDED) ---
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -406,16 +521,13 @@ if (typeof module !== 'undefined' && module.exports) {
         setTheme,
         copyEmail,
         scrollToTop,
+        scrollToServices,
+        scrollToElement,
         initCursorHover
     };
 }
 
-// --- 10. Close menu dengan ESC key ---
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const menu = document.getElementById('menuOverlay');
-        if (menu && menu.classList.contains('active')) {
-            toggleMenu();
-        }
-    }
-});
+// --- 14. INITIALIZATION LOG ---
+
+console.log('%cHendriHub v3.0 Loaded ✓', 'color: #3b82f6; font-weight: bold; font-size: 16px; font-family: monospace;');
+console.log('%cLogic & Creative', 'color: #8b5cf6; font-style: italic;');
