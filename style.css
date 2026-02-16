@@ -1,5 +1,5 @@
 /* HendriHub Global Style v2.0
-   Fixed: Cursor, Color System, Responsive
+   Fixed: Cursor, Color System, Responsive, Hover Behavior
 */
 
 /* --- 1. RESET & GLOBAL --- */
@@ -118,7 +118,7 @@ body.cursor-hover #cursor-dot {
     isolation: isolate; 
 }
 
-/* Glow Effect - Lebih Subtle (Fixed: tidak terlalu silau) */
+/* Glow Effect - Lebih Subtle (tidak terlalu silau) */
 .bento-card::before {
     content: "";
     position: absolute;
@@ -150,7 +150,9 @@ body.cursor-hover #cursor-dot {
     z-index: 2; 
 }
 
-/* REAKSI ELEMEN SAAT HOVER BENTO (UPDATED: Hover individual, bukan barengan) */
+/* --- 4. HOVER BEHAVIOR (FIXED: Individual, bukan barengan) --- */
+
+/* Base transition untuk semua elemen */
 .bento-card p, 
 .bento-card span, 
 .bento-card i, 
@@ -158,40 +160,61 @@ body.cursor-hover #cursor-dot {
     transition: all 0.3s ease;
 }
 
-/* Teks berubah jadi Putih Terang saat hover */
-.bento-card:hover p,
-.bento-card:hover span:not([style*="color: var(--accent-color)"]):not([class*="text-"]) { 
-    color: #ffffff !important;
-    opacity: 1 !important;
+/* Hover HANYA untuk service cards (yang punya gambar background) */
+.bento-card:has(img) p,
+.bento-card:has(img) span:not([style*="color: var(--accent-color)"]):not([class*="text-"]) { 
+    transition: color 0.3s ease;
 }
 
-/* Icon circles menyala HANYA jika ada style var(--accent-color) */
-.bento-card:hover .w-12.h-12[style*="var(--accent-color)"],
-.bento-card:hover .w-10.h-10[style*="var(--accent-color)"],
-.bento-card:hover .w-14.h-14[style*="var(--accent-color)"],
-.bento-card:hover .w-16.h-16[style*="var(--accent-color)"] {
-    background-color: var(--accent-color) !important;
-    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 50%);
+.bento-card:has(img):hover p,
+.bento-card:has(img):hover span:not([style*="color: var(--accent-color)"]):not([class*="text-"]) { 
+    color: #ffffff;
+}
+
+/* Icon circles HANYA menyala jika punya var(--accent-color) */
+.bento-card:hover [style*="var(--accent-color)"] .w-12,
+.bento-card:hover [style*="var(--accent-color)"] .w-10,
+.bento-card:hover [style*="var(--accent-color)"] .w-14,
+.bento-card:hover [style*="var(--accent-color)"] .w-16 {
     transform: scale(1.05);
 }
 
-/* Icon dengan warna brand TETAP saat hover parent */
-.bento-card .w-12.h-12[style*="#25D366"],
-.bento-card .w-12.h-12[style*="#E4405F"],
-.bento-card .w-12.h-12[style*="#1877F2"],
-.bento-card .w-12.h-12[style*="#5865F2"],
-.bento-card .w-12.h-12[style*="#1769FF"] {
-    /* Tidak berubah saat parent hover */
+/* Icon dengan warna brand (WhatsApp, Instagram, dll) TIDAK berubah saat parent hover */
+.bento-card [style*="#25D366"],
+.bento-card [style*="#E4405F"],
+.bento-card [style*="#1877F2"],
+.bento-card [style*="#5865F2"],
+.bento-card [style*="#1769FF"] {
+    /* Tetap pada warna aslinya */
 }
 
-/* Tapi scale saat LANGSUNG di-hover */
-.bento-card .w-12.h-12:hover,
-.bento-card .w-14.h-14:hover,
-.bento-card .w-16.h-16:hover {
-    transform: scale(1.1) !important;
+/* Tapi scale saat icon LANGSUNG di-hover */
+.bento-card [style*="#25D366"]:hover i,
+.bento-card [style*="#E4405F"]:hover i,
+.bento-card [style*="#1877F2"]:hover i,
+.bento-card [style*="#5865F2"]:hover i,
+.bento-card [style*="#1769FF"]:hover i,
+.bento-card [style*="var(--accent-color)"]:hover i {
+    transform: scale(1.1);
 }
 
-/* --- 4. NAVIGATION --- */
+/* Email button dan Support button ISOLATED dari parent hover */
+button.bento-card,
+.bento-card button,
+.bento-card > a > .bento-card {
+    isolation: isolate;
+}
+
+/* Support Me card (nested bento) tidak terpengaruh parent */
+.bento-card .bento-card {
+    isolation: isolate;
+}
+
+.bento-card .bento-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- 5. NAVIGATION --- */
 
 nav {
     padding: 1.5rem 0.5rem;
@@ -205,7 +228,7 @@ nav {
     background: rgba(10, 10, 10, 0.8);
 }
 
-/* --- 5. MENU OVERLAY --- */
+/* --- 6. MENU OVERLAY (FIXED: Tidak nabrak) --- */
 
 #menuOverlay { 
     display: none; 
@@ -225,8 +248,15 @@ nav {
     opacity: 1;
 }
 
+/* Menu overlay padding */
+#menuOverlay > div {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Menu link size (CONTROLLED, tidak nabrak) */
 .menu-link { 
-    font-size: clamp(2rem, 8vw, 5rem); 
+    font-size: clamp(2rem, 7vw, 4.5rem); /* Lebih controlled */
     font-weight: 900; 
     text-transform: uppercase; 
     font-style: italic; 
@@ -235,6 +265,8 @@ nav {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     text-decoration: none;
     letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
 }
 
 .menu-link:hover { 
@@ -244,7 +276,14 @@ nav {
     letter-spacing: 0.02em;
 }
 
-/* --- 6. UTILITIES & ANIMATIONS --- */
+/* Menu link responsive */
+@media (max-width: 768px) {
+    .menu-link {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+    }
+}
+
+/* --- 7. UTILITIES & ANIMATIONS --- */
 
 .gradient-text { 
     background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%); 
@@ -289,7 +328,24 @@ nav {
     );
 }
 
-/* --- 7. RESPONSIVE TYPOGRAPHY (IMPROVED) --- */
+/* --- 8. SECTION SPACING (FIXED: Tidak tabrakan) --- */
+
+section {
+    scroll-margin-top: 80px; /* Untuk smooth scroll */
+}
+
+/* Header section spacing (lebih besar) */
+section > div:first-child {
+    margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    section > div:first-child {
+        margin-bottom: 3rem;
+    }
+}
+
+/* --- 9. RESPONSIVE TYPOGRAPHY (IMPROVED) --- */
 
 /* Base font sizes yang lebih baik untuk mobile */
 @media (max-width: 768px) {
@@ -336,7 +392,7 @@ nav {
     .text-\[8px\] { font-size: 9px !important; }
 }
 
-/* --- 8. COLOR SYSTEM OVERRIDES (FIXED) --- */
+/* --- 10. COLOR SYSTEM OVERRIDES (100% CSS VARIABLE) --- */
 
 /* Pastikan semua warna biru menggunakan CSS variable */
 .text-blue-500, 
@@ -384,13 +440,11 @@ nav {
 
 /* Accent color untuk icon colors di service cards */
 .text-amber-500 { color: #f59e0b !important; } /* Keep amber for SD */
-.text-purple-500 { color: #8b5cf6 !important; } /* Keep purple for SMA */
+.text-purple-500, .text-purple-400 { color: #8b5cf6 !important; } /* Keep purple */
 .text-red-500 { color: #ef4444 !important; } /* Keep red for UTBK */
-.text-green-500,
-.text-green-400 { color: #10b981 !important; } /* Keep green for selfcare */
-.text-orange-500,
-.text-orange-400 { color: #f59e0b !important; } /* Keep orange for outfit */
-.text-pink-500 { color: #ec4899 !important; } /* Keep pink for instagram */
+.text-green-500, .text-green-400 { color: #10b981 !important; } /* Keep green */
+.text-orange-500, .text-orange-400 { color: #f59e0b !important; } /* Keep orange */
+.text-pink-500 { color: #ec4899 !important; } /* Keep pink */
 
 /* Tapi border hover tetap pakai accent */
 .hover\:border-amber-500:hover,
@@ -400,7 +454,7 @@ nav {
     border-color: var(--accent-color) !important;
 }
 
-/* --- 9. SPECIAL COMPONENTS --- */
+/* --- 11. SPECIAL COMPONENTS --- */
 
 /* Scroll progress bar */
 #scroll-progress {
@@ -414,7 +468,7 @@ nav {
     transition: width 0.1s ease;
 }
 
-/* Modal styles (untuk va-service.html) */
+/* Modal styles (untuk va-service.html dan math-edu.html) */
 .modal-content {
     animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -442,7 +496,7 @@ nav {
     transform: translateY(-5px); 
 }
 
-/* --- 10. ACCESSIBILITY --- */
+/* --- 12. ACCESSIBILITY --- */
 
 /* Focus states untuk keyboard navigation */
 a:focus-visible,
@@ -468,7 +522,7 @@ button:focus-visible {
     }
 }
 
-/* --- 11. PRINT STYLES --- */
+/* --- 13. PRINT STYLES --- */
 @media print {
     #cursor-dot,
     #cursor-ring,
