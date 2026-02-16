@@ -244,23 +244,26 @@ nav {
     position: fixed; 
     inset: 0; 
     background: rgba(10, 10, 10, 0.98); 
-    z-index: 9000; /* NAIK dari 1500 ke 9000 (di bawah cursor & hamburger, di atas semua content) */
+    z-index: 9000;
     backdrop-filter: blur(20px); 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    overflow-y: auto; /* Bisa scroll kalau kepanjangan */
+    padding-top: 6rem; /* Kasih space dari atas */
+    padding-bottom: 3rem; /* Kasih space dari bawah */
 }
 
 #menuOverlay.active {
     opacity: 1;
 }
 
-/* Menu overlay padding */
+/* Menu content wrapper positioning */
 #menuOverlay > div {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 /* Menu link size (FIXED: Lebih kecil, tidak nabrak) */
