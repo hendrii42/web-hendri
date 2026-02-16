@@ -1,5 +1,5 @@
-/* HendriHub Global Style v2.0
-   Fixed: Cursor, Color System, Responsive, Hover Behavior
+/* HendriHub Global Style v3.0
+   Fixed: Duplicates, Image Animations, Hover Behavior
 */
 
 /* --- 1. RESET & GLOBAL --- */
@@ -171,11 +171,11 @@ body.cursor-hover #cursor-dot {
     color: #ffffff;
 }
 
-/* Icon circles HANYA menyala jika punya var(--accent-color) */
-.bento-card:hover [style*="var(--accent-color)"] .w-12,
-.bento-card:hover [style*="var(--accent-color)"] .w-10,
-.bento-card:hover [style*="var(--accent-color)"] .w-14,
-.bento-card:hover [style*="var(--accent-color)"] .w-16 {
+/* Icon dengan accent color di-hover parent (IMPROVED) */
+.bento-card:hover .w-12[style*="var(--accent-color)"],
+.bento-card:hover .w-10[style*="var(--accent-color)"],
+.bento-card:hover .w-14[style*="var(--accent-color)"],
+.bento-card:hover .w-16[style*="var(--accent-color)"] {
     transform: scale(1.05);
 }
 
@@ -188,7 +188,7 @@ body.cursor-hover #cursor-dot {
     /* Tetap pada warna aslinya */
 }
 
-/* Tapi scale saat icon LANGSUNG di-hover */
+/* Individual icon hover (langsung di-hover) - IMPROVED */
 .bento-card [style*="#25D366"]:hover i,
 .bento-card [style*="#E4405F"]:hover i,
 .bento-card [style*="#1877F2"]:hover i,
@@ -196,6 +196,15 @@ body.cursor-hover #cursor-dot {
 .bento-card [style*="#1769FF"]:hover i,
 .bento-card [style*="var(--accent-color)"]:hover i {
     transform: scale(1.1);
+}
+
+/* Icon circles individual hover (ANY icon) */
+.w-12:hover,
+.w-10:hover,
+.w-14:hover,
+.w-16:hover {
+    transform: scale(1.1) !important;
+    transition: transform 0.2s ease;
 }
 
 /* Email button dan Support button ISOLATED dari parent hover */
@@ -256,7 +265,7 @@ nav {
 
 /* Menu link size (FIXED: Lebih kecil, tidak nabrak) */
 .menu-link { 
-    font-size: clamp(1.75rem, 6vw, 3.5rem); /* Lebih kecil dari sebelumnya */
+    font-size: clamp(1.75rem, 6vw, 3.5rem);
     font-weight: 900; 
     text-transform: uppercase; 
     font-style: italic; 
@@ -267,7 +276,7 @@ nav {
     letter-spacing: -0.02em;
     line-height: 1;
     margin: 0;
-    padding: 0.5rem 0; /* Tambah padding vertical */
+    padding: 0.5rem 0;
 }
 
 .menu-link:hover { 
@@ -280,22 +289,45 @@ nav {
 /* Menu link responsive (lebih controlled) */
 @media (max-width: 768px) {
     .menu-link {
-        font-size: clamp(1.5rem, 8vw, 2.5rem); /* Lebih kecil di mobile */
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
         padding: 0.4rem 0;
     }
 }
 
 @media (max-width: 480px) {
     .menu-link {
-        font-size: clamp(1.25rem, 9vw, 2rem); /* Sangat kecil di hp kecil */
+        font-size: clamp(1.25rem, 9vw, 2rem);
     }
 }
 
-.menu-link:hover { 
-    color: white; 
-    -webkit-text-stroke: 1px white; 
-    transform: translateX(10px);
-    letter-spacing: 0.02em;
+/* Close button di menu overlay (OPTIONAL - if you add it) */
+#menuOverlay .close-btn {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+#menuOverlay .close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+#menuOverlay .close-btn i {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 /* --- 7. UTILITIES & ANIMATIONS --- */
@@ -511,7 +543,53 @@ section > div:first-child {
     transform: translateY(-5px); 
 }
 
-/* --- 12. ACCESSIBILITY --- */
+/* --- 12. IMAGE LOADING ANIMATIONS (FIXED) --- */
+
+/* Fade in hanya untuk content images (bukan logo/icons) */
+img.fade-in,
+.photo-side img,
+.bento-card img {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Logo dan icons langsung muncul (no fade) */
+nav img,
+.fa-solid,
+.fa-brands {
+    opacity: 1 !important;
+    animation: none !important;
+}
+
+/* Lazy load blur effect (IMPROVED) */
+img[loading="lazy"] {
+    filter: blur(10px);
+    opacity: 0;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+img[loading="lazy"].loaded {
+    filter: blur(0);
+    opacity: 1;
+}
+
+/* Fallback jika JS gagal load class */
+img[loading="lazy"]:not(.loaded) {
+    animation: lazyFallback 0.5s ease-out 1s forwards;
+}
+
+@keyframes lazyFallback {
+    to { 
+        filter: blur(0); 
+        opacity: 1; 
+    }
+}
+
+/* --- 13. ACCESSIBILITY --- */
 
 /* Focus states untuk keyboard navigation */
 a:focus-visible,
@@ -537,7 +615,7 @@ button:focus-visible {
     }
 }
 
-/* --- 13. PRINT STYLES --- */
+/* --- 14. PRINT STYLES --- */
 @media print {
     #cursor-dot,
     #cursor-ring,
@@ -546,24 +624,4 @@ button:focus-visible {
     nav button {
         display: none !important;
     }
-}
-
-/* Loading animation untuk gambar */
-img {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-/* Lazy load blur effect */
-img[loading="lazy"] {
-    filter: blur(10px);
-    transition: filter 0.3s ease;
-}
-
-img[loading="lazy"].loaded {
-    filter: blur(0);
 }
