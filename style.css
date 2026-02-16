@@ -1,5 +1,5 @@
 /* HendriHub Global Style v3.0
-   Fixed: Duplicates, Image Animations, Hover Behavior
+   Fixed: Z-index, Duplicates, Image Animations, Hover Behavior
 */
 
 /* --- 1. RESET & GLOBAL --- */
@@ -237,14 +237,14 @@ nav {
     background: rgba(10, 10, 10, 0.8);
 }
 
-/* --- 6. MENU OVERLAY (FIXED: Tidak nabrak) --- */
+/* --- 6. MENU OVERLAY (FIXED: Z-index lebih tinggi) --- */
 
 #menuOverlay { 
     display: none; 
     position: fixed; 
     inset: 0; 
     background: rgba(10, 10, 10, 0.98); 
-    z-index: 1500; 
+    z-index: 9000; /* NAIK dari 1500 ke 9000 (di bawah cursor & hamburger, di atas semua content) */
     backdrop-filter: blur(20px); 
     flex-direction: column; 
     align-items: center; 
@@ -298,36 +298,6 @@ nav {
     .menu-link {
         font-size: clamp(1.25rem, 9vw, 2rem);
     }
-}
-
-/* Close button di menu overlay (OPTIONAL - if you add it) */
-#menuOverlay .close-btn {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 2001;
-}
-
-#menuOverlay .close-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-color);
-    transform: rotate(90deg);
-}
-
-#menuOverlay .close-btn i {
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
 }
 
 /* --- 7. UTILITIES & ANIMATIONS --- */
