@@ -103,44 +103,34 @@ function toggleMenu() {
     const l1 = document.getElementById('line1');
     const l2 = document.getElementById('line2');
     
-    if (!menu || !l1 || !l2) {
-        console.warn('Menu elements not found');
-        return;
-    }
-
-    const isOpen = menu.style.display === 'flex';
+    if (!menu) return;
     
-    if (!isOpen) {
-        // Open menu
+    if (menu.style.display === 'none' || !menu.classList.contains('active')) {
+        // Open
         menu.style.display = 'flex';
-        // Force reflow for animation
         void menu.offsetWidth;
         menu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Disable scroll
         
         // Animate hamburger to X
-        l1.style.transform = 'translateY(5px) rotate(45deg)';
-        l2.style.transform = 'translateY(-5px) rotate(-45deg)';
+        if (l1 && l2) {
+            l1.style.transform = 'rotate(45deg) translateY(4px)';
+            l2.style.transform = 'rotate(-45deg) translateY(-4px)';
+        }
         
-        // Lock scroll
-        body.style.overflow = 'hidden';
-        
-        // Re-init cursor hover for menu items
-        setTimeout(() => {
-            initCursorHover();
-        }, 100);
+        setTimeout(() => { if (window.initCursorHover) initCursorHover(); }, 100);
     } else {
-        // Close menu
+        // Close
         menu.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Enable scroll
         
-        // Reset hamburger
-        l1.style.transform = 'none';
-        l2.style.transform = 'none';
+        // Animate X back to hamburger
+        if (l1 && l2) {
+            l1.style.transform = '';
+            l2.style.transform = '';
+        }
         
-        // Unlock scroll after animation
-        setTimeout(() => {
-            menu.style.display = 'none';
-            body.style.overflow = 'auto';
-        }, 300); // Match CSS transition duration
+        setTimeout(() => { menu.style.display = 'none'; }, 300);
     }
 }
 
@@ -419,3 +409,13 @@ if (typeof module !== 'undefined' && module.exports) {
         initCursorHover
     };
 }
+
+// --- 10. Close menu dengan ESC key ---
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('menuOverlay');
+        if (menu && menu.classList.contains('active')) {
+            toggleMenu();
+        }
+    }
+});
