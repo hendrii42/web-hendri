@@ -480,7 +480,7 @@ window.addEventListener('unhandledrejection', (event) => {
     // You can send to analytics here if needed
 });
 
-// --- 11. LAZY LOAD IMAGES (OPTIONAL ENHANCEMENT) ---
+// --- 11. LAZY LOAD IMAGES (IMPROVED) ---
 
 // Add 'loaded' class when lazy images finish loading
 if ('IntersectionObserver' in window) {
@@ -490,12 +490,29 @@ if ('IntersectionObserver' in window) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.addEventListener('load', () => {
+                
+                // Check if image is already loaded (cached)
+                if (img.complete && img.naturalWidth > 0) {
                     img.classList.add('loaded');
-                });
-                observer.unobserve(img);
+                    observer.unobserve(img);
+                } else {
+                    // Add loaded class when image finishes loading
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    }, { once: true }); // Only fire once
+                    
+                    // Handle error case
+                    img.addEventListener('error', () => {
+                        console.warn('Failed to load image:', img.src);
+                        img.classList.add('loaded'); // Still remove blur on error
+                    }, { once: true });
+                    
+                    observer.unobserve(img);
+                }
             }
         });
+    }, {
+        rootMargin: '50px' // Start loading 50px before entering viewport
     });
     
     lazyImages.forEach(img => imageObserver.observe(img));
