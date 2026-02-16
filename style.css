@@ -254,9 +254,9 @@ nav {
     padding-right: 1.5rem;
 }
 
-/* Menu link size (CONTROLLED, tidak nabrak) */
+/* Menu link size (FIXED: Lebih kecil, tidak nabrak) */
 .menu-link { 
-    font-size: clamp(2rem, 7vw, 4.5rem); /* Lebih controlled */
+    font-size: clamp(1.75rem, 6vw, 3.5rem); /* Lebih kecil dari sebelumnya */
     font-weight: 900; 
     text-transform: uppercase; 
     font-style: italic; 
@@ -265,8 +265,9 @@ nav {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     text-decoration: none;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1;
     margin: 0;
+    padding: 0.5rem 0; /* Tambah padding vertical */
 }
 
 .menu-link:hover { 
@@ -276,11 +277,25 @@ nav {
     letter-spacing: 0.02em;
 }
 
-/* Menu link responsive */
+/* Menu link responsive (lebih controlled) */
 @media (max-width: 768px) {
     .menu-link {
-        font-size: clamp(1.5rem, 10vw, 3rem);
+        font-size: clamp(1.5rem, 8vw, 2.5rem); /* Lebih kecil di mobile */
+        padding: 0.4rem 0;
     }
+}
+
+@media (max-width: 480px) {
+    .menu-link {
+        font-size: clamp(1.25rem, 9vw, 2rem); /* Sangat kecil di hp kecil */
+    }
+}
+
+.menu-link:hover { 
+    color: white; 
+    -webkit-text-stroke: 1px white; 
+    transform: translateX(10px);
+    letter-spacing: 0.02em;
 }
 
 /* --- 7. UTILITIES & ANIMATIONS --- */
