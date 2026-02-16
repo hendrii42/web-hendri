@@ -87,9 +87,10 @@
                 
                 <!-- VA Service Card -->
                 <a href="va-service.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
-                    <!-- Background Image -->
+                    <!-- Background Image (LAZY LOAD) -->
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" 
+                             loading="lazy"
                              class="w-full h-full object-cover grayscale" alt="Data Analytics">
                     </div>
                     
@@ -121,9 +122,10 @@
 
                 <!-- Math Edu Card -->
                 <a href="math-edu.html" class="bento-card overflow-hidden group block relative h-[400px] md:h-[450px]">
-                    <!-- Background Image -->
+                    <!-- Background Image (LAZY LOAD) -->
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
                         <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" 
+                             loading="lazy"
                              class="w-full h-full object-cover grayscale" alt="Mathematics">
                     </div>
                     
@@ -205,9 +207,10 @@
                 
                 <!-- About Card (Larger) -->
                 <a href="biodata.html" class="bento-card overflow-hidden group block relative h-[400px] md:col-span-2">
-                    <!-- Background Image -->
+                    <!-- Background Image (LAZY LOAD) -->
                     <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
                         <img src="profil.webp" 
+                             loading="lazy"
                              class="w-full h-full object-cover object-top grayscale" alt="Hendri Irawan">
                     </div>
                     
@@ -379,83 +382,83 @@
         </footer>
     </div>
 
-    <!-- Menu Overlay -->
+    <!-- Menu Overlay (FIXED: Tidak nabrak + Close button) -->
     <div id="menuOverlay" style="display: none;">
-        <div class="text-center px-6 max-w-4xl mx-auto">
-            <!-- Navigation Links -->
-            <div class="mb-10">
-                <a href="index.html" class="menu-link block mb-5">Home</a>
-                <a href="va-service.html" class="menu-link block mb-5">Services</a>
-                <a href="math-edu.html" class="menu-link block mb-5">Math Edu</a>
-                <a href="biodata.html" class="menu-link block mb-5">About</a>
-                <a href="recommendations.html" class="menu-link block mb-5">Picks</a>
+        <!-- Close Button -->
+        <button onclick="toggleMenu()" class="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
+        <div class="text-center px-6 max-w-5xl mx-auto">
+            <!-- Navigation Links (FIXED: mb-4 biar lebih compact) -->
+            <div class="mb-12">
+                <a href="index.html" class="menu-link block mb-4">Home</a>
+                <a href="va-service.html" class="menu-link block mb-4">Services</a>
+                <a href="math-edu.html" class="menu-link block mb-4">Math Edu</a>
+                <a href="biodata.html" class="menu-link block mb-4">About</a>
+                <a href="recommendations.html" class="menu-link block mb-4">Picks</a>
             </div>
             
-            <!-- Theme Switcher (Di menu sebagai pemanis) -->
-            <div class="mb-10 pb-10 border-b border-white/10">
+            <!-- Theme Switcher -->
+            <div class="mb-10 pb-8 border-b border-white/10">
                 <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
                 <div class="flex flex-wrap gap-3 justify-center">
-                    <button onclick="setTheme('#3b82f6')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;"></button>
-                    <button onclick="setTheme('#8b5cf6')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;"></button>
-                    <button onclick="setTheme('#ec4899')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;"></button>
-                    <button onclick="setTheme('#10b981')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;"></button>
-                    <button onclick="setTheme('#f59e0b')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;"></button>
-                    <button onclick="setTheme('#ef4444')" class="w-10 h-10 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;"></button>
+                    <button onclick="setTheme('#3b82f6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;" title="Blue"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;" title="Purple"></button>
+                    <button onclick="setTheme('#ec4899')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;" title="Pink"></button>
+                    <button onclick="setTheme('#10b981')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;" title="Green"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;" title="Orange"></button>
+                    <button onclick="setTheme('#ef4444')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;" title="Red"></button>
                 </div>
             </div>
 
-            <!-- Social Icons Grid (5 items) -->
-            <div class="grid grid-cols-5 gap-4 mb-10 max-w-2xl mx-auto">
-                <!-- WhatsApp -->
+            <!-- Social Icons Grid -->
+            <div class="grid grid-cols-5 gap-4 mb-8 max-w-md mx-auto">
                 <a href="https://wa.me/6283853202544" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
-                        <i class="fa-brands fa-whatsapp text-xl text-gray-600 group-hover:text-[#25D366] transition"></i>
+                        <i class="fa-brands fa-whatsapp text-lg text-gray-600 group-hover:text-[#25D366] transition"></i>
                     </div>
-                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">WA</span>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">WA</span>
                 </a>
 
-                <!-- Instagram -->
                 <a href="https://www.instagram.com/vhen_virtual" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
-                        <i class="fa-brands fa-instagram text-xl text-gray-600 group-hover:text-[#E4405F] transition"></i>
+                        <i class="fa-brands fa-instagram text-lg text-gray-600 group-hover:text-[#E4405F] transition"></i>
                     </div>
-                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">IG</span>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">IG</span>
                 </a>
 
-                <!-- Facebook -->
                 <a href="https://www.facebook.com/hendrii42/" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
-                        <i class="fa-brands fa-facebook text-xl text-gray-600 group-hover:text-[#1877F2] transition"></i>
+                        <i class="fa-brands fa-facebook text-lg text-gray-600 group-hover:text-[#1877F2] transition"></i>
                     </div>
-                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">FB</span>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">FB</span>
                 </a>
 
-                <!-- Behance -->
                 <a href="https://www.behance.net/hendrii_42" target="_blank" 
                    class="flex flex-col items-center gap-2 group">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
-                        <i class="fa-brands fa-behance text-xl text-gray-600 group-hover:text-[#1769FF] transition"></i>
+                        <i class="fa-brands fa-behance text-lg text-gray-600 group-hover:text-[#1769FF] transition"></i>
                     </div>
-                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">BE</span>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">BE</span>
                 </a>
 
-                <!-- Email -->
                 <button onclick="copyEmail('mashendry450@gmail.com')" 
                         class="flex flex-col items-center gap-2 group cursor-pointer">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
-                        <i class="fa-solid fa-envelope text-xl text-gray-600 group-hover:text-white transition"></i>
+                        <i class="fa-solid fa-envelope text-lg text-gray-600 group-hover:text-white transition"></i>
                     </div>
-                    <span class="text-[8px] text-gray-600 uppercase tracking-wider">Mail</span>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">Mail</span>
                 </button>
             </div>
 
-            <!-- Support Button in Menu -->
-            <div class="mb-10">
+            <!-- Support Button -->
+            <div class="mb-8">
                 <a href="https://trakteer.id/hendri_irawan10" target="_blank" 
-                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-xs uppercase tracking-wider transition-all hover:scale-105" 
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-wider transition-all hover:scale-105" 
                    style="background-color: var(--accent-color); color: white;">
                     <i class="fa-solid fa-heart"></i>
                     <span>Support Me</span>
@@ -464,16 +467,11 @@
 
             <!-- Tagline -->
             <div>
-                <p class="text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        function scrollToServices() {
-            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
