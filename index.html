@@ -31,7 +31,7 @@
 
     <div class="max-w-7xl mx-auto">
         
-        <!-- Navigation -->
+        <!-- Navigation (HANYA LOGO) -->
         <nav class="flex justify-between items-center mb-12 md:mb-16 px-2">
             <!-- Logo -->
             <div class="flex flex-col leading-none">
@@ -40,13 +40,16 @@
                 </span>
                 <span class="text-[7px] md:text-[8px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </div>
-
-            <!-- Hamburger Menu Button (Berubah jadi X saat menu open) -->
-            <button onclick="toggleMenu()" class="fixed top-8 right-8 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500]">
-                <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-                <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-            </button>
+    
+            <!-- Spacer (biar logo tetap di kiri) -->
+            <div></div>
         </nav>
+
+        <!-- Hamburger Menu Button (KELUAR dari nav, independent) -->
+        <button onclick="toggleMenu()" class="fixed top-6 md:top-8 right-6 md:right-12 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500] transition-all duration-300">
+            <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+            <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+        </button>
 
         <!-- Hero Section -->
         <header class="mb-16 md:mb-20 text-center md:text-left animate-flow delay-1">
@@ -470,4 +473,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
