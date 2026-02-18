@@ -47,7 +47,7 @@
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:h-[700px]">
             
-            <!-- Photo Section -->
+            <!-- Photo Section (WITH HOVER STATS) -->
             <div class="lg:col-span-5 bento-card photo-side relative group h-full min-h-[400px] lg:min-h-0">
                 <img src="profil.webp" 
                      loading="lazy"
@@ -57,6 +57,22 @@
                 <!-- Watermark -->
                 <div class="absolute top-6 md:top-10 left-6 md:left-10 opacity-10 pointer-events-none select-none">
                     <span class="text-[60px] md:text-[80px] font-black italic leading-none tracking-tighter">HH</span>
+                </div>
+
+                <!-- Quick Stats (BARU - muncul saat hover) -->
+                <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-2">
+                    <div class="bento-card px-4 py-2 text-right backdrop-blur-sm">
+                        <p class="text-[8px] text-gray-500 uppercase tracking-wider">Projects</p>
+                        <p class="text-lg font-black text-white">100+</p>
+                    </div>
+                    <div class="bento-card px-4 py-2 text-right backdrop-blur-sm">
+                        <p class="text-[8px] text-gray-500 uppercase tracking-wider">Clients</p>
+                        <p class="text-lg font-black text-white">30+</p>
+                    </div>
+                    <div class="bento-card px-4 py-2 text-right backdrop-blur-sm">
+                        <p class="text-[8px] text-gray-500 uppercase tracking-wider">Experience</p>
+                        <p class="text-lg font-black text-white">5Y+</p>
+                    </div>
                 </div>
 
                 <!-- Gradient Overlay with Info -->
@@ -126,7 +142,7 @@
                 <div class="bento-card p-4 md:p-6 flex flex-col md:flex-row items-center justify-between px-6 md:px-10 gap-4 shrink-0">
                     <span class="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-[0.4em] font-black italic">Let's Connect</span>
                     <div class="flex gap-6 md:gap-8 items-center">
-                        <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-400 hover:text-green-500 transition-all transform hover:scale-125">
+                        <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-400 hover:text-[#25D366] transition-all transform hover:scale-125">
                             <i class="fa-brands fa-whatsapp text-xl md:text-2xl"></i>
                         </a>
                         <a href="https://www.instagram.com/vhen_virtual" target="_blank" class="text-gray-400 hover:text-[#E4405F] transition-all transform hover:scale-125">
@@ -138,13 +154,87 @@
                         <a href="https://www.behance.net/hendrii_42" target="_blank" class="text-gray-400 hover:text-[#1769FF] transition-all transform hover:scale-125">
                             <i class="fa-brands fa-behance text-xl md:text-2xl"></i>
                         </a>
-                        <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-400 transition-all transform hover:scale-125 cursor-pointer" style="color: inherit;">
+                        <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-400 hover:text-white transition-all transform hover:scale-125 cursor-pointer">
                             <i class="fa-solid fa-envelope text-xl md:text-2xl"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Work Principles Section (BARU) -->
+        <section class="mt-16 md:mt-20">
+            <div class="flex items-center gap-3 mb-10">
+                <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
+                <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">
+                    My <span style="color: var(--accent-color);">Principles</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Principle 1 -->
+                <div class="bento-card p-8 group hover:bg-white/5 transition-all">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all group-hover:scale-110" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%);">
+                        <i class="fa-solid fa-bolt text-xl" style="color: var(--accent-color);"></i>
+                    </div>
+                    <h3 class="text-sm font-black uppercase mb-2 text-white">Efisiensi Maksimal</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Setiap workflow harus sistematis dan terukur. Tidak ada yang sia-sia.</p>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="bento-card p-8 group hover:bg-white/5 transition-all">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-purple-500/10 transition-all group-hover:scale-110">
+                        <i class="fa-solid fa-palette text-xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-sm font-black uppercase mb-2 text-white">Estetika Penting</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Visual yang baik bukan hanya cantik, tapi juga fungsional dan mudah dipahami.</p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="bento-card p-8 group hover:bg-white/5 transition-all">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-green-500/10 transition-all group-hover:scale-110">
+                        <i class="fa-solid fa-handshake text-xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-sm font-black uppercase mb-2 text-white">Komunikasi Transparan</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Selalu update progress. Client tidak perlu menebak-nebak status project.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section (BARU) -->
+        <section class="mt-16 md:mt-20">
+            <div class="bento-card p-10 md:p-16 text-center relative overflow-hidden group">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5 transition-opacity group-hover:opacity-10">
+                    <div class="grid grid-cols-8 gap-3 h-full p-6">
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black italic uppercase mb-4 text-white">
+                        Let's Work <span style="color: var(--accent-color);">Together</span>
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Punya project yang butuh sentuhan sistematis dan kreatif? Mari diskusi bagaimana saya bisa membantu workflow Anda lebih efisien.
+                    </p>
+                    <a href="https://wa.me/6283853202544" target="_blank" 
+                       class="inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-xs md:text-sm uppercase tracking-wider transition-all hover:scale-105 hover:shadow-2xl" 
+                       style="background-color: var(--accent-color); color: white;">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Start a Conversation</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="mt-12 md:mt-16 text-center opacity-30 pb-10">
