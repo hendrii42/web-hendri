@@ -268,7 +268,7 @@ nav {
 
 /* Menu link size (FIXED: Lebih kecil, tidak nabrak) */
 .menu-link { 
-    font-size: clamp(1.75rem, 6vw, 3.5rem);
+    font-size: clamp(1.5rem, 5vw, 2.8rem); /* LEBIH KECIL: 1.75→1.5, 6vw→5vw, 3.5→2.8 */
     font-weight: 900; 
     text-transform: uppercase; 
     font-style: italic; 
@@ -277,9 +277,9 @@ nav {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     text-decoration: none;
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 1.2;
     margin: 0;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0; /* 0.5rem → 0.4rem (lebih compact) */
 }
 
 .menu-link:hover { 
@@ -289,20 +289,27 @@ nav {
     letter-spacing: 0.02em;
 }
 
-/* Menu link responsive (lebih controlled) */
+/* Menu link responsive */
 @media (max-width: 768px) {
     .menu-link {
-        font-size: clamp(1.5rem, 8vw, 2.5rem);
-        padding: 0.4rem 0;
+        font-size: clamp(1.25rem, 7vw, 2rem); /* LEBIH KECIL di mobile */
+        padding: 0.3rem 0;
+    }
+    
+    #menuOverlay {
+        padding-top: 6rem;
     }
 }
 
 @media (max-width: 480px) {
     .menu-link {
-        font-size: clamp(1.25rem, 9vw, 2rem);
+        font-size: clamp(1rem, 8vw, 1.75rem); /* LEBIH KECIL lagi di hp kecil */
+    }
+    
+    #menuOverlay {
+        padding-top: 5rem;
     }
 }
-
 /* --- 7. UTILITIES & ANIMATIONS --- */
 
 .gradient-text { 
