@@ -3,74 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
     <title>VA Services | HendriHub</title>
 
     <meta name="description" content="Virtual Assistant Services - Data Admin, Visual Assets, dan Digital Operations. Professional support untuk bisnis dan personal.">
     
     <meta property="og:title" content="VA Services | HendriHub">
     <meta property="og:description" content="Virtual Assistant dengan spesialisasi Data Admin dan Visual Assets.">
-    <meta property="og:image" content="https://hendrihub.com/profil.jpg">
-    <meta property="og:url" content="https://hendrihub.com/va-service.html">
+    <meta property="og:image" content="https://hendrihub.my.id/profil.jpg">
+    <meta property="og:url" content="https://hendrihub.my.id/va-service.html">
 
-    <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Modal styles (existing) */
+        /* Modal styles */
         #detailsModal {
-            display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px);
-            align-items: center; justify-content: center; padding: 20px;
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.95); 
+            backdrop-filter: blur(20px);
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+        
+        #detailsModal.active {
+            opacity: 1;
+        }
+        
         .modal-content {
-            background: #111; border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px; max-width: 600px; width: 100%;
-            padding: 40px; position: relative; transform: translateY(20px);
-            opacity: 0; transition: all 0.4s ease;
+            background: #111; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px; 
+            max-width: 600px; 
+            width: 100%;
+            padding: 40px; 
+            position: relative; 
+            transform: translateY(30px);
+            opacity: 0; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        #detailsModal.active .modal-content { transform: translateY(0); opacity: 1; }
+        
+        #detailsModal.active .modal-content { 
+            transform: translateY(0); 
+            opacity: 1; 
+        }
+        
         .tab-active { 
             color: var(--accent-color) !important; 
             border-bottom: 2px solid var(--accent-color); 
         }
-        .workflow-step:hover .step-number { opacity: 1; transform: translateY(-5px); }
+        
+        .workflow-step:hover .step-number { 
+            opacity: 1; 
+            transform: translateY(-5px); 
+        }
     </style>
 </head>
-<body class="p-4 md:p-6 lg:p-12">
+<body class="p-4 md:p-8 lg:p-12">
 
     <!-- Custom Cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
     
-    <!-- Scroll Progress Bar (ADDED) -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[10000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[9000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
 
     <div class="max-w-6xl mx-auto animate-flow">
         
-        <!-- Navigation (UPDATED: Konsisten) -->
+        <!-- Navigation (HANYA LOGO) -->
         <nav class="delay-1 mb-10 md:mb-12 flex justify-between items-center px-2">
             <!-- Logo -->
-            <a href="index.html" class="flex flex-col leading-none group">
+            <a href="/" class="flex flex-col leading-none group">
                 <span class="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-white group-hover:opacity-80 transition">
                     Hendri<span style="color: var(--accent-color);">Hub</span>
                 </span>
                 <span class="text-[7px] md:text-[8px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </a>
             
-            <!-- Hamburger Menu Button -->
-            <button onclick="toggleMenu()" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[2000]">
-                <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-                <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-            </button>
+            <!-- Spacer -->
+            <div></div>
         </nav>
 
-        <!-- Header (UPDATED: Improved branding) -->
+        <!-- Header -->
         <header class="mb-12 md:mb-16 delay-2 text-center md:text-left">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-black italic uppercase leading-none text-white tracking-tighter mb-4">
                 Vhen<span style="color: var(--accent-color);">_</span>Virtual
@@ -90,7 +114,7 @@
             </div>
         </header>
 
-        <!-- Workflow Section (UPDATED: Responsive) -->
+        <!-- Workflow Section -->
         <section class="mb-20 md:mb-24 delay-3">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <div class="bento-card p-6 md:p-8 workflow-step">
@@ -117,7 +141,7 @@
             </div>
         </section>
 
-        <!-- Tab Switch (UPDATED: Responsive) -->
+        <!-- Tab Switch -->
         <div class="flex gap-6 md:gap-8 border-b border-white/10 mb-8 md:mb-10 delay-3">
             <button onclick="switchTab('services')" id="btn-services" 
                     class="tab-active pb-3 md:pb-4 text-[10px] md:text-xs font-black uppercase tracking-widest transition cursor-pointer">
@@ -129,54 +153,51 @@
             </button>
         </div>
 
-        <!-- Services Tab (UPDATED: Responsive + Fixed colors) -->
+        <!-- Services Tab -->
         <div id="tab-services" class="delay-4">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
                 
-                <div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                    
-                    <!-- Data Admin Card -->
-                    <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('admin')" 
-                         style="border-top: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);">
-                        <div class="h-10 flex justify-between items-start mb-4">
-                            <i class="fa-solid fa-calculator text-2xl" style="color: var(--accent-color);"></i>
-                            <span class="text-[7px] md:text-[8px] px-2 py-1 rounded font-black uppercase tracking-widest" 
-                                  style="background-color: color-mix(in srgb, var(--accent-color), transparent 85%); color: var(--accent-color);">
-                                Main Priority
-                            </span>
-                        </div>
-                        <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none">Data Admin</h3>
-                        <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
-                            Specialize: Excel Architecture & System Data
-                        </p>
+                <!-- Data Admin Card -->
+                <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('admin')" 
+                     style="border-top: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);">
+                    <div class="h-10 flex justify-between items-start mb-4">
+                        <i class="fa-solid fa-table text-2xl md:text-3xl group-hover:scale-110 transition" style="color: var(--accent-color);"></i>
+                        <span class="text-[7px] md:text-[8px] px-2 py-1 rounded font-black uppercase tracking-widest" 
+                              style="background-color: color-mix(in srgb, var(--accent-color), transparent 85%); color: var(--accent-color);">
+                            Main Priority
+                        </span>
                     </div>
+                    <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none mb-2">Data Admin</h3>
+                    <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
+                        Excel Architecture & System Data
+                    </p>
+                </div>
 
-                    <!-- Visual Assets Card -->
-                    <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('graphic')">
-                        <div class="h-10 mb-4 flex items-start">
-                            <i class="fa-solid fa-pen-nib text-2xl" style="color: var(--accent-color);"></i>
-                        </div>
-                        <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none">Visual Assets</h3>
-                        <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
-                            Specialize: Presentation & Branding Kit
-                        </p>
+                <!-- Visual Assets Card -->
+                <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('graphic')">
+                    <div class="h-10 mb-4 flex items-start">
+                        <i class="fa-solid fa-palette text-2xl md:text-3xl group-hover:scale-110 transition" style="color: var(--accent-color);"></i>
                     </div>
-    
-                    <!-- Digital Ops Card -->
-                    <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('game')">
-                        <div class="h-10 mb-4 flex items-start">
-                            <i class="fa-solid fa-microchip text-2xl" style="color: var(--accent-color);"></i>
-                        </div>
-                        <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none">Digital Ops</h3>
-                        <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
-                            Specialize: Virtual Assistant Support
-                        </p>
+                    <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none mb-2">Visual Assets</h3>
+                    <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
+                        Presentation & Branding Kit
+                    </p>
+                </div>
+
+                <!-- Digital Ops Card -->
+                <div class="bento-card p-6 md:p-8 cursor-pointer group" onclick="showDetail('ops')">
+                    <div class="h-10 mb-4 flex items-start">
+                        <i class="fa-solid fa-laptop-code text-2xl md:text-3xl group-hover:scale-110 transition" style="color: var(--accent-color);"></i>
                     </div>
+                    <h3 class="font-black text-white italic uppercase text-base md:text-lg leading-none mb-2">Digital Ops</h3>
+                    <p class="text-[9px] md:text-[10px] text-gray-500 mt-2 uppercase tracking-widest italic leading-tight">
+                        Virtual Assistant Support
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Products Tab (UPDATED: Responsive) -->
+        <!-- Products Tab -->
         <div id="tab-products" class="hidden delay-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
                 <div class="bento-card overflow-hidden group">
@@ -195,9 +216,10 @@
                         <div class="flex justify-between items-center mt-4 md:mt-6">
                             <span class="font-black tracking-tighter italic text-lg md:text-xl" style="color: var(--accent-color);">Rp 45.000</span>
                             <button onclick="checkoutWA('Modern Pitch Deck v.1', '45.000')" 
-                                    class="bg-white text-black px-5 md:px-6 py-2 rounded-full text-[9px] font-black uppercase hover:text-white transition cursor-pointer" 
-                                    onmouseover="this.style.backgroundColor='var(--accent-color)'" 
-                                    onmouseout="this.style.backgroundColor='white'">
+                                    class="px-5 md:px-6 py-2 rounded-full text-[9px] font-black uppercase transition cursor-pointer" 
+                                    style="background-color: var(--accent-color); color: white;"
+                                    onmouseover="this.style.opacity='0.9'" 
+                                    onmouseout="this.style.opacity='1'">
                                 Beli
                             </button>
                         </div>
@@ -206,68 +228,136 @@
             </div>
         </div>
 
-        <!-- FAQ Section (UPDATED: Responsive) -->
+        <!-- FAQ Section -->
         <section class="mb-20 md:mb-24">
             <h3 class="text-lg md:text-xl font-black italic uppercase text-white mb-6 md:mb-8 border-b border-white/10 pb-4">
                 Common Questions<span style="color: var(--accent-color);">?</span>
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 md:p-6 rounded-3xl bg-white/5 border border-white/5">
+                <div class="bento-card p-5 md:p-6">
                     <p class="font-bold text-white uppercase text-xs mb-2">Berapa lama waktu pengerjaan?</p>
-                    <p class="text-[11px] md:text-xs text-gray-500 leading-relaxed uppercase">
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                         Tergantung kompleksitas, estimasi umum 1-3 hari kerja sejak brief diterima.
                     </p>
                 </div>
-                <div class="p-5 md:p-6 rounded-3xl bg-white/5 border border-white/5">
+                <div class="bento-card p-5 md:p-6">
                     <p class="font-bold text-white uppercase text-xs mb-2">Bagaimana sistem pembayarannya?</p>
-                    <p class="text-[11px] md:text-xs text-gray-500 leading-relaxed uppercase">
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                         Pembayaran dilakukan via transfer bank atau e-wallet setelah kesepakatan brief.
                     </p>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="text-center opacity-30 pb-10">
+            <button onclick="scrollToTop()" class="group">
+                <p class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.8em] md:tracking-[1em] transition-colors cursor-pointer" style="color: var(--accent-color);">
+                    HendriHub &copy; 2025 | Blitar
+                </p>
+                <i class="fa-solid fa-chevron-up text-[8px] mt-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+            </button>
+        </footer>
     </div>
 
-    <!-- Details Modal (UPDATED: Responsive) -->
+    <!-- Hamburger Menu Button (KELUAR dari nav, independent) -->
+    <button onclick="toggleMenu()" class="fixed top-6 md:top-8 right-6 md:right-12 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500] transition-all duration-300">
+        <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+        <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+    </button>
+
+    <!-- Menu Overlay (FIXED: Konsisten dengan index.html) -->
+    <div id="menuOverlay" style="display: none;">
+        <div class="text-center px-6 max-w-5xl mx-auto">
+            <!-- Navigation Links -->
+            <div class="mb-12">
+                <a href="/" class="menu-link block mb-4">Home</a>
+                <a href="va-service.html" class="menu-link block mb-4">Services</a>
+                <a href="math-edu.html" class="menu-link block mb-4">Math Edu</a>
+                <a href="biodata.html" class="menu-link block mb-4">About</a>
+                <a href="recommendations.html" class="menu-link block mb-4">Picks</a>
+            </div>
+            
+            <!-- Theme Switcher -->
+            <div class="mb-10 pb-8 border-b border-white/10">
+                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button onclick="setTheme('#3b82f6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;" title="Blue"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;" title="Purple"></button>
+                    <button onclick="setTheme('#ec4899')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;" title="Pink"></button>
+                    <button onclick="setTheme('#10b981')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;" title="Green"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;" title="Orange"></button>
+                    <button onclick="setTheme('#ef4444')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;" title="Red"></button>
+                </div>
+            </div>
+
+            <!-- Social Icons Grid -->
+            <div class="grid grid-cols-5 gap-4 mb-8 max-w-md mx-auto">
+                <a href="https://wa.me/6283853202544" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-whatsapp text-lg text-gray-600 group-hover:text-[#25D366] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">WA</span>
+                </a>
+
+                <a href="https://www.instagram.com/vhen_virtual" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-instagram text-lg text-gray-600 group-hover:text-[#E4405F] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">IG</span>
+                </a>
+
+                <a href="https://www.facebook.com/hendrii42/" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-facebook text-lg text-gray-600 group-hover:text-[#1877F2] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">FB</span>
+                </a>
+
+                <a href="https://www.behance.net/hendrii_42" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-behance text-lg text-gray-600 group-hover:text-[#1769FF] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">BE</span>
+                </a>
+
+                <button onclick="copyEmail('mashendry450@gmail.com')" 
+                        class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-solid fa-envelope text-lg text-gray-600 group-hover:text-white transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">Mail</span>
+                </button>
+            </div>
+
+            <!-- Support Button -->
+            <div class="mb-8">
+                <a href="https://trakteer.id/hendri_irawan10" target="_blank" 
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-wider transition-all hover:scale-105" 
+                   style="background-color: var(--accent-color); color: white;">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Support Me</span>
+                </a>
+            </div>
+
+            <!-- Tagline -->
+            <div>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
     <div id="detailsModal">
         <div class="modal-content">
             <button onclick="closeModal()" class="absolute top-6 md:top-8 right-6 md:right-8 text-gray-500 hover:text-white transition text-xl md:text-2xl cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modalData"></div>
-        </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-            class="fixed bottom-6 md:bottom-8 right-6 md:right-8 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center z-[4000] hover:bg-white/10 transition group cursor-pointer">
-        <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition"></i>
-    </button>
-
-    <!-- Menu Overlay (ADDED) -->
-    <div id="menuOverlay" style="display: none;">
-        <div class="text-center">
-            <a href="index.html" class="menu-link block mb-4 md:mb-6">Home</a>
-            <a href="va-service.html" class="menu-link block mb-4 md:mb-6">Services</a>
-            <a href="math-edu.html" class="menu-link block mb-4 md:mb-6">Math Edu</a>
-            <a href="biodata.html" class="menu-link block mb-4 md:mb-6">About</a>
-            <a href="recommendations.html" class="menu-link block mb-4 md:mb-6">Picks</a>
-            
-            <div class="mt-12 md:mt-16 flex gap-6 md:gap-8 justify-center text-2xl md:text-3xl">
-                <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://instagram.com/vhen_virtual" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-solid fa-envelope"></i>
-                </button>
-            </div>
-
-            <div class="mt-8 md:mt-12">
-                <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
-            </div>
         </div>
     </div>
 
@@ -280,31 +370,37 @@
             const pBtn = document.getElementById('btn-products');
 
             if (tab === 'services') {
-                sTab.classList.remove('hidden'); pTab.classList.add('hidden');
-                sBtn.classList.add('tab-active'); pBtn.classList.remove('tab-active');
+                sTab.classList.remove('hidden'); 
+                pTab.classList.add('hidden');
+                sBtn.classList.add('tab-active'); 
+                pBtn.classList.remove('tab-active');
                 pBtn.classList.add('text-gray-500');
+                sBtn.classList.remove('text-gray-500');
             } else {
-                pTab.classList.remove('hidden'); sTab.classList.add('hidden');
-                pBtn.classList.add('tab-active'); sBtn.classList.remove('tab-active');
+                pTab.classList.remove('hidden'); 
+                sTab.classList.add('hidden');
+                pBtn.classList.add('tab-active'); 
+                sBtn.classList.remove('tab-active');
                 sBtn.classList.add('text-gray-500');
+                pBtn.classList.remove('text-gray-500');
             }
         }
 
         const details = {
             admin: { 
                 title: "Data Admin", 
-                desc: "Spesialisasi pengolahan data sistematis.", 
-                list: ["Excel Architecture", "Data Audit", "Pivot & Macro", "Database Mgmt"] 
+                desc: "Spesialisasi pengolahan data sistematis dengan Excel dan tools spreadsheet.", 
+                list: ["Excel Architecture", "Data Cleaning & Audit", "Pivot Tables & Macros", "Database Management"] 
             },
             graphic: { 
                 title: "Visual Assets", 
-                desc: "Desain minimalis dan fungsional.", 
-                list: ["Pitch Deck", "Social Media Kit", "Branding Assets", "Flyer"] 
+                desc: "Desain minimalis dan fungsional untuk kebutuhan branding Anda.", 
+                list: ["Pitch Deck Design", "Social Media Kit", "Branding Assets", "Flyer & Poster"] 
             },
-            game: { 
+            ops: { 
                 title: "Digital Ops", 
-                desc: "Dukungan tugas digital umum.", 
-                list: ["File Mgmt", "Data Entry", "Virtual Support"] 
+                desc: "Dukungan operasional digital untuk efisiensi workflow bisnis.", 
+                list: ["File Management", "Data Entry", "Email Management", "Virtual Support"] 
             }
         };
 
@@ -317,13 +413,18 @@
                     ${data.list.map(item => `<div class="text-[10px] md:text-xs font-bold uppercase text-gray-300 flex items-center gap-2"><i class="fa-solid fa-check text-[8px]" style="color: var(--accent-color);"></i> ${item}</div>`).join('')}
                 </div>
                 <div class="pt-6 border-t border-white/10">
-                    <button onclick="orderSvcWA('${data.title}')" class="text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:brightness-110 transition cursor-pointer" style="background-color: var(--accent-color);">Order via WhatsApp</button>
+                    <button onclick="orderSvcWA('${data.title}')" class="text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:opacity-90 transition cursor-pointer" style="background-color: var(--accent-color);">
+                        <i class="fa-brands fa-whatsapp mr-2"></i>Order via WhatsApp
+                    </button>
                 </div>
             `;
             document.getElementById('modalData').innerHTML = html;
             const modal = document.getElementById('detailsModal');
             modal.style.display = 'flex';
-            setTimeout(() => { modal.classList.add('active'); if(window.initCursorHover) initCursorHover(); }, 10);
+            setTimeout(() => { 
+                modal.classList.add('active'); 
+                if(window.initCursorHover) initCursorHover(); 
+            }, 10);
         }
 
         function closeModal() {
@@ -337,7 +438,7 @@
         }
 
         function orderSvcWA(name) {
-            window.open(`https://wa.me/6283853202544?text=${encodeURIComponent(`Halo Vhen Virtual, saya tertarik dengan jasa: ${name}`)}`, '_blank');
+            window.open(`https://wa.me/6283853202544?text=${encodeURIComponent(`Halo Vhen Virtual, saya tertarik dengan jasa: ${name}. Mohon info lebih lanjut.`)}`, '_blank');
         }
     </script>
 </body>
