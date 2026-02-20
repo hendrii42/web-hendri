@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
     <title>Math Edu | HendriHub</title>
 
     <meta name="description" content="Bimbingan Matematika Privat & Kelompok dari Blitar untuk Indonesia. SD, SMP, SMA, hingga UTBK.">
     
     <meta property="og:title" content="Math Edu | HendriHub">
     <meta property="og:description" content="Bimbingan Matematika dengan pendekatan Logic Building untuk semua jenjang.">
-    <meta property="og:image" content="https://hendrihub.com/profil.jpg">
-    <meta property="og:url" content="https://hendrihub.com/math-edu.html">
+    <meta property="og:image" content="https://hendrihub.my.id/profil.jpg">
+    <meta property="og:url" content="https://hendrihub.my.id/math-edu">
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
     
@@ -20,19 +21,34 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Modal styles (existing, tetap sama) */
+        /* Modal styles */
         #modalOverlay { 
-            display: none; position: fixed; inset: 0; z-index: 2000;
-            background: rgba(0,0,0,0.96); backdrop-filter: blur(20px); 
-            align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            z-index: 9999;
+            background: rgba(0,0,0,0.96); 
+            backdrop-filter: blur(20px); 
+            align-items: center; 
+            justify-content: center;
+            opacity: 0; 
+            transition: opacity 0.3s ease;
         }
+        
+        #modalOverlay.active {
+            opacity: 1;
+        }
+        
         #modalContent { 
             transform: translateY(30px); 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            opacity: 0;
         }
-        #modalOverlay.active { display: flex; opacity: 1; }
-        #modalOverlay.active #modalContent { transform: translateY(0); }
+        
+        #modalOverlay.active #modalContent { 
+            transform: translateY(0); 
+            opacity: 1;
+        }
         
         .math-gradient {
             background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
@@ -41,38 +57,38 @@
         }
     </style>
 </head>
-<body class="p-4 md:p-6 lg:p-12">
+<body class="p-4 md:p-8 lg:p-12">
 
     <!-- Custom Cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
     
     <!-- Scroll Progress Bar -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[10000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[9000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
 
     <div class="max-w-6xl mx-auto animate-flow">
         
-        <!-- Navigation (UPDATED: Konsisten) -->
+        <!-- Navigation (HANYA LOGO) -->
         <nav class="delay-1 mb-10 md:mb-12 flex justify-between items-center px-2">
             <!-- Logo -->
-            <a href="index.html" class="flex flex-col leading-none group">
+            <a href="/" class="flex flex-col leading-none group">
                 <span class="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-white group-hover:opacity-80 transition">
                     Math<span style="color: var(--accent-color);"> Edu</span>
                 </span>
                 <span class="text-[7px] md:text-[8px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </a>
             
-            <!-- Hamburger Menu Button -->
-            <button onclick="toggleMenu()" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[2000]">
-                <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-                <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-            </button>
+            <!-- Spacer -->
+            <div></div>
         </nav>
 
-        <!-- Header (UPDATED: Fixed colors) -->
+        <!-- Header -->
         <header class="mb-12 md:mb-16 delay-2 text-center md:text-left relative overflow-hidden bento-card p-8 md:p-12 lg:p-20">
             <div class="absolute inset-0 opacity-10 grayscale">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" 
+                     loading="lazy"
+                     class="w-full h-full object-cover" 
+                     alt="Math Education">
             </div>
             <div class="relative z-10">
                 <h1 class="text-5xl md:text-6xl lg:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">
@@ -84,38 +100,38 @@
             </div>
         </header>
 
-        <!-- 3 Steps Section (UPDATED: Fixed colors) -->
+        <!-- 3 Steps Section (COMPACT) -->
         <section class="mb-16 md:mb-20 delay-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div class="bento-card p-6 md:p-8 group">
-                <div class="text-2xl md:text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">01.</div>
-                <h4 class="text-white font-black uppercase italic text-xs md:text-sm mb-2 tracking-widest">Diagnostic Test</h4>
-                <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed uppercase">
-                    Mengukur sejauh mana pemahaman konsep dasar sebelum memulai materi baru.
+            <div class="bento-card p-5 md:p-6 group">
+                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">01.</div>
+                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Diagnostic Test</h4>
+                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
+                    Mengukur pemahaman konsep dasar sebelum memulai materi baru.
                 </p>
             </div>
-            <div class="bento-card p-6 md:p-8 group">
-                <div class="text-2xl md:text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">02.</div>
-                <h4 class="text-white font-black uppercase italic text-xs md:text-sm mb-2 tracking-widest">Logic Building</h4>
-                <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed uppercase">
-                    Bukan sekadar hafal rumus, tapi memahami alur logika di balik setiap angka.
+            <div class="bento-card p-5 md:p-6 group">
+                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">02.</div>
+                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Logic Building</h4>
+                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
+                    Bukan sekadar hafal rumus, tapi memahami alur logika.
                 </p>
             </div>
-            <div class="bento-card p-6 md:p-8 group">
-                <div class="text-2xl md:text-3xl font-black mb-4 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">03.</div>
-                <h4 class="text-white font-black uppercase italic text-xs md:text-sm mb-2 tracking-widest">Evaluation</h4>
-                <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed uppercase">
-                    Laporan bulanan dan progres belajar yang terukur untuk orang tua & siswa.
+            <div class="bento-card p-5 md:p-6 group">
+                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">03.</div>
+                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Evaluation</h4>
+                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
+                    Laporan bulanan dan progres belajar yang terukur.
                 </p>
             </div>
         </section>
 
-        <!-- Level Cards (UPDATED: Fixed colors but keep amber/purple/red for differentiation) -->
+        <!-- Level Cards -->
         <section class="mb-16 md:mb-20 delay-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                 
                 <!-- SD Card -->
                 <button onclick="openModal('SD', 'Sekolah Dasar', '25.000', '15.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-amber-500 transition-all">
+                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-amber-500 transition-all cursor-pointer">
                     <i class="fa-solid fa-child text-xl md:text-2xl text-amber-500 mb-4 block"></i>
                     <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-amber-500 transition">SD</span>
                     <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Logika Dasar &rarr;</p>
@@ -123,15 +139,15 @@
                 
                 <!-- SMP Card -->
                 <button onclick="openModal('SMP', 'Sekolah Menengah', '35.000', '20.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent transition-all" style="hover:border-color: var(--accent-color);">
+                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-blue-500 transition-all cursor-pointer">
                     <i class="fa-solid fa-graduation-cap text-xl md:text-2xl mb-4 block" style="color: var(--accent-color);"></i>
-                    <span class="text-xl md:text-2xl font-black text-white italic uppercase transition" style="group-hover:color: var(--accent-color);">SMP</span>
+                    <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-blue-500 transition">SMP</span>
                     <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Aljabar & Geometri &rarr;</p>
                 </button>
                 
                 <!-- SMA Card -->
                 <button onclick="openModal('SMA', 'Menengah Atas', '45.000', '25.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-purple-500 transition-all">
+                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-purple-500 transition-all cursor-pointer">
                     <i class="fa-solid fa-book-open-reader text-xl md:text-2xl text-purple-500 mb-4 block"></i>
                     <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-purple-500 transition">SMA</span>
                     <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Kalkulus & Trigonometri &rarr;</p>
@@ -139,7 +155,7 @@
                 
                 <!-- UTBK Card -->
                 <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-red-500 transition-all">
+                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-red-500 transition-all cursor-pointer">
                     <i class="fa-solid fa-user-graduate text-xl md:text-2xl text-red-500 mb-4 block"></i>
                     <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-red-500 transition">UTBK</span>
                     <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">TKA & TPS &rarr;</p>
@@ -147,7 +163,7 @@
             </div>
         </section>
 
-        <!-- Student Reviews Section (UPDATED: Fixed colors) -->
+        <!-- Student Reviews Section -->
         <section class="mb-16 md:mb-20">
             <div class="bento-card p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-10">
                 <div class="md:w-1/3">
@@ -162,28 +178,76 @@
             </div>
         </section>
 
-        <!-- FAQ Section (No major changes, just responsive) -->
+        <!-- FAQ Section -->
         <section class="mb-16 md:mb-20">
             <h3 class="text-lg md:text-xl font-black italic uppercase text-white mb-6 md:mb-8 border-b border-white/10 pb-4">
                 Math Edu FAQ<span style="color: var(--accent-color);">?</span>
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 md:p-6 rounded-3xl bg-white/5 border border-white/5">
+                <div class="bento-card p-5 md:p-6">
                     <p class="font-bold text-white uppercase text-xs mb-2">Berapa lama durasi per sesi?</p>
-                    <p class="text-[11px] md:text-xs text-gray-500 leading-relaxed uppercase">
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                         Satu sesi tatap muka berdurasi 90 menit (Efektif & Interaktif).
                     </p>
                 </div>
-                <div class="p-5 md:p-6 rounded-3xl bg-white/5 border border-white/5">
+                <div class="bento-card p-5 md:p-6">
                     <p class="font-bold text-white uppercase text-xs mb-2">Apakah ada grup diskusi?</p>
-                    <p class="text-[11px] md:text-xs text-gray-500 leading-relaxed uppercase">
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                         Ya, siswa mendapatkan akses grup WhatsApp tanya jawab 24/7.
+                    </p>
+                </div>
+                <div class="bento-card p-5 md:p-6">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Apakah bisa offline?</p>
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
+                        Ya, untuk wilayah Blitar. Area lain via Zoom/Google Meet.
+                    </p>
+                </div>
+                <div class="bento-card p-5 md:p-6">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Minimal berapa sesi?</p>
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
+                        Tidak ada minimal. Bisa per sesi atau paket bulanan (8 sesi).
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Instagram CTA (UPDATED: Fixed colors) -->
+        <!-- CTA Section -->
+        <section class="mb-16 md:mb-20">
+            <div class="bento-card p-10 md:p-16 text-center relative overflow-hidden group">
+                <!-- Background -->
+                <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <div class="grid grid-cols-8 gap-3 h-full p-6">
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black italic uppercase mb-4 text-white">
+                        Siap Kuasai <span style="color: var(--accent-color);">Matematika</span>?
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Konsultasi gratis via WhatsApp untuk diagnostic test & rekomendasi program!
+                    </p>
+                    <a href="https://wa.me/6283853202544?text=Halo%20Math%20Edu,%20saya%20ingin%20konsultasi%20tentang%20bimbingan%20matematika" 
+                       target="_blank"
+                       class="inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-xs md:text-sm uppercase tracking-wider transition-all hover:scale-105 hover:shadow-2xl" 
+                       style="background-color: var(--accent-color); color: white;">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Mulai Belajar</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram CTA -->
         <a href="https://www.instagram.com/math_edu.id" target="_blank" 
            class="bento-card p-8 md:p-10 flex flex-col md:flex-row items-center justify-between hover:bg-white/5 transition group mb-16 md:mb-20">
             <div class="flex items-center gap-4 md:gap-6 mb-4 md:mb-0">
@@ -193,17 +257,118 @@
                     <p class="text-[10px] md:text-[11px] text-gray-500 mt-1 uppercase tracking-widest">Follow for free logic tips</p>
                 </div>
             </div>
-            <div class="px-8 md:px-10 py-3 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl" 
+            <div class="px-8 md:px-10 py-3 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition hover:opacity-90" 
                  style="background-color: var(--accent-color);">
                 Follow Now
             </div>
         </a>
+
+        <!-- Footer -->
+        <footer class="text-center opacity-30 pb-10">
+            <button onclick="scrollToTop()" class="group">
+                <p class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.8em] md:tracking-[1em] transition-colors cursor-pointer" style="color: var(--accent-color);">
+                    HendriHub &copy; 2025 | Blitar
+                </p>
+                <i class="fa-solid fa-chevron-up text-[8px] mt-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+            </button>
+        </footer>
     </div>
 
-    <!-- Modal (UPDATED: Fixed colors) -->
+    <!-- Hamburger Menu Button (KELUAR dari nav, independent) -->
+    <button onclick="toggleMenu()" class="fixed top-6 md:top-8 right-6 md:right-12 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500] transition-all duration-300">
+        <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+        <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+    </button>
+
+    <!-- Menu Overlay -->
+    <div id="menuOverlay" style="display: none;">
+        <div class="text-center px-6 max-w-5xl mx-auto">
+            <!-- Navigation Links -->
+            <div class="mb-12">
+                <a href="/" class="menu-link block mb-4">Home</a>
+                <a href="/va-service" class="menu-link block mb-4">Services</a>
+                <a href="/math-edu" class="menu-link block mb-4">Math Edu</a>
+                <a href="/biodata" class="menu-link block mb-4">About</a>
+                <a href="/recommendations" class="menu-link block mb-4">Picks</a>
+            </div>
+            
+            <!-- Theme Switcher -->
+            <div class="mb-10 pb-8 border-b border-white/10">
+                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button onclick="setTheme('#3b82f6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;" title="Blue"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;" title="Purple"></button>
+                    <button onclick="setTheme('#ec4899')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;" title="Pink"></button>
+                    <button onclick="setTheme('#10b981')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;" title="Green"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;" title="Orange"></button>
+                    <button onclick="setTheme('#ef4444')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;" title="Red"></button>
+                </div>
+            </div>
+
+            <!-- Social Icons Grid -->
+            <div class="grid grid-cols-5 gap-4 mb-8 max-w-md mx-auto">
+                <a href="https://wa.me/6283853202544" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-whatsapp text-lg text-gray-600 group-hover:text-[#25D366] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">WA</span>
+                </a>
+
+                <a href="https://www.instagram.com/math_edu.id" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-instagram text-lg text-gray-600 group-hover:text-[#E4405F] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">IG</span>
+                </a>
+
+                <a href="https://www.facebook.com/hendrii42/" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-facebook text-lg text-gray-600 group-hover:text-[#1877F2] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">FB</span>
+                </a>
+
+                <a href="https://www.behance.net/hendrii_42" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-behance text-lg text-gray-600 group-hover:text-[#1769FF] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">BE</span>
+                </a>
+
+                <button onclick="copyEmail('mashendry450@gmail.com')" 
+                        class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-solid fa-envelope text-lg text-gray-600 group-hover:text-white transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">Mail</span>
+                </button>
+            </div>
+
+            <!-- Support Button -->
+            <div class="mb-8">
+                <a href="https://trakteer.id/hendri_irawan10" target="_blank" 
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-wider transition-all hover:scale-105" 
+                   style="background-color: var(--accent-color); color: white;">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Support Me</span>
+                </a>
+            </div>
+
+            <!-- Tagline -->
+            <div>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
     <div id="modalOverlay" onclick="closeModal(event)">
         <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-2xl w-[95%] relative shadow-2xl">
-            <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition text-xl">
+            <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition text-xl cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="mb-6 text-center">
@@ -223,7 +388,7 @@
                     <div>
                         <p id="p-full" class="text-xl md:text-2xl font-black text-white italic">Rp --</p>
                         <a id="btn-full" href="#" 
-                           class="block w-full text-center text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 transition shadow-xl" 
+                           class="block w-full text-center text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 transition shadow-xl hover:opacity-90" 
                            style="background-color: var(--accent-color);">
                             Daftar Sesi
                         </a>
@@ -242,44 +407,11 @@
                     <div>
                         <p id="p-async" class="text-xl md:text-2xl font-black text-white italic opacity-40">Rp --</p>
                         <a id="btn-async" href="#" 
-                           class="block w-full text-center bg-white/10 text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 hover:bg-white hover:text-black transition">
+                           class="block w-full text-center bg-white/10 text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 hover:bg-white hover:text-black transition cursor-pointer">
                             Beli Modul
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-            class="fixed bottom-6 md:bottom-8 right-6 md:right-8 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center z-[4000] hover:bg-white/10 transition group cursor-pointer">
-        <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition"></i>
-    </button>
-
-    <!-- Menu Overlay (ADDED) -->
-    <div id="menuOverlay" style="display: none;">
-        <div class="text-center">
-            <a href="index.html" class="menu-link block mb-4 md:mb-6">Home</a>
-            <a href="va-service.html" class="menu-link block mb-4 md:mb-6">Services</a>
-            <a href="math-edu.html" class="menu-link block mb-4 md:mb-6">Math Edu</a>
-            <a href="biodata.html" class="menu-link block mb-4 md:mb-6">About</a>
-            <a href="recommendations.html" class="menu-link block mb-4 md:mb-6">Picks</a>
-            
-            <div class="mt-12 md:mt-16 flex gap-6 md:gap-8 justify-center text-2xl md:text-3xl">
-                <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/math_edu.id" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-solid fa-envelope"></i>
-                </button>
-            </div>
-
-            <div class="mt-8 md:mt-12">
-                <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
             </div>
         </div>
     </div>
