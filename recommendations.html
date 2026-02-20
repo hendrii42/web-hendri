@@ -46,9 +46,20 @@
         }
         
         .hidden { 
-            display: none; 
+            display: none !important; 
             opacity: 0; 
             transform: scale(0.95); 
+        }
+
+        /* Search input styling */
+        #searchInput {
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 90%);
         }
     </style>
 </head>
@@ -78,7 +89,7 @@
         </nav>
 
         <!-- Header -->
-        <div class="mb-10 md:mb-12 text-center md:text-left">
+        <div class="mb-8 md:mb-10 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
                 <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
                 <span class="font-bold text-[9px] md:text-[10px] tracking-[0.4em] uppercase" style="color: var(--accent-color);">Collections</span>
@@ -90,6 +101,26 @@
                 Barang-barang pilihan yang saya gunakan untuk mendukung produktivitas dan lifestyle sehari-hari. 
                 <span class="text-white font-medium">Tested & recommended.</span>
             </p>
+        </div>
+
+        <!-- Affiliate Disclosure (BARU) -->
+        <div class="bento-card p-4 md:p-5 mb-8 flex items-start gap-3 border-l-2" style="border-color: var(--accent-color);">
+            <i class="fa-solid fa-info-circle text-sm mt-0.5 shrink-0" style="color: var(--accent-color);"></i>
+            <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
+                <span class="text-white font-bold">Full Disclosure:</span> 
+                Beberapa link di halaman ini adalah affiliate link. 
+                Kalau kamu beli lewat link ini, saya dapat komisi kecil tanpa biaya tambahan untukmu. 
+                <span class="italic">Win-win!</span> 🙌
+            </p>
+        </div>
+
+        <!-- Search Bar (BARU) -->
+        <div class="mb-6 md:mb-8">
+            <input type="text" 
+                   onkeyup="searchProducts()" 
+                   id="searchInput"
+                   placeholder="🔍 Cari produk..." 
+                   class="w-full md:w-80 px-5 py-3 rounded-full bg-white/5 border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none"/>
         </div>
 
         <!-- Filter Buttons -->
@@ -111,104 +142,249 @@
             </button>
         </div>
 
-        <!-- Products Grid -->
+        <!-- Products Grid (UPDATED with Images & Reviews) -->
         <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             
             <!-- Tech Items -->
-            <a href="#" target="_blank" class="product-item tech bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition duration-500 shrink-0" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color);">
-                    <i class="fa-solid fa-laptop"></i>
+            <a href="#" target="_blank" class="product-item tech bento-card p-0 overflow-hidden group" data-name="macbook stand tech setup">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image (BARU) -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-white/5">
+                        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Macbook Stand">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition mb-2">Macbook Stand</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Tech Setup</p>
+                            <!-- Mini Review (BARU) -->
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Ngebantu banget postur duduk. No more sakit leher setelah 8 jam kerja!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded font-bold uppercase" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color);">
+                                Must Have
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition">Macbook Stand</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Tech Setup</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
-            <a href="#" target="_blank" class="product-item tech bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition duration-500 shrink-0" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color);">
-                    <i class="fa-solid fa-keyboard"></i>
+            <a href="#" target="_blank" class="product-item tech bento-card p-0 overflow-hidden group" data-name="mechanical keyboard efficiency gear">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-white/5">
+                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Mechanical Keyboard">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition mb-2">Mechanical Keyboard</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Efficiency Gear</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Typing jadi lebih cepat & satisfying. Suara 'clicky' bikin semangat ngoding!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded font-bold uppercase" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color);">
+                                Productivity
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition">Mechanical Keyboard</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Efficiency Gear</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
             <!-- Book Items -->
-            <a href="https://s.shopee.co.id/AKU5ehxyGV" target="_blank" class="product-item book bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-book"></i>
+            <a href="https://s.shopee.co.id/AKU5ehxyGV" target="_blank" class="product-item book bento-card p-0 overflow-hidden group" data-name="atomic habits self improvement">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-purple-500/10">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Atomic Habits">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition mb-2">Atomic Habits</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Self Improvement</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Buku wajib buat yang mau konsisten. 1% improvement setiap hari = game changer!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 font-bold uppercase">
+                                Life Changing
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition">Atomic Habits</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Self Improvement</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
-            <a href="#" target="_blank" class="product-item book bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-brain"></i>
+            <a href="#" target="_blank" class="product-item book bento-card p-0 overflow-hidden group" data-name="psychology of money mindset wealth">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-purple-500/10">
+                        <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Psychology of Money">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition mb-2">Psychology of Money</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Mindset & Wealth</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Ngubah mindset soal uang. Bukan cuma soal investasi, tapi behaviour & decision making."
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 font-bold uppercase">
+                                Must Read
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition">Psychology of Money</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Mindset & Wealth</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
             <!-- Selfcare Items -->
-            <a href="#" target="_blank" class="product-item selfcare bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-leaf"></i>
+            <a href="#" target="_blank" class="product-item selfcare bento-card p-0 overflow-hidden group" data-name="sunscreen spf 50 daily selfcare">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-green-500/10">
+                        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Sunscreen">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition mb-2">Sunscreen SPF 50</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Daily Selfcare</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Investasi jangka panjang buat kulit. Non-greasy, cocok buat harian di depan layar."
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-green-500/10 text-green-400 font-bold uppercase">
+                                Daily Essential
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition">Sunscreen SPF 50</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Daily Selfcare</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
-            <a href="#" target="_blank" class="product-item selfcare bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-bottle-water"></i>
+            <a href="#" target="_blank" class="product-item selfcare bento-card p-0 overflow-hidden group" data-name="tumbler 1l hydration guide">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-green-500/10">
+                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Tumbler">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition mb-2">Tumbler 1L</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Hydration Guide</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Bikin semangat minum air. 1L sehari terpenuhi, otak jadi lebih fresh!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-green-500/10 text-green-400 font-bold uppercase">
+                                Health Hack
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition">Tumbler 1L</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Hydration Guide</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
             <!-- Outfit Items -->
-            <a href="#" target="_blank" class="product-item outfit bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-shirt"></i>
+            <a href="#" target="_blank" class="product-item outfit bento-card p-0 overflow-hidden group" data-name="oversized hoodie comfort wear">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-orange-500/10">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Hoodie">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition mb-2">Oversized Hoodie</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Comfort Wear</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "WFH outfit favorit. Nyaman, stylish, dan bikin confident di Zoom call!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-orange-500/10 text-orange-400 font-bold uppercase">
+                                WFH Essential
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition">Oversized Hoodie</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Comfort Wear</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
-            <a href="#" target="_blank" class="product-item outfit bento-card p-6 md:p-8 flex items-center gap-4 md:gap-6 group">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 text-2xl group-hover:scale-110 transition duration-500 shrink-0">
-                    <i class="fa-solid fa-glasses"></i>
+            <a href="#" target="_blank" class="product-item outfit bento-card p-0 overflow-hidden group" data-name="blue light glasses screen protection">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-32 h-40 md:h-auto shrink-0 overflow-hidden bg-orange-500/10">
+                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400" 
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                             alt="Blue Light Glasses">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition mb-2">Blue Light Glasses</h3>
+                            <p class="text-[10px] md:text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-3">Screen Protection</p>
+                            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                                "Mata lebih nyaman seharian di layar. Headache berkurang drastis!"
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-[9px] px-2 py-1 rounded bg-orange-500/10 text-orange-400 font-bold uppercase">
+                                Eye Care
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition">Blue Light Glasses</h3>
-                    <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Screen Protection</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
             </a>
 
         </div>
 
-        <!-- CTA Banner (BARU) -->
+        <!-- CTA Banner -->
         <section class="mt-16 md:mt-20">
             <div class="bento-card p-8 md:p-10 text-center relative overflow-hidden group">
                 <!-- Background -->
@@ -350,6 +526,7 @@
 
     <script src="script.js"></script>
     <script>
+        // Filter products by category
         function filterSelection(c) {
             var x, i;
             x = document.getElementsByClassName("product-item");
@@ -373,6 +550,31 @@
                 btns[j].classList.remove("active");
             }
             event.currentTarget.classList.add("active");
+        }
+
+        // Search products (BARU)
+        function searchProducts() {
+            var input, filter, products, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toLowerCase();
+            products = document.getElementsByClassName("product-item");
+            
+            for (i = 0; i < products.length; i++) {
+                txtValue = products[i].getAttribute("data-name");
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    products[i].classList.remove("hidden");
+                } else {
+                    products[i].classList.add("hidden");
+                }
+            }
+            
+            // Reset filter buttons if searching
+            if (filter !== "") {
+                var btns = document.getElementsByClassName("filter-btn");
+                for (var j = 0; j < btns.length; j++) {
+                    btns[j].classList.remove("active");
+                }
+            }
         }
     </script>
 </body>
