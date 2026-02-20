@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>Math Edu | HendriHub</title>
 
-    <meta name="description" content="Bimbingan Matematika Privat & Kelompok dari Blitar untuk Indonesia. SD, SMP, SMA, hingga UTBK.">
+    <meta name="description" content="Bimbingan Matematika Live & Video untuk Semua Jenjang. SD, SMP, SMA, hingga UTBK.">
     
     <meta property="og:title" content="Math Edu | HendriHub">
-    <meta property="og:description" content="Bimbingan Matematika dengan pendekatan Logic Building untuk semua jenjang.">
+    <meta property="og:description" content="Bimbingan Matematika dengan pendekatan Logic Building. Live Tutoring & Materi Video.">
     <meta property="og:image" content="https://hendrihub.my.id/profil.jpg">
     <meta property="og:url" content="https://hendrihub.my.id/math-edu">
     
@@ -33,6 +33,7 @@
             justify-content: center;
             opacity: 0; 
             transition: opacity 0.3s ease;
+            overflow-y: auto;
         }
         
         #modalOverlay.active {
@@ -43,6 +44,7 @@
             transform: translateY(30px); 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
             opacity: 0;
+            margin: 40px auto;
         }
         
         #modalOverlay.active #modalContent { 
@@ -54,6 +56,16 @@
             background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Level card enhanced hover */
+        .level-card-enhanced {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .level-card-enhanced:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -70,10 +82,10 @@
         
         <!-- Navigation (HANYA LOGO) -->
         <nav class="delay-1 mb-10 md:mb-12 flex justify-between items-center px-2">
-            <!-- Logo -->
+            <!-- Logo (UPDATED: HendriHub) -->
             <a href="/" class="flex flex-col leading-none group">
                 <span class="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-white group-hover:opacity-80 transition">
-                    Math<span style="color: var(--accent-color);"> Edu</span>
+                    Hendri<span style="color: var(--accent-color);">Hub</span>
                 </span>
                 <span class="text-[7px] md:text-[8px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </a>
@@ -82,8 +94,8 @@
             <div></div>
         </nav>
 
-        <!-- Header -->
-        <header class="mb-12 md:mb-16 delay-2 text-center md:text-left relative overflow-hidden bento-card p-8 md:p-12 lg:p-20">
+        <!-- Header (UPDATED: New title & subtitle) -->
+        <header class="mb-12 md:mb-16 delay-2 text-center md:text-left relative overflow-hidden bento-card p-8 md:p-12 lg:p-16">
             <div class="absolute inset-0 opacity-10 grayscale">
                 <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" 
                      loading="lazy"
@@ -91,94 +103,205 @@
                      alt="Math Education">
             </div>
             <div class="relative z-10">
-                <h1 class="text-5xl md:text-6xl lg:text-8xl font-black uppercase italic leading-none tracking-tighter text-white">
-                    Mastering <br><span class="math-gradient">Logic.</span>
+                <h1 class="text-5xl md:text-6xl lg:text-8xl font-black uppercase italic leading-none tracking-tighter text-white mb-4">
+                    <span class="math-gradient">Math Edu</span>
                 </h1>
-                <p class="text-gray-500 mt-4 md:mt-6 text-[10px] md:text-xs uppercase tracking-[0.5em] font-black italic">
-                    Bimbingan Matematika Privat & Kelompok dari Blitar untuk Indonesia
+                <p class="text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl">
+                    Bimbingan Matematika <span class="text-white font-medium">Live & Video</span> untuk Semua Jenjang — 
+                    <span class="italic">Synchronous tutoring</span> atau <span class="italic">asynchronous learning</span>, pilih sesuai kebutuhanmu.
+                </p>
+                <p class="text-gray-500 mt-3 md:mt-4 text-[9px] md:text-[10px] uppercase tracking-[0.4em] font-black italic">
+                    SD • SMP • SMA • UTBK
                 </p>
             </div>
         </header>
 
-        <!-- 3 Steps Section (COMPACT) -->
-        <section class="mb-16 md:mb-20 delay-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div class="bento-card p-5 md:p-6 group">
-                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">01.</div>
-                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Diagnostic Test</h4>
-                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
-                    Mengukur pemahaman konsep dasar sebelum memulai materi baru.
-                </p>
-            </div>
-            <div class="bento-card p-5 md:p-6 group">
-                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">02.</div>
-                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Logic Building</h4>
-                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
-                    Bukan sekadar hafal rumus, tapi memahami alur logika.
-                </p>
-            </div>
-            <div class="bento-card p-5 md:p-6 group">
-                <div class="text-2xl md:text-3xl font-black mb-3 opacity-20 group-hover:opacity-100 transition" style="color: var(--accent-color);">03.</div>
-                <h4 class="text-white font-black uppercase italic text-[10px] md:text-xs mb-2 tracking-widest">Evaluation</h4>
-                <p class="text-[9px] md:text-[10px] text-gray-500 leading-relaxed uppercase">
-                    Laporan bulanan dan progres belajar yang terukur.
-                </p>
+        <!-- Workflow Banner Strip (HORIZONTAL - COMPACT) -->
+        <section class="mb-12 md:mb-16 delay-3">
+            <div class="bento-card p-4 md:p-6 flex items-center justify-center gap-4 md:gap-8 overflow-x-auto">
+                <div class="text-center shrink-0">
+                    <div class="text-xl md:text-2xl font-black mb-1" style="color: var(--accent-color);">01</div>
+                    <p class="text-[8px] md:text-[9px] text-gray-500 uppercase tracking-wider font-black">Diagnostic</p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-600 text-xs" style="color: var(--accent-color);"></i>
+                <div class="text-center shrink-0">
+                    <div class="text-xl md:text-2xl font-black mb-1" style="color: var(--accent-color);">02</div>
+                    <p class="text-[8px] md:text-[9px] text-gray-500 uppercase tracking-wider font-black">Logic Build</p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-600 text-xs" style="color: var(--accent-color);"></i>
+                <div class="text-center shrink-0">
+                    <div class="text-xl md:text-2xl font-black mb-1" style="color: var(--accent-color);">03</div>
+                    <p class="text-[8px] md:text-[9px] text-gray-500 uppercase tracking-wider font-black">Evaluation</p>
+                </div>
             </div>
         </section>
 
-        <!-- Level Cards -->
+        <!-- Pricing Comparison Quick View (BARU) -->
+        <section class="mb-12 delay-3">
+            <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-around text-center gap-6 md:gap-0">
+                <div>
+                    <i class="fa-solid fa-video text-3xl mb-3" style="color: var(--accent-color);"></i>
+                    <p class="text-lg md:text-xl font-black text-white uppercase italic">LIVE Tutoring</p>
+                    <p class="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-1">Real-time + Interaktif</p>
+                </div>
+                <div class="hidden md:block text-gray-600 text-2xl font-black">VS</div>
+                <div class="md:hidden w-full h-px bg-white/10"></div>
+                <div>
+                    <i class="fa-solid fa-play-circle text-3xl mb-3 text-purple-500"></i>
+                    <p class="text-lg md:text-xl font-black text-white uppercase italic">Materi VIDEO</p>
+                    <p class="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-wider mt-1">Fleksibel + Terjangkau</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Level Cards (UPDATED: BIGGER with VISUAL BACKGROUNDS) -->
         <section class="mb-16 md:mb-20 delay-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            <h2 class="text-2xl md:text-3xl font-black uppercase italic text-white mb-6 md:mb-8 text-center md:text-left">
+                Pilih <span style="color: var(--accent-color);">Jenjang</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 
                 <!-- SD Card -->
                 <button onclick="openModal('SD', 'Sekolah Dasar', '25.000', '15.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-amber-500 transition-all cursor-pointer">
-                    <i class="fa-solid fa-child text-xl md:text-2xl text-amber-500 mb-4 block"></i>
-                    <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-amber-500 transition">SD</span>
-                    <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Logika Dasar &rarr;</p>
+                        class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
+                    
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000" 
+                             loading="lazy"
+                             class="w-full h-full object-cover grayscale" 
+                             alt="SD Math">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-6 md:p-8">
+                        <i class="fa-solid fa-child text-4xl md:text-5xl text-amber-500 mb-4 transition-all group-hover:scale-110"></i>
+                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase group-hover:text-amber-500 transition mb-2">SD</span>
+                        <p class="text-xs text-gray-400 mb-4">Logika dasar & fondasi matematika untuk anak sekolah dasar.</p>
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-wider text-amber-500">
+                            Lihat Paket <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
                 </button>
                 
                 <!-- SMP Card -->
                 <button onclick="openModal('SMP', 'Sekolah Menengah', '35.000', '20.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-blue-500 transition-all cursor-pointer">
-                    <i class="fa-solid fa-graduation-cap text-xl md:text-2xl mb-4 block" style="color: var(--accent-color);"></i>
-                    <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-blue-500 transition">SMP</span>
-                    <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Aljabar & Geometri &rarr;</p>
+                        class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
+                    
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=1000" 
+                             loading="lazy"
+                             class="w-full h-full object-cover grayscale" 
+                             alt="SMP Math">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-6 md:p-8">
+                        <i class="fa-solid fa-graduation-cap text-4xl md:text-5xl mb-4 transition-all group-hover:scale-110" style="color: var(--accent-color);"></i>
+                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase transition mb-2" style="group-hover:color: var(--accent-color);">SMP</span>
+                        <p class="text-xs text-gray-400 mb-4">Aljabar & geometri untuk tingkat menengah pertama.</p>
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-wider" style="color: var(--accent-color);">
+                            Lihat Paket <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
                 </button>
                 
                 <!-- SMA Card -->
                 <button onclick="openModal('SMA', 'Menengah Atas', '45.000', '25.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-purple-500 transition-all cursor-pointer">
-                    <i class="fa-solid fa-book-open-reader text-xl md:text-2xl text-purple-500 mb-4 block"></i>
-                    <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-purple-500 transition">SMA</span>
-                    <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">Kalkulus & Trigonometri &rarr;</p>
+                        class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
+                    
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000" 
+                             loading="lazy"
+                             class="w-full h-full object-cover grayscale" 
+                             alt="SMA Math">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-6 md:p-8">
+                        <i class="fa-solid fa-book-open-reader text-4xl md:text-5xl text-purple-500 mb-4 transition-all group-hover:scale-110"></i>
+                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase group-hover:text-purple-500 transition mb-2">SMA</span>
+                        <p class="text-xs text-gray-400 mb-4">Kalkulus & trigonometri untuk persiapan kuliah.</p>
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-wider text-purple-500">
+                            Lihat Paket <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
                 </button>
                 
                 <!-- UTBK Card -->
                 <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000')" 
-                        class="p-6 md:p-8 bento-card text-left group border-t-2 border-transparent hover:border-red-500 transition-all cursor-pointer">
-                    <i class="fa-solid fa-user-graduate text-xl md:text-2xl text-red-500 mb-4 block"></i>
-                    <span class="text-xl md:text-2xl font-black text-white italic uppercase group-hover:text-red-500 transition">UTBK</span>
-                    <p class="text-[8px] md:text-[9px] text-gray-600 uppercase mt-2 font-black tracking-widest">TKA & TPS &rarr;</p>
+                        class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
+                    
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000" 
+                             loading="lazy"
+                             class="w-full h-full object-cover grayscale" 
+                             alt="UTBK Prep">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative h-full flex flex-col justify-end p-6 md:p-8">
+                        <i class="fa-solid fa-user-graduate text-4xl md:text-5xl text-red-500 mb-4 transition-all group-hover:scale-110"></i>
+                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase group-hover:text-red-500 transition mb-2">UTBK</span>
+                        <p class="text-xs text-gray-400 mb-4">TPS & TKA untuk lolos seleksi PTN favorit.</p>
+                        <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-wider text-red-500">
+                            Lihat Paket <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
                 </button>
             </div>
         </section>
 
-        <!-- Student Reviews Section -->
+        <!-- Student Reviews Section (UPDATED: Multiple testimonials) -->
         <section class="mb-16 md:mb-20">
-            <div class="bento-card p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-10">
-                <div class="md:w-1/3">
-                    <h2 class="text-3xl md:text-4xl font-black italic uppercase text-white leading-none">
-                        STUDENT <br><span style="color: var(--accent-color);">REVIEWS.</span>
-                    </h2>
+            <h2 class="text-2xl md:text-3xl font-black italic uppercase text-white mb-6 md:mb-8 text-center md:text-left">
+                Student <span style="color: var(--accent-color);">Reviews</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bento-card p-6 md:p-8">
+                    <p class="italic text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                        "Cara ngajarnya enak banget, materi sesulit apa pun jadi kerasa masuk akal. Nilai rapor naik drastis!"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm" style="background-color: var(--accent-color);">A</div>
+                        <div>
+                            <p class="text-white font-black uppercase text-[10px] tracking-wider">Aisyah R.</p>
+                            <p class="text-gray-500 text-[9px] uppercase tracking-wider">Siswa Kelas 12, Blitar</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-2/3 border-l border-white/10 pl-6 md:pl-10 italic text-gray-400 text-sm md:text-base">
-                    "Cara ngajarnya enak banget, materi sesulit apa pun jadi kerasa masuk akal. Nilai rapor naik drastis!"
-                    <div class="mt-4 text-white font-black uppercase text-[10px] md:text-[11px] tracking-widest">— Siswa Kelas 12, Blitar.</div>
+                
+                <div class="bento-card p-6 md:p-8">
+                    <p class="italic text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                        "Modul videonya clear, bisa diulang kapan aja. Worth it banget untuk yang sibuk!"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-white font-black text-sm">R</div>
+                        <div>
+                            <p class="text-white font-black uppercase text-[10px] tracking-wider">Rafli M.</p>
+                            <p class="text-gray-500 text-[9px] uppercase tracking-wider">Siswa SMP, Surabaya</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
+        <!-- FAQ Section (EXPANDED) -->
         <section class="mb-16 md:mb-20">
             <h3 class="text-lg md:text-xl font-black italic uppercase text-white mb-6 md:mb-8 border-b border-white/10 pb-4">
                 Math Edu FAQ<span style="color: var(--accent-color);">?</span>
@@ -206,6 +329,18 @@
                     <p class="font-bold text-white uppercase text-xs mb-2">Minimal berapa sesi?</p>
                     <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                         Tidak ada minimal. Bisa per sesi atau paket bulanan (8 sesi).
+                    </p>
+                </div>
+                <div class="bento-card p-5 md:p-6">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Materi video bisa diakses kapan saja?</p>
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
+                        Ya, akses selamanya setelah pembelian. Bisa diulang berkali-kali.
+                    </p>
+                </div>
+                <div class="bento-card p-5 md:p-6">
+                    <p class="font-bold text-white uppercase text-xs mb-2">Bagaimana sistem pembayaran?</p>
+                    <p class="text-[11px] md:text-xs text-gray-400 leading-relaxed">
+                        Transfer bank atau e-wallet. Konfirmasi via WhatsApp.
                     </p>
                 </div>
             </div>
@@ -365,9 +500,9 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal (IMPROVED with Comparison Checklist) -->
     <div id="modalOverlay" onclick="closeModal(event)">
-        <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-2xl w-[95%] relative shadow-2xl">
+        <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-3xl w-[95%] relative shadow-2xl">
             <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition text-xl cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -375,20 +510,37 @@
                 <span id="m-tag" class="text-[10px] font-black uppercase tracking-[0.4em] block mb-2" style="color: var(--accent-color);">LEVEL</span>
                 <h2 id="m-title" class="text-3xl md:text-4xl lg:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">TITLE</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <!-- Live Tutoring Card -->
-                <div class="p-5 md:p-6 rounded-3xl border border-white/10 flex flex-col justify-between bg-white/5">
+                <div class="p-5 md:p-6 rounded-3xl border-2 flex flex-col justify-between" style="border-color: var(--accent-color); background-color: color-mix(in srgb, var(--accent-color), transparent 95%);">
                     <div>
-                        <span class="text-[9px] font-black uppercase tracking-widest opacity-60" style="color: var(--accent-color);">Synchronous</span>
-                        <h4 class="text-lg md:text-xl font-black text-white italic mt-1">LIVE TUTORING</h4>
-                        <p class="text-[10px] md:text-[11px] text-gray-400 mt-2 mb-4 italic leading-tight">
-                            Live Zoom/Offline + Report + Homework Help.
-                        </p>
+                        <span class="text-[9px] font-black uppercase tracking-widest" style="color: var(--accent-color);">Synchronous</span>
+                        <h4 class="text-lg md:text-xl font-black text-white italic mt-1 mb-3">LIVE TUTORING</h4>
+                        
+                        <!-- Checklist (BARU) -->
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-start gap-2 text-[10px] text-gray-300">
+                                <i class="fa-solid fa-check mt-0.5" style="color: var(--accent-color);"></i>
+                                <span>Tatap muka Zoom/Offline</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-300">
+                                <i class="fa-solid fa-check mt-0.5" style="color: var(--accent-color);"></i>
+                                <span>Tanya jawab langsung</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-300">
+                                <i class="fa-solid fa-check mt-0.5" style="color: var(--accent-color);"></i>
+                                <span>Laporan bulanan</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-300">
+                                <i class="fa-solid fa-check mt-0.5" style="color: var(--accent-color);"></i>
+                                <span>Grup diskusi 24/7</span>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <p id="p-full" class="text-xl md:text-2xl font-black text-white italic">Rp --</p>
                         <a id="btn-full" href="#" 
-                           class="block w-full text-center text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 transition shadow-xl hover:opacity-90" 
+                           class="block w-full text-center text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 transition shadow-xl hover:opacity-90" 
                            style="background-color: var(--accent-color);">
                             Daftar Sesi
                         </a>
@@ -399,15 +551,32 @@
                 <div class="p-5 md:p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-between">
                     <div>
                         <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Asynchronous</span>
-                        <h4 class="text-lg md:text-xl font-black text-white italic mt-1">Materi Video</h4>
-                        <p class="text-[10px] md:text-[11px] text-gray-400 mt-2 mb-4 italic leading-tight">
-                            Video pembahasan + PDF Latihan Soal mandiri.
-                        </p>
+                        <h4 class="text-lg md:text-xl font-black text-white italic mt-1 mb-3">Materi VIDEO</h4>
+                        
+                        <!-- Checklist (BARU) -->
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-start gap-2 text-[10px] text-gray-400">
+                                <i class="fa-solid fa-check mt-0.5 text-purple-500"></i>
+                                <span>Akses selamanya</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-400">
+                                <i class="fa-solid fa-check mt-0.5 text-purple-500"></i>
+                                <span>Bisa diulang kapan saja</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-400">
+                                <i class="fa-solid fa-check mt-0.5 text-purple-500"></i>
+                                <span>PDF latihan soal</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px] text-gray-500">
+                                <i class="fa-solid fa-xmark mt-0.5"></i>
+                                <span>No live interaction</span>
+                            </div>
+                        </div>
                     </div>
                     <div>
-                        <p id="p-async" class="text-xl md:text-2xl font-black text-white italic opacity-40">Rp --</p>
+                        <p id="p-async" class="text-xl md:text-2xl font-black text-white italic opacity-70">Rp --</p>
                         <a id="btn-async" href="#" 
-                           class="block w-full text-center bg-white/10 text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 md:mt-6 hover:bg-white hover:text-black transition cursor-pointer">
+                           class="block w-full text-center bg-white/10 text-white font-black py-3 md:py-4 rounded-xl uppercase text-[9px] tracking-widest mt-4 hover:bg-white hover:text-black transition cursor-pointer">
                             Beli Modul
                         </a>
                     </div>
