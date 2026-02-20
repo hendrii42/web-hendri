@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
     <title>Recommendations | HendriHub</title>
     
     <meta name="description" content="Curated picks - Daftar peralatan, buku, dan teknologi yang digunakan untuk produktivitas sehari-hari.">
     
     <meta property="og:title" content="Recommendations | HendriHub">
     <meta property="og:description" content="Curated Picks - Tools, books, and tech recommendations.">
-    <meta property="og:image" content="https://hendrihub.com/profil.jpg">
-    <meta property="og:url" content="https://hendrihub.com/recommendations.html">
+    <meta property="og:image" content="https://hendrihub.my.id/profil.jpg">
+    <meta property="og:url" content="https://hendrihub.my.id/recommendations">
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M35 30V70M65 30V70M35 50H65' stroke='white' stroke-width='8' stroke-linecap='round'/><circle cx='75' cy='25' r='10' fill='%233B82F6'/></svg>">
     
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Filter button active state (using CSS variable) */
+        /* Filter button active state */
         .filter-btn {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -51,35 +52,32 @@
         }
     </style>
 </head>
-<body class="p-4 md:p-6 lg:p-12">
+<body class="p-4 md:p-8 lg:p-12">
 
     <!-- Custom Cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
     
-    <!-- Scroll Progress Bar (ADDED) -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[10000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[9000] transition-all duration-100" style="background-color: var(--accent-color);"></div>
 
     <div class="max-w-5xl mx-auto">
         
-        <!-- Navigation (UPDATED: Konsisten) -->
+        <!-- Navigation (HANYA LOGO) -->
         <nav class="flex justify-between items-center mb-12 md:mb-16 px-2">
             <!-- Logo -->
-            <a href="index.html" class="flex flex-col leading-none group">
+            <a href="/" class="flex flex-col leading-none group">
                 <span class="text-lg md:text-xl font-black text-white uppercase italic tracking-tighter group-hover:opacity-80 transition">
                     Hendri<span style="color: var(--accent-color);">Hub</span>
                 </span>
                 <span class="text-[6px] md:text-[7px] tracking-[0.4em] text-gray-500 font-black uppercase">Logic & Creative</span>
             </a>
             
-            <!-- Hamburger Menu Button -->
-            <button onclick="toggleMenu()" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[2000]">
-                <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-                <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
-            </button>
+            <!-- Spacer -->
+            <div></div>
         </nav>
 
-        <!-- Header (UPDATED: Fixed colors) -->
+        <!-- Header -->
         <div class="mb-10 md:mb-12 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
                 <span class="h-[1px] w-8" style="background-color: var(--accent-color);"></span>
@@ -88,31 +86,32 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter italic uppercase leading-none mb-4">
                 Curated <span style="color: var(--accent-color);">Picks.</span>
             </h1>
-            <p class="text-gray-500 text-sm md:text-base max-w-lg mx-auto md:mx-0 italic font-light">
-                Daftar peralatan, buku, dan teknologi yang saya gunakan untuk mendukung produktivitas sehari-hari.
+            <p class="text-gray-400 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed">
+                Barang-barang pilihan yang saya gunakan untuk mendukung produktivitas dan lifestyle sehari-hari. 
+                <span class="text-white font-medium">Tested & recommended.</span>
             </p>
         </div>
 
-        <!-- Filter Buttons (UPDATED: Better styling) -->
+        <!-- Filter Buttons -->
         <div class="flex flex-wrap gap-3 mb-10 md:mb-12 justify-center md:justify-start">
-            <button onclick="filterSelection('all')" class="filter-btn active px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <button onclick="filterSelection('all')" class="filter-btn active px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer">
                 All
             </button>
-            <button onclick="filterSelection('tech')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <button onclick="filterSelection('tech')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer">
                 Technology
             </button>
-            <button onclick="filterSelection('book')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <button onclick="filterSelection('book')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer">
                 Buku
             </button>
-            <button onclick="filterSelection('selfcare')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <button onclick="filterSelection('selfcare')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer">
                 Selfcare
             </button>
-            <button onclick="filterSelection('outfit')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <button onclick="filterSelection('outfit')" class="filter-btn px-5 md:px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer">
                 Outfit
             </button>
         </div>
 
-        <!-- Products Grid (UPDATED: Fixed colors) -->
+        <!-- Products Grid -->
         <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             
             <!-- Tech Items -->
@@ -121,7 +120,7 @@
                     <i class="fa-solid fa-laptop"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg transition" style="group-hover:color: var(--accent-color);">Macbook Stand</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition">Macbook Stand</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Tech Setup</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -132,7 +131,7 @@
                     <i class="fa-solid fa-keyboard"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg transition" style="group-hover:color: var(--accent-color);">Mechanical Keyboard</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-white transition">Mechanical Keyboard</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Efficiency Gear</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -144,7 +143,7 @@
                     <i class="fa-solid fa-book"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-purple-400 transition">Atomic Habits</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition">Atomic Habits</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Self Improvement</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -155,7 +154,7 @@
                     <i class="fa-solid fa-brain"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-purple-400 transition">Psychology of Money</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-purple-400 transition">Psychology of Money</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Mindset & Wealth</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -167,7 +166,7 @@
                     <i class="fa-solid fa-leaf"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-green-400 transition">Sunscreen SPF 50</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition">Sunscreen SPF 50</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Daily Selfcare</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -178,7 +177,7 @@
                     <i class="fa-solid fa-bottle-water"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-green-400 transition">Tumbler 1L</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-green-400 transition">Tumbler 1L</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Hydration Guide</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -190,7 +189,7 @@
                     <i class="fa-solid fa-shirt"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-orange-400 transition">Oversized Hoodie</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition">Oversized Hoodie</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Comfort Wear</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -201,7 +200,7 @@
                     <i class="fa-solid fa-glasses"></i>
                 </div>
                 <div class="flex-1 text-left">
-                    <h3 class="font-bold text-base md:text-lg group-hover:text-orange-400 transition">Blue Light Glasses</h3>
+                    <h3 class="font-bold text-base md:text-lg text-white group-hover:text-orange-400 transition">Blue Light Glasses</h3>
                     <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">Screen Protection</p>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-700 group-hover:text-white transition"></i>
@@ -209,8 +208,46 @@
 
         </div>
 
-        <!-- Footer (ADDED) -->
-        <footer class="mt-20 md:mt-24 text-center opacity-30 pb-10">
+        <!-- CTA Banner (BARU) -->
+        <section class="mt-16 md:mt-20">
+            <div class="bento-card p-8 md:p-10 text-center relative overflow-hidden group">
+                <!-- Background -->
+                <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <div class="grid grid-cols-8 gap-3 h-full p-6">
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                        <div class="bg-white rounded-lg"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="relative z-10">
+                    <i class="fa-solid fa-star text-3xl mb-4" style="color: var(--accent-color);"></i>
+                    <h2 class="text-2xl md:text-3xl font-black italic uppercase mb-3 text-white">
+                        Punya <span style="color: var(--accent-color);">Rekomendasi</span>?
+                    </h2>
+                    <p class="text-sm text-gray-400 mb-6 max-w-xl mx-auto">
+                        Kalau kamu punya produk favorit yang worth it, share via WhatsApp! 
+                        Siapa tau masuk ke list ini.
+                    </p>
+                    <a href="https://wa.me/6283853202544?text=Halo,%20aku%20punya%20rekomendasi%20produk%20yang%20bagus!" 
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-full font-black text-[10px] uppercase tracking-wider transition-all hover:scale-105" 
+                       style="background-color: var(--accent-color); color: white;">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Share Rekomendasi</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 md:mt-20 text-center opacity-30 pb-10">
             <button onclick="scrollToTop()" class="group">
                 <p class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.8em] md:tracking-[1em] transition-colors cursor-pointer" style="color: var(--accent-color);">
                     HendriHub &copy; 2025 | Happy Shopping
@@ -220,29 +257,93 @@
         </footer>
     </div>
 
-    <!-- Menu Overlay (ADDED) -->
+    <!-- Hamburger Menu Button (KELUAR dari nav, independent) -->
+    <button onclick="toggleMenu()" class="fixed top-6 md:top-8 right-6 md:right-12 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500] transition-all duration-300">
+        <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+        <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
+    </button>
+
+    <!-- Menu Overlay -->
     <div id="menuOverlay" style="display: none;">
-        <div class="text-center">
-            <a href="index.html" class="menu-link block mb-4 md:mb-6">Home</a>
-            <a href="va-service.html" class="menu-link block mb-4 md:mb-6">Services</a>
-            <a href="math-edu.html" class="menu-link block mb-4 md:mb-6">Math Edu</a>
-            <a href="biodata.html" class="menu-link block mb-4 md:mb-6">About</a>
-            <a href="recommendations.html" class="menu-link block mb-4 md:mb-6">Picks</a>
+        <div class="text-center px-6 max-w-5xl mx-auto">
+            <!-- Navigation Links -->
+            <div class="mb-12">
+                <a href="/" class="menu-link block mb-4">Home</a>
+                <a href="/va-service" class="menu-link block mb-4">Services</a>
+                <a href="/math-edu" class="menu-link block mb-4">Math Edu</a>
+                <a href="/biodata" class="menu-link block mb-4">About</a>
+                <a href="/recommendations" class="menu-link block mb-4">Picks</a>
+            </div>
             
-            <div class="mt-12 md:mt-16 flex gap-6 md:gap-8 justify-center text-2xl md:text-3xl">
-                <a href="https://wa.me/6283853202544" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-whatsapp"></i>
+            <!-- Theme Switcher -->
+            <div class="mb-10 pb-8 border-b border-white/10">
+                <p class="text-[9px] text-gray-500 uppercase tracking-wider font-black mb-4">Personalize Theme</p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button onclick="setTheme('#3b82f6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #3b82f6;" title="Blue"></button>
+                    <button onclick="setTheme('#8b5cf6')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #8b5cf6;" title="Purple"></button>
+                    <button onclick="setTheme('#ec4899')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ec4899;" title="Pink"></button>
+                    <button onclick="setTheme('#10b981')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #10b981;" title="Green"></button>
+                    <button onclick="setTheme('#f59e0b')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #f59e0b;" title="Orange"></button>
+                    <button onclick="setTheme('#ef4444')" class="w-12 h-12 rounded-full border-2 border-white/20 hover:border-white/60 transition-all hover:scale-110" style="background-color: #ef4444;" title="Red"></button>
+                </div>
+            </div>
+
+            <!-- Social Icons Grid -->
+            <div class="grid grid-cols-5 gap-4 mb-8 max-w-md mx-auto">
+                <a href="https://wa.me/6283853202544" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-whatsapp text-lg text-gray-600 group-hover:text-[#25D366] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">WA</span>
                 </a>
-                <a href="https://www.instagram.com/vhen_virtual" target="_blank" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-brands fa-instagram"></i>
+
+                <a href="https://www.instagram.com/vhen_virtual" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-instagram text-lg text-gray-600 group-hover:text-[#E4405F] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">IG</span>
                 </a>
-                <button onclick="copyEmail('mashendry450@gmail.com')" class="text-gray-600 hover:text-white transition">
-                    <i class="fa-solid fa-envelope"></i>
+
+                <a href="https://www.facebook.com/hendrii42/" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-facebook text-lg text-gray-600 group-hover:text-[#1877F2] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">FB</span>
+                </a>
+
+                <a href="https://www.behance.net/hendrii_42" target="_blank" 
+                   class="flex flex-col items-center gap-2 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-brands fa-behance text-lg text-gray-600 group-hover:text-[#1769FF] transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">BE</span>
+                </a>
+
+                <button onclick="copyEmail('mashendry450@gmail.com')" 
+                        class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white/10">
+                        <i class="fa-solid fa-envelope text-lg text-gray-600 group-hover:text-white transition"></i>
+                    </div>
+                    <span class="text-[7px] text-gray-600 uppercase tracking-wider">Mail</span>
                 </button>
             </div>
 
-            <div class="mt-8 md:mt-12">
-                <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
+            <!-- Support Button -->
+            <div class="mb-8">
+                <a href="https://trakteer.id/hendri_irawan10" target="_blank" 
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-wider transition-all hover:scale-105" 
+                   style="background-color: var(--accent-color); color: white;">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Support Me</span>
+                </a>
+            </div>
+
+            <!-- Tagline -->
+            <div>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest font-black">Logic & Creative</p>
             </div>
         </div>
     </div>
