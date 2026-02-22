@@ -63,10 +63,14 @@
             opacity: 1;
         }
         
+        /* FIX GRADIENT CLIPPING */
         .math-gradient {
             background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            padding-bottom: 0.15em; /* CRITICAL FIX */
         }
 
         /* Level card enhanced hover */
@@ -105,17 +109,17 @@
             <div></div>
         </nav>
 
-        <!-- Header (UPDATED) -->
-        <header class="mb-12 md:mb-16 delay-2 text-center md:text-left relative overflow-hidden bento-card p-8 md:p-12 lg:p-16 pb-12 md:pb-16 lg:pb-20">
-            <div class="absolute inset-0 opacity-10 grayscale">
+        <!-- Header (FIXED: REMOVE overflow-hidden) -->
+        <header class="mb-12 md:mb-16 delay-2 text-center md:text-left relative bento-card p-8 md:p-12 lg:p-16 pb-12 md:pb-16 lg:pb-20">
+            <div class="absolute inset-0 opacity-10 grayscale rounded-3xl overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000" 
                      loading="lazy"
                      class="w-full h-full object-cover" 
                      alt="Math Education">
             </div>
-            <div class="relative z-10" style="padding-bottom: 16px;">
-                <h1 class="text-5xl md:text-6xl lg:text-8xl font-black uppercase italic tracking-tighter text-white mb-8" style="line-height: 1.2; padding-bottom: 12px;">
-                    <span class="math-gradient" style="display: inline-block; padding-bottom: 8px;">Math Edu</span>
+            <div class="relative z-10">
+                <h1 class="text-5xl md:text-6xl lg:text-8xl font-black uppercase italic tracking-tighter text-white mb-8" style="line-height: 1.4;">
+                    <span class="math-gradient">Math Edu</span>
                 </h1>
                 <p class="text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl">
                     Bimbingan Matematika <span class="text-white font-medium">Live & Video</span> untuk Semua Jenjang — 
@@ -147,7 +151,7 @@
             </div>
         </section>
 
-        <!-- Pricing Comparison Quick View (BARU) -->
+        <!-- Pricing Comparison Quick View -->
         <section class="mb-12 delay-3">
             <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-around text-center gap-6 md:gap-0">
                 <div>
@@ -165,7 +169,7 @@
             </div>
         </section>
 
-        <!-- Level Cards (UPDATED: BIGGER with VISUAL BACKGROUNDS) -->
+        <!-- Level Cards -->
         <section class="mb-16 md:mb-20 delay-4">
             <h2 class="text-2xl md:text-3xl font-black uppercase italic text-white mb-6 md:mb-8 text-center md:text-left">
                 Pilih <span style="color: var(--accent-color);">Jenjang</span>
@@ -216,7 +220,7 @@
                     <!-- Content -->
                     <div class="relative h-full flex flex-col justify-end p-6 md:p-8">
                         <i class="fa-solid fa-graduation-cap text-4xl md:text-5xl mb-4 transition-all group-hover:scale-110" style="color: var(--accent-color);"></i>
-                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase transition mb-2" style="group-hover:color: var(--accent-color);">SMP</span>
+                        <span class="text-3xl md:text-4xl font-black text-white italic uppercase transition mb-2">SMP</span>
                         <p class="text-xs text-gray-400 mb-4">Aljabar & geometri untuk tingkat menengah pertama.</p>
                         <div class="flex items-center gap-2 text-[9px] font-black uppercase tracking-wider" style="color: var(--accent-color);">
                             Lihat Paket <i class="fa-solid fa-arrow-right text-[8px] group-hover:translate-x-1 transition"></i>
@@ -252,16 +256,16 @@
                 
                 <!-- UTBK Card -->
                 <button onclick="openModal('UTBK', 'Seleksi PTN', '55.000', '35.000')" 
-                class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
-    
-                    <!-- Background Image -->
-                        <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
-                            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1000&auto=format&fit=crop" 
-                                 loading="lazy"
-                                 class="w-full h-full object-cover grayscale brightness-25" 
-                                 alt="UTBK Preparation">
-                        </div>
-    
+                        class="bento-card level-card-enhanced overflow-hidden cursor-pointer group relative h-[350px] md:h-[400px]">
+                    
+                    <!-- Background Image (FIXED: brightness-125 instead of 25) -->
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1000&auto=format&fit=crop" 
+                             loading="lazy"
+                             class="w-full h-full object-cover grayscale brightness-125" 
+                             alt="UTBK Preparation">
+                    </div>
+                    
                     <!-- Gradient Overlay -->
                     <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
                     
@@ -278,7 +282,7 @@
             </div>
         </section>
 
-        <!-- Student Reviews Section (UPDATED: Multiple testimonials) -->
+        <!-- Student Reviews Section -->
         <section class="mb-16 md:mb-20">
             <h2 class="text-2xl md:text-3xl font-black italic uppercase text-white mb-6 md:mb-8 text-center md:text-left">
                 Student <span style="color: var(--accent-color);">Reviews</span>
@@ -312,7 +316,7 @@
             </div>
         </section>
 
-        <!-- FAQ Section (EXPANDED) -->
+        <!-- FAQ Section -->
         <section class="mb-16 md:mb-20">
             <h3 class="text-lg md:text-xl font-black italic uppercase text-white mb-6 md:mb-8 border-b border-white/10 pb-4">
                 Math Edu FAQ<span style="color: var(--accent-color);">?</span>
@@ -420,7 +424,7 @@
         </footer>
     </div>
 
-    <!-- Hamburger Menu Button (KELUAR dari nav, independent) -->
+    <!-- Hamburger Menu Button -->
     <button onclick="toggleMenu()" class="fixed top-6 md:top-8 right-6 md:right-12 w-10 h-10 flex flex-col items-center justify-center gap-1.5 group z-[9500] transition-all duration-300">
         <span id="line1" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
         <span id="line2" class="block w-6 h-0.5 transition-all duration-300 group-hover:w-7" style="background-color: var(--accent-color);"></span>
@@ -511,7 +515,7 @@
         </div>
     </div>
 
-    <!-- Modal (IMPROVED with Comparison Checklist) -->
+    <!-- Modal -->
     <div id="modalOverlay" onclick="closeModal(event)">
         <div id="modalContent" class="bg-[#0f0f0f] border border-white/10 p-6 md:p-10 rounded-[40px] max-w-3xl w-[95%] relative shadow-2xl">
             <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-500 hover:text-white transition text-xl cursor-pointer">
@@ -528,7 +532,7 @@
                         <span class="text-[9px] font-black uppercase tracking-widest" style="color: var(--accent-color);">Synchronous</span>
                         <h4 class="text-lg md:text-xl font-black text-white italic mt-1 mb-3">LIVE TUTORING</h4>
                         
-                        <!-- Checklist (BARU) -->
+                        <!-- Checklist -->
                         <div class="space-y-2 mb-4">
                             <div class="flex items-start gap-2 text-[10px] text-gray-300">
                                 <i class="fa-solid fa-check mt-0.5" style="color: var(--accent-color);"></i>
@@ -564,7 +568,7 @@
                         <span class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Asynchronous</span>
                         <h4 class="text-lg md:text-xl font-black text-white italic mt-1 mb-3">Materi VIDEO</h4>
                         
-                        <!-- Checklist (BARU) -->
+                        <!-- Checklist -->
                         <div class="space-y-2 mb-4">
                             <div class="flex items-start gap-2 text-[10px] text-gray-400">
                                 <i class="fa-solid fa-check mt-0.5 text-purple-500"></i>
